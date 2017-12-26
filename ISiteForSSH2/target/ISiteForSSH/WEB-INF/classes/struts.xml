@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value="action" />
+    <package name="default" extends="struts-default">		
+ 	 	
+    	<!-- 查询 -->
+		<!-- 进入添加页面input.jsp -->
+		<action name="addUsers" method="add" class="com.lx.action.DepartmentAction">
+			<result name="input">/input.jsp</result>
+		</action>
+		
+		
+		<!-- 删除 -->
+		<action name="deleteDepart" method="removeDepart" class="com.lx.action.DepartmentAction">
+			<result name="delete" type="redirect" >/jsp/department/depart_list.jsp</result>
+		</action>	
+		<!-- 进入修改页面 -->
+		<action name="editDepart" method="modifyDepart" class="com.lx.action.DepartmentAction">
+			<result name="input">/jsp/department/modDepartment.jsp</result>
+		</action>		
+		<!-- 查询所有部门信息 -->
+		<action name="listDepart" method="queryDepart" class="com.lx.action.DepartmentAction">
+			<result name="list">/jsp/department/depart_list.jsp</result>
+		</action>
+			
+		<!-- 保存，包括insert和update -->
+		<action name="saveDepart" method="saveDepart" class="com.lx.action.DepartmentAction">
+			<result name="save" type="redirect" >/jsp/department/depart_list.jsp</result>
+		</action>		
+
+    </package>
+</struts>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"	
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+<class name="com.lx.entity.Department" table="department_info">
+	<id name="id" type="long" column="ID">
+		<generator class="native"/>
+	</id>
+	<!-- not-null="true" -->
+	<property name="department_num" type="integer" column="department_num"  />
+	<property name="department_name" type="string" column="department_name"  />
+	<property name="department_desc"  type="string" column="department_desc"  />
+</class>
+
+</hibernate-mapping>
