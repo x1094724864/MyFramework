@@ -22,9 +22,9 @@
 			<li><a><img src="../../images/layout.png" alt="">部门管理</a>
 				<ul>
 					<li><a href="listDepart.action" target="right">所有部门</a></li>
-					<li><a href="../department/addDepartment.jsp" target="right">添加部门</a></li>
-					<li><a href="https://www.baidu.com" target="right">修改部门</a></li>
-					<li><a href="" target="right">删除部门</a></li>
+					<li><a href="editDepart.action" target="right">添加部门</a></li>
+					<li><a href="modDepart.action" target="right">修改部门</a></li>
+					<li><a href="removeDepart.action" target="right">删除部门</a></li>
 				</ul></li>
 			<li><a><img src="../../images/huser.png" alt="">员工管理</a>
 				<ul>

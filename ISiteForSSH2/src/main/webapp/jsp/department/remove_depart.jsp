@@ -35,45 +35,47 @@ a {
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="deleteDepart.action" method="post">
-					<table align="center">
-						<thead>
-							<tr>
-								<th>选择</th>
-								<th>部门编号</th>
-								<th>部门名称</th>
-								<th>部门描述</th>
-								<th>操作</th>
+				<form action="deleteAllDepart.action" method="post">
+					<table align="center" border="1">
+						<thead align="right">
+							<tr align="right">
+								<th style="width: 50px;" align="center">选择</th>
+								<th style="width: 90px;">部门编号</th>
+								<th style="width: 200px;">部门名称</th>
+								<th style="width: 350px; align-content: right:;" align="center">部门描述</th>
+								<th style="width: 90px;">操作</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" name="ids" value="${depart.id}" /></td>
+									<td><input type="checkbox" name="depart_ids"
+										value="${depart.id}" /></td>
 									<td>${depart.department_num}</td>
 									<td>${depart.department_name}</td>
 									<td>${depart.department_desc}</td>
 									<td>
 										<button>
-											<a href="deleteDepart.action?department.id=${depart.id}&department.department_num=${depart.department_num}">删除</a>
+											<a
+												href="deleteDepart.action?department.id=${depart.id}">删除</a>
 										</button>
-										<input type="submit" value="确定删除所选项"/><input type="reset" value="取消">
-										</td>
+									</td>
 
 								</tr>
 							</c:forEach>
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-<input type="submit" value="确定删除所选项"/><input type="reset" value="取消">
+					<input type="submit" value="确认删除" /><input type="reset"
+						value="取消删除">
 				</form>
 
-				<button>
+				<!-- <button> -->
 					<a href="listDepart.action">获取所有</a>
-				</button>
+				<!-- </button> -->
 
 
-				
+
 			</div>
 		</div>
 	</div>

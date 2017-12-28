@@ -28,10 +28,10 @@
 				</ul></li>
 			<li><a><img src="../../images/huser.png" alt="">员工管理</a>
 				<ul>
-					<li><a href="" target="right">添加员工</a></li>
-					<li><a href="" target="right">修改员工</a></li>
-					<li><a href="" target="right">查看员工</a></li>
-					<li><a href="" target="right">删除员工</a></li>
+					<li><a href="listEmp.action" target="right">查看员工</a></li>
+					<li><a href="addEmp.action" target="right">添加员工</a></li>
+					<li><a href="modEmp.action" target="right">修改员工</a></li>
+					<li><a href="removeEmp.action" target="right">删除员工</a></li>
 				</ul></li>
 
 		</ul>

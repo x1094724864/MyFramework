@@ -7,30 +7,57 @@
 	<constant name="struts.action.extension" value="action" />
     <package name="default" extends="struts-default">		
  	 	
-    	<!-- 查询 -->
-		<!-- 进入添加页面input.jsp -->
-		<action name="addUsers" method="add" class="com.lx.action.DepartmentAction">
-			<result name="input">/input.jsp</result>
-		</action>
 		
-		
-		<!-- 删除 -->
-		<action name="deleteDepart" method="removeDepart" class="com.lx.action.DepartmentAction">
-			<result name="delete" type="redirect" >/jsp/department/depart_list.jsp</result>
-		</action>	
-		<!-- 进入修改页面 -->
-		<action name="editDepart" method="modifyDepart" class="com.lx.action.DepartmentAction">
-			<result name="input">/jsp/department/modDepartment.jsp</result>
+		<!-- 保存，包括insert和update -->
+		<action name="saveDepart" method="saveDepart" class="com.lx.action.DepartmentAction">
+			<result name="update"  type="dispatcher">/jsp/department/depart_list.jsp</result>
+			<result name="insert" type="redirectAction" >listDepart</result>
+			<result name="save" type="redirect" >/jsp/department/depart_list.jsp</result>
 		</action>		
+		
+		<!-- 请求进入删除页面 -->
+		<!-- <action name="removeDepart" method="removeDepart" class="com.lx.action.DepartmentAction">
+			<result name="delete" type="redirect" >/jsp/department/remove_depart.jsp</result>
+		</action>	 -->
+
+		<!-- 删除 -->
+		<action name="deleteDepart" method="deleteDepart" class="com.lx.action.DepartmentAction">
+			<!-- <result name="delete" type="redirect" >/jsp/department/depart_list.jsp</result> -->
+			<!-- <result name="deleted" type="redirect" >/jsp/department/remove_depart.jsp</result> -->
+			<result name="deleted" type="redirect" >/jsp/department/deleted.jsp</result>
+		</action>	
+		<!-- 删除所选定的部门 -->
+		<action name="deleteAllDepart" method="deleteAllDepart" class="com.lx.action.DepartmentAction">
+			<!-- <result name="delete" type="redirect" >/jsp/department/depart_list.jsp</result> -->
+			<!-- <result name="deleted" type="redirect" >/jsp/department/remove_depart.jsp</result> -->
+			<result name="deleted" type="redirect" >/jsp/department/deleted.jsp</result>
+		</action>	
+		
+		<!-- 进入添加和修改编辑页面 -->
+		<action name="editDepart" method="addOrModifyDepart" class="com.lx.action.DepartmentAction">
+			<result name="addOrModify">/jsp/department/edit_depart.jsp</result>
+		</action>	
+		
+		
+		
+		
+
 		<!-- 查询所有部门信息 -->
 		<action name="listDepart" method="queryDepart" class="com.lx.action.DepartmentAction">
 			<result name="list">/jsp/department/depart_list.jsp</result>
 		</action>
-			
-		<!-- 保存，包括insert和update -->
-		<action name="saveDepart" method="saveDepart" class="com.lx.action.DepartmentAction">
-			<result name="save" type="redirect" >/jsp/department/depart_list.jsp</result>
+		
+		
+		<!-- 进入修改主页面 -->	
+		<!-- 注意不要有 type="redirect" 不然会出错，页面不会跳转！ -->
+		<action name="modDepart" method="queryDepart" class="com.lx.action.DepartmentAction">
+			<result name="list"  >/jsp/department/mod_depart.jsp</result>
 		</action>		
-
+		<!-- 请求进入删除主页面 -->
+		<!-- 注意不要有 type="redirect" 不然会出错，页面不会跳转！ -->
+		<action name="removeDepart" method="queryDepart" class="com.lx.action.DepartmentAction">
+			<result name="list" >/jsp/department/remove_depart.jsp</result>
+		</action>	
+			
     </package>
 </struts>

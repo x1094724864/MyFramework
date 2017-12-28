@@ -48,8 +48,7 @@
 			</props>
 		</property>
 		<!-- 配置 hibernate 映射文件的位置及名称, 可以使用通配符 -->
-		<property name="mappingLocations"
-			value="classpath:dao/mapper/*.hbm.xml" />
+		<property name="mappingLocations" value="classpath:dao/mapper/*.hbm.xml" />
 	</bean>
 
 	<!-- 定义事务管理器hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到 -->
@@ -57,6 +56,7 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<!-- <tx:annotation-driven transaction-manager="transactionManager"/> -->
 	<!-- 下面使用aop切面的方式来实现 -->
 	<tx:advice id="txAdvice" transaction-manager="txManager">
 		<!--配置事务传播性，隔离级别以及超时回滚等问题 -->
@@ -64,14 +64,15 @@
 			<tx:method name="create*" />
 			<tx:method name="modify*" />
 			<tx:method name="remove*" />
+			<tx:method name="save*" />
+			<tx:method name="delete*" />
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
 
 	<aop:config proxy-target-class="true">
 		<!--配置事务切点 -->
-		<aop:pointcut id="txPointcut"
-			expression="execution(* com.lx.service.*.*(..))" />
+		<aop:pointcut id="txPointcut" expression="execution(* com.lx.service.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
 

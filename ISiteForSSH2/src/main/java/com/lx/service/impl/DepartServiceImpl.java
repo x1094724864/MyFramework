@@ -27,9 +27,15 @@ public class DepartServiceImpl implements IDepartService {
 	}
 
 	// 删除部门
-	public Long removeDepartment(Long id) {
-
-		return departDao.delete(id);
+	public void removeDepartment(Long id) {
+		departDao.delete(id);
+//		return departDao.delete(id);
+	}
+	// 删除所有选定部门
+	public Long removeAllDepartment(String[] ids) {
+		 
+		departDao.deleteAll(ids);
+		return 1L;
 	}
 
 	// 获取部门

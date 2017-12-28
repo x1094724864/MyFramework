@@ -39,26 +39,26 @@ a {
 					<table align="center">
 						<thead>
 							<tr>
-								<!-- <th>选择</th> -->
+								<th>选择</th>
 								<th>部门编号</th>
 								<th>部门名称</th>
 								<th>部门描述</th>
-								<!-- <th>操作</th> -->
+								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
-									<%-- <td><input type="checkbox" name="ids" value="${depart.id}" /></td> --%>
-									<td align="right">${depart.department_num}</td>
+									<td><input type="checkbox" name="ids" value="${depart.id}" /></td>
+									<td>${depart.department_num}</td>
 									<td>${depart.department_name}</td>
 									<td>${depart.department_desc}</td>
-									<%-- <td><button>
+									<td><button>
 											<a href="editDepart.action?id=${depart.id}">修改</a>
 										</button>
 										<button>
 											<a href="deleteDepart.action?id=${depart.id}">删除</a>
-										</button></td> --%>
+										</button></td>
 
 								</tr>
 							</c:forEach>

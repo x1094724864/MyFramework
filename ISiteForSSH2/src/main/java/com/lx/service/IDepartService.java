@@ -19,7 +19,7 @@ public interface IDepartService {
 	public Long modifyDepartment(Department department);
 
 	// 删除部门
-	public Long removeDepartment(Long id);
+	public void removeDepartment(Long id);
 
 	// 获取部门
 	public Department getDepartment(Long id);

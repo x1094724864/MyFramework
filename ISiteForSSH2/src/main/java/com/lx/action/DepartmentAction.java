@@ -2,12 +2,10 @@ package com.lx.action;
 
 import java.util.List;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 
 import com.lx.entity.Department;
 import com.lx.service.impl.DepartServiceImpl;
@@ -25,7 +23,7 @@ public class DepartmentAction extends ActionSupport {
 	Pager pager = new Pager();
 
 	@Autowired
-	private DepartServiceImpl departService;
+	private DepartServiceImpl departServiceImpl;
 	private Department department = new Department();
 
 	public Department getDepartment() {
@@ -41,11 +39,11 @@ public class DepartmentAction extends ActionSupport {
 		// 先获取部门id
 		Long id = department.getId();
 		if (id == null) {// 假设id为空，则代表是新的部门，使用保存方法
-			departService.createDepartment(department);
+			departServiceImpl.createDepartment(department);
 			 return "insert";
 		} else {
 			// 假设id不为空，则代表是旧的部门，使用修改方法
-			departService.modifyDepartment(department);
+			departServiceImpl.modifyDepartment(department);
 		}
 		return "update";
 	}
@@ -60,19 +58,24 @@ public class DepartmentAction extends ActionSupport {
 		return "delete";
 	}
 
-	// 删除所选部门
+	// 删除单个部门
 	public String deleteDepart() {
-
 		Long id = department.getId();
-		departService.removeDepartment(id);
+		departServiceImpl.removeDepartment(id);
 		return "deleted";
 	}
-
+	// 删除选定部门额
+	public String deleteAllDepart() {
+		String[] ids = ServletActionContext.getRequest().getParameterValues("depart_ids");
+		departServiceImpl.removeAllDepartment(ids);
+		return "deleted";
+	}
+	
 	// 返回部门信息编辑页面
 	public String addOrModifyDepart() {
 		Long id = department.getId();
 		if (id != null) {
-			Department depart = departService.getDepartment(id);
+			Department depart = departServiceImpl.getDepartment(id);
 			department.setDepartment_num(depart.getDepartment_num());
 			department.setDepartment_name(depart.getDepartment_name());
 			department.setDepartment_desc(depart.getDepartment_desc());
@@ -87,10 +90,10 @@ public class DepartmentAction extends ActionSupport {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String requestPage = request.getParameter("requestPage");
 
-		int recordCount = departService.getDepartmentCount(department);
+		int recordCount = departServiceImpl.getDepartmentCount(department);
 		pager.init(recordCount, pager.getPageSize(), requestPage);
 
-		List<Department> departmentList = departService.getDepartmentPaginatedList(department, pager.getFirstRow(),
+		List<Department> departmentList = departServiceImpl.getDepartmentPaginatedList(department, pager.getFirstRow(),
 				pager.getRowCount());
 		ActionContext.getContext().put("departmentList", departmentList);
 		request.setAttribute("pager", pager);

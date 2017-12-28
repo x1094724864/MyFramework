@@ -11,7 +11,8 @@
 	<!-- not-null="true" -->
 	<property name="department_num" type="integer" column="department_num"  />
 	<property name="department_name" type="string" column="department_name"  />
-	<property name="department_desc"  type="string" column="department_desc"  />
+	<property name="department_desc"  type="string" column="department_desc" length="400" />
+	
 </class>
 
 </hibernate-mapping>

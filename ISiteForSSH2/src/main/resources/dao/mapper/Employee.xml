@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"	
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.lx.entity.Employee" table="employee_info">
+		<id name="id" type="long" column="ID">
+			<generator class="native" />
+		</id>
+		<!-- not-null="true" -->
+		<property name="employee_id" type="long" column="employee_id" />
+		<property name="name" type="string" column="name" />
+		<property name="address" type="string" column="address"
+			length="400" />
+		<property name="tel_number" type="long" column="tel_number" />
+		<!-- <property name="gender" type="boolean" column="gender" /> -->
+		<!-- <component name="department" class="com.lx.entity.Department">
+			<parent name="owner" />
+			<property name="department_name" column="department"></property>
+		</component> -->
+		<property name="education" type="integer" column="education" />
+		<property name="profession" type="string" column="profession" />
+		<!-- <property name="entry_Time" type="date" column="entry_Time" /> -->
+
+	</class>
+
+</hibernate-mapping>
