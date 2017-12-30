@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.lx.entity.Department;
 import com.lx.entity.Employee;
+import com.lx.service.impl.DepartServiceImpl;
 import com.lx.service.impl.EmpServiceImpl;
 import com.lx.utils.Pager;
 import com.opensymphony.xwork2.ActionContext;
@@ -25,6 +27,18 @@ public class EmployeeAction extends ActionSupport {
 	private EmpServiceImpl empServiceImpl;
 	private Employee employee = new Employee();
 
+	@Autowired
+	private DepartServiceImpl departServiceImpl;
+	private Department department = new Department();
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	public Employee getEmployee() {
 		return employee;
 	}
@@ -36,17 +50,17 @@ public class EmployeeAction extends ActionSupport {
 	// 保存或者修改员工信息
 	public String saveEmp() {
 		Long id = employee.getId();
-		return "insert";
-		/*if (id == null) {
+		// return "insert";
+		if (id == null) {
 			empServiceImpl.createEmployee(employee);
 			return "insert";
 		} else {
 			empServiceImpl.modifyEmployee(employee);
 			return "update";
-		}*/
+		}
 	}
 
-	// 删除员工信息
+	// 删除单个员工信息
 	public String deleteEmp() {
 		Long id = employee.getId();
 		empServiceImpl.removeEmployee(id);
@@ -62,6 +76,10 @@ public class EmployeeAction extends ActionSupport {
 
 	// 返回员工信息编辑页面
 	public String addOrModifyEmp() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		List<Department> departmentList = departServiceImpl.getDepartmentList(department);
+		ActionContext.getContext().put("departmentList", departmentList);
+		request.setAttribute("department", department);
 		return "addOrModify";
 	}
 
@@ -71,7 +89,7 @@ public class EmployeeAction extends ActionSupport {
 	}
 
 	// 查询所有员工信息
-	public String queryEmp() throws Exception  {
+	public String queryEmp() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String requestPage = request.getParameter("requestPage");
 
@@ -80,19 +98,13 @@ public class EmployeeAction extends ActionSupport {
 
 		List<Employee> employeeList = empServiceImpl.getEmployeePaginatedList(employee, pager.getFirstRow(),
 				pager.getRowCount());
-//		List<Employee> employeeList=empServiceImpl.getEmployeeList(getEmployee());
-//		ServletActionContext.getContext().put("employeeList", employeeList);
+		// List<Employee> employeeList=empServiceImpl.getEmployeeList(getEmployee());
+		// ServletActionContext.getContext().put("employeeList", employeeList);
 		ActionContext.getContext().put("employeeList", employeeList);
 		request.setAttribute("pager", pager);
 		request.setAttribute("Employee", employee);
-		
+
 		return "emp_list";
 	}
-	
-	//测试获取所有员工
-//	public  name() {
-//		
-//	}
-	
-	
+
 }

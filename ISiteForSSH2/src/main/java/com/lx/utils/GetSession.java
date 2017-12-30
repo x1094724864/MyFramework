@@ -12,5 +12,6 @@ public class GetSession {
 
 	public Session getSession() {
 		return  sessionFactory.openSession();
+//		return  sessionFactory.getCurrentSession();
 	}
 }

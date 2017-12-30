@@ -56,8 +56,7 @@ a {
 									<td>${depart.department_desc}</td>
 									<td>
 										<button>
-											<a
-												href="deleteDepart.action?department.id=${depart.id}">删除</a>
+											<a href="deleteDepart.action?department.id=${depart.id}">删除</a>
 										</button>
 									</td>
 
@@ -70,8 +69,28 @@ a {
 						value="取消删除">
 				</form>
 
+
+<table  align="center" border="0" cellspacing="0" width="680">
+	<tr>
+		<td align="center">
+			共${pager.recordCount}条记录    每页显示${pager.pageSize}条    分${pager.pageCount}页/第${pager.currentPage}页
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.firstPage}">首页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.priviousPage}">上一页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.nextPage}">下一页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.lastPage}">尾页</a>
+		   	 <input style="text-align:center;border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1" value="${param.requestPage}" size="2"/>
+		   	 <input type="submit" value="转到"/>
+		</td>
+	</tr>
+</table>
+
+
+
+
+
+
 				<!-- <button> -->
-					<a href="listDepart.action">获取所有</a>
+				<a href="listDepart.action">获取所有</a>
 				<!-- </button> -->
 
 

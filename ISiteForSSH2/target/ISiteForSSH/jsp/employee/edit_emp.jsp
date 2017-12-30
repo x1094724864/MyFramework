@@ -19,13 +19,13 @@
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">员工管理——修改员工信息
+			<img src="../../images/posts.png" alt="">员工管理——编辑员工信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="saveEmp.action" method="post">
+				<form action="addOrModifyEmp.action" method="post">
 					<table align="center">
 						<tr>
 							<td><input type="hidden" name="employee.id"
@@ -42,7 +42,7 @@
 							<td><input type="text" name="employee.name"
 								value="${employee.name }" /></td>
 						</tr>
-						<tr>
+						<%-- <tr>
 							<td>性别</td>
 							<td><input type="text" name="employee.gender"
 								value="${employee.gender }" /></td>
@@ -51,7 +51,7 @@
 							<td>部门</td>
 							<td><input type="text" name="employee.department"
 								value="${employee.department}" /></td>
-						</tr>
+						</tr> --%>
 						<tr>
 							<td>学历</td>
 							<td><input type="text" name="employee.education"
@@ -62,11 +62,11 @@
 							<td><input type="text" name="employee.profession"
 								value="${employee.profession}" /></td>
 						</tr>
-						<tr>
+						<%-- <tr>
 							<td>入职时间</td>
 							<td><input type="text" name="employee.entry_Time"
 								value="${employee.entry_Time }" /></td>
-						</tr>
+						</tr> --%>
 						<tr>
 							<td>地址</td>
 							<td><input type="text" name="employee.address"

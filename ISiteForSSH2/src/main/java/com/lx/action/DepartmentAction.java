@@ -40,7 +40,7 @@ public class DepartmentAction extends ActionSupport {
 		Long id = department.getId();
 		if (id == null) {// 假设id为空，则代表是新的部门，使用保存方法
 			departServiceImpl.createDepartment(department);
-			 return "insert";
+			return "insert";
 		} else {
 			// 假设id不为空，则代表是旧的部门，使用修改方法
 			departServiceImpl.modifyDepartment(department);
@@ -54,9 +54,9 @@ public class DepartmentAction extends ActionSupport {
 	 */
 
 	// 返回删除所对应的页面
-	public String removeDepart() {
-		return "delete";
-	}
+	/*
+	 * public String removeDepart() { return "remove_depart"; }
+	 */
 
 	// 删除单个部门
 	public String deleteDepart() {
@@ -64,13 +64,14 @@ public class DepartmentAction extends ActionSupport {
 		departServiceImpl.removeDepartment(id);
 		return "deleted";
 	}
-	// 删除选定部门额
+
+	// 删除选定部门
 	public String deleteAllDepart() {
 		String[] ids = ServletActionContext.getRequest().getParameterValues("depart_ids");
 		departServiceImpl.removeAllDepartment(ids);
 		return "deleted";
 	}
-	
+
 	// 返回部门信息编辑页面
 	public String addOrModifyDepart() {
 		Long id = department.getId();
@@ -96,8 +97,8 @@ public class DepartmentAction extends ActionSupport {
 		List<Department> departmentList = departServiceImpl.getDepartmentPaginatedList(department, pager.getFirstRow(),
 				pager.getRowCount());
 		ActionContext.getContext().put("departmentList", departmentList);
-		request.setAttribute("pager", pager);
 		request.setAttribute("department", department);
+		request.setAttribute("pager", pager);
 
 		return "list";
 	}

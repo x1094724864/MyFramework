@@ -38,23 +38,23 @@
 						<tr>
 							<td class="title" align="right">部门编号</td>
 							<td><input type="text" name="department.department_num"
-								value="${department.department_num}" /></td>
+								value="${department.department_num}" tabindex="1"/></td>
 						</tr>
 						<tr>
 							<td class="title" align="right">部门名称</td>
 							<td><input type="text" name="department.department_name"
-								value="${department.department_name }" /></td>
+								value="${department.department_name }" tabindex="2"/></td>
 						</tr>
 						<tr>
 							<td class="title" align="right">部门描述</td>
 							<td><textarea rows="5" cols="21"
 									name="department.department_desc"
 									style="margin: 0px; width: 168px; height: 102px;"
-									value="${department.department_desc }"></textarea></td>
+									value="${department.department_desc }" tabindex="3"></textarea></td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" value="提交" /><input type="reset"
+							<td><input type="submit" value="提交" tabindex="4"/>&nbsp;&nbsp;<input type="reset"
 								value="重置" /></td>
 						</tr>
 

@@ -19,7 +19,7 @@
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">部门管理——修改部门信息
+			<img src="../../images/posts.png" alt="">部门管理——编辑部门信息
 		</h1>
 		<br> <br>
 		<div class="bloc">

@@ -57,11 +57,11 @@ a {
 								<tr>
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
-									<%-- <td>${emp.gender }</td>
-									<td>${emp.department }</td> --%>
+									<td>${emp.gender }</td>
+									<td>${emp.department }</td>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
-									<%-- <td>${emp.entry_Time }</td> --%>
+									<td>${emp.entry_Time }</td>
 									<td>${emp.address }</td>
 									<td>${emp.tel_number }</td>
 								</tr>

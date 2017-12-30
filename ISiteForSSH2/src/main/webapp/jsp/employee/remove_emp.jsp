@@ -56,19 +56,19 @@ a {
 							<c:forEach var="emp" items="${employeeList}" varStatus="vs">
 								<tr>
 									<td><input type="checkbox" name="emp_ids"
-										value="${employee.id}" /></td>
+										value="${emp.id}" /></td>
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
-									<td>${emp.gender }</td>
-									<td>${emp.department }</td>
+									<%-- <td>${emp.gender }</td>
+									<td>${emp.department }</td> --%>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
-									<td>${emp.entry_Time }</td>
+									<%-- <td>${emp.entry_Time }</td> --%>
 									<td>${emp.address }</td>
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="deleteEmp.action?department.id=${employee.id}">删除</a>
+											<a href="deleteEmp.action?employee.id=${emp.id}">删除</a>
 										</button>
 									</td>
 

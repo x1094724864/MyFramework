@@ -57,7 +57,7 @@ a {
 									<td>
 										<button>
 											<a
-												href="deleteDepart.action?department.id=${depart.id}&department.department_num=${depart.department_num}">删除</a>
+												href="deleteDepart.action?department.id=${depart.id}">删除</a>
 										</button>
 									</td>
 
@@ -70,9 +70,9 @@ a {
 						value="取消删除">
 				</form>
 
-				<button>
+				<!-- <button> -->
 					<a href="listDepart.action">获取所有</a>
-				</button>
+				<!-- </button> -->
 
 
 

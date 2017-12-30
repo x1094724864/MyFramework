@@ -8,7 +8,7 @@ public class Pager implements Serializable {
 
 	private static final long serialVersionUID = -4853649627933466931L;
 
-	private int pageSize = 10;
+	private int pageSize = 3;
 
 	private String requestPage;
 

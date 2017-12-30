@@ -4318,7 +4318,8 @@ var zoombox_path = scr[scr.length - 1].getAttribute("src").replace('zoombox.js',
 			a(n).wrap(l);
 			l = n.parent();
 			o = l.parent();
-			a(n).css("opacity", 0).bind({
+//			a(n).css("opacity", 0).bind({
+			a(n).css("opacity", 1).bind({
 				"focus.uniform": function() {
 					o.addClass(k.focusClass)
 				},

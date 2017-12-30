@@ -57,19 +57,13 @@ a {
 								<tr>
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
-									<td>${emp.gender }</td>
-									<td>${emp.department }</td>
+									<%-- <td>${emp.gender }</td>
+									<td>${emp.department }</td> --%>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
-									<td>${emp.entry_Time }</td>
+									<%-- <td>${emp.entry_Time }</td> --%>
 									<td>${emp.address }</td>
 									<td>${emp.tel_number }</td>
-									<%-- <td><button>
-											<a href="editDepart.action?id=${depart.id}">修改</a>
-										</button>
-										<button>
-											<a href="deleteDepart.action?id=${depart.id}">删除</a>
-										</button></td> --%>
 								</tr>
 							</c:forEach>
 						</tbody>
