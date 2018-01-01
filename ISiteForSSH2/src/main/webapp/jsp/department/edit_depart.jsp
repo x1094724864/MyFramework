@@ -26,15 +26,15 @@
 			<div class="title">部门列表</div>
 			<div class="content">
 				<form action="saveDepart.action" method="post">
-					<table align="center">
+					<%-- 		<table align="center">
 						<tr>
-							<td><input type="hidden" name="department.id"
+							<td colspan="2"><input type="hidden" name="department.id"
 								value="${department.id }" /></td>
 						</tr>
-						<%-- <tr><td class="title" align="right">部门ID</td>
+						<tr><td class="title" align="right">部门ID</td>
 							<td><input type="text" name="department.id"
 								value="${department.id}" /></td>
-						</tr> --%>
+						</tr>
 						<tr>
 							<td class="title" align="right">部门编号</td>
 							<td><input type="text" name="department.department_num"
@@ -58,7 +58,23 @@
 								value="重置" /></td>
 						</tr>
 
-					</table>
+					</table> --%>
+					<div align="center">
+						<input type="hidden" name="department.id"
+							value="${department.id }" /> <span class="title">部门编号</span> <span><input
+							type="text" name="department.department_num"
+							value="${department.department_num}" tabindex="1" /></span><br> <span
+							class="title">部门名称</span> <span><input type="text"
+							name="department.department_name"
+							value="${department.department_name }" tabindex="2" /></span><br>
+						<span class="title">部门描述</span> <span><textarea rows="5"
+								cols="21" name="department.department_desc"
+								style="margin: 0px; width: 168px; height: 102px;"
+								 tabindex="3"></textarea></span><br>
+						<span></span> <span><input type="submit" value="提交"
+							tabindex="4" />&nbsp;&nbsp;<input type="reset" value="重置" /></span>
+					</div>
+
 
 				</form>
 

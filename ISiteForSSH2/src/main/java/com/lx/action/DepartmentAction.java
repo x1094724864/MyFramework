@@ -40,14 +40,19 @@ public class DepartmentAction extends ActionSupport {
 		Long id = department.getId();
 		if (id == null) {// 假设id为空，则代表是新的部门，使用保存方法
 			departServiceImpl.createDepartment(department);
-			return "insert";
+			return "saved";
 		} else {
 			// 假设id不为空，则代表是旧的部门，使用修改方法
 			departServiceImpl.modifyDepartment(department);
 		}
-		return "update";
+		return "modified";
 	}
 
+//	public String saveDepart() {
+//		departServiceImpl.updateOrSaveDepartment(department);
+//		return "save";
+//	}
+	
 	// 返回修改所对应的页面
 	/*
 	 * public String modDepart() { return "mod"; }
@@ -80,7 +85,6 @@ public class DepartmentAction extends ActionSupport {
 			department.setDepartment_num(depart.getDepartment_num());
 			department.setDepartment_name(depart.getDepartment_name());
 			department.setDepartment_desc(depart.getDepartment_desc());
-
 		}
 		// departService.modifyDepartment(department);
 		return "addOrModify";

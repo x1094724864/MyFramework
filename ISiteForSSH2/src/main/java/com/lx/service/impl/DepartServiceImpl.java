@@ -25,10 +25,15 @@ public class DepartServiceImpl implements IDepartService {
 
 		return departDao.update(department);
 	}
+	
+	
+//	public void updateOrSaveDepartment(Department department) {
+//		departDao.saveOrUpdate(department);
+//	}
 
 	// 删除部门
 	public void removeDepartment(Long id) {
-		departDao.delete(id);
+		departDao.deleteById(id);
 //		return departDao.delete(id);
 	}
 	// 删除所有选定部门
@@ -44,6 +49,14 @@ public class DepartServiceImpl implements IDepartService {
 		return departDao.getDepart(id);
 	}
 
+	//用部门名称获取实体
+//	public Department getDepartment(String department_name) {
+//		
+//		return departDao.getDepart(id);
+//	}
+	
+	
+	
 	public List<Department> getDepartmentList(Department department) {
 
 		return departDao.getDepartmentList(department);

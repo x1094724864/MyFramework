@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<form action="">
+	<form action="saveMag.action" method="post">
 		<div class="bg"></div>
 		<div class="container">
 			<div class="line bouncein">
@@ -32,14 +32,14 @@
 								style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
 								<div class="form-group">
 									<div class="field field-icon-right">
-										<input type="text" class="input input-big" name="name"
+										<input type="text" class="input input-big" name="manageUsers.name"
 											id="username" placeholder="注册账号" /> <span
 											class="icon icon-user margin-small-right"></span>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="field field-icon-right">
-										<input type="password" class="input input-big" name="password"
+										<input type="password" class="input input-big" name="manageUsers.password"
 											id="password" placeholder="密码" /> <span
 											class="icon icon-key margin-small-right"></span>
 									</div>
@@ -63,7 +63,7 @@
 								</div>
 							</div>
 							<div style="padding: 30px;">
-								<input type="button" id="button"
+								<input type="submit" id="button"
 									class="button button-block bg-main text-big input-big"
 									value="注册">
 							</div>

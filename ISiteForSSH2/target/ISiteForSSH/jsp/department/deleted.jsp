@@ -8,5 +8,20 @@
 </head>
 <body>
 <h1>删除成功！</h1>
+
+<td>
+							<input type="radio" name="employee.gender" >value="男"
+							<input type="radio" name="employee.gender" >value="女"
+							<input type="text" name="employee.gender"
+								value="${employee.gender }" /></td>
+								
+								<td>
+							<select>
+							<option>本科</option>
+							<option>大专</option>
+							<option>高中</option>
+							<option>高中以下</option>
+							</select>
+							</td>
 </body>
 </html>

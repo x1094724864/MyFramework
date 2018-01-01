@@ -58,7 +58,7 @@ a {
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
 									<td>${emp.gender }</td>
-									<td>${emp.department }</td>
+									<td>${emp.department_name }</td>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
 									<td>${emp.entry_Time }</td>
@@ -66,7 +66,7 @@ a {
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="modifyEmp.action?employee.id=${emp.id}">删除</a>
+											<a href="editEmp.action?employee.id=${emp.id}">修改</a>
 										</button>
 									</td>
 
@@ -75,12 +75,10 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-					<input type="submit" value="确认删除" />&nbsp;&nbsp;<input
-						type="reset" value="取消删除">
 				</form>
 
 				<!-- <button> -->
-				<a href="listDepart.action">获取所有</a>
+				<!-- <a href="listDepart.action">获取所有</a> -->
 				<!-- </button> -->
 
 

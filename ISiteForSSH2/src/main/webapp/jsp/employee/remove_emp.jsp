@@ -49,7 +49,7 @@ a {
 								<th>入职时间</th>
 								<th>地址</th>
 								<th>电话号码</th>
-								<th>操作</th>
+								<!-- <th>操作</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -59,23 +59,68 @@ a {
 										value="${emp.id}" /></td>
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
-									<%-- <td>${emp.gender }</td>
-									<td>${emp.department }</td> --%>
+									<td>${emp.gender }</td>
+									<td>${emp.department_name }</td>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
 									<%-- <td>${emp.entry_Time }</td> --%>
 									<td>${emp.address }</td>
 									<td>${emp.tel_number }</td>
-									<td>
+									<%-- 	<td>
 										<button>
 											<a href="deleteEmp.action?employee.id=${emp.id}">删除</a>
 										</button>
-									</td>
+									</td> --%>
 
 								</tr>
 							</c:forEach>
 						</tbody>
-						<tfoot></tfoot>
+						<tfoot>
+							<form action="listDepart.action" method="post">
+								<input type="hidden" name="depart.id" value="${depart.id}" /> <input
+									type="hidden" name="depart.department_num"
+									value="${depart.department_num}" /> <input type="hidden"
+									name="depart.department_name" value="${depart.department_name}" />
+								<input type="hidden" name="depart.department_desc"
+									value="${depart.department_desc}" />
+								<table align="center" border="0" cellspacing="0" width="680">
+									<tr align="center">
+										<td align="center">
+											共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
+											<a style="cursor: pointer; text-decoration: underline;"
+											href="listDepart.action?requestPage=${pager.firstPage}">«</a>
+											<a style="cursor: pointer; text-decoration: underline;"
+											href="listDepart.action?requestPage=${pager.priviousPage}">Privious</a>
+											<a style="cursor: pointer; text-decoration: underline;"
+											href="listDepart.action?requestPage=${pager.nextPage}">Next</a>
+											<a style="cursor: pointer; text-decoration: underline;"
+											href="listDepart.action?requestPage=${pager.lastPage}">»</a>
+											<input style="text-align: center; border: 1px solid #CCCCCC;"
+											type="text" name="requestPage"
+											onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+											value="${param.requestPage}" size="2" /> <input
+											type="submit" value="go" />
+										</td>
+									</tr>
+								</table>
+
+
+								<div class="pagination">
+									<a href="listDepart.action?requestPage=${pager.firstPage}"
+										class="prev">«</a> <a
+										href="listDepart.action?requestPage=${pager.firstPage}">1</a>
+									<a
+										href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
+										class="current">2</a> ... <a
+										href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
+									<a
+										href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a>
+									<a href="listDepart.action?requestPage=${pager.lastPage}"
+										class="next">»</a>
+								</div>
+							</form>
+
+						</tfoot>
 					</table>
 					<input type="submit" value="确认删除" />&nbsp;&nbsp;<input
 						type="reset" value="取消删除">

@@ -28,23 +28,25 @@ public class EmployeeDao {
 
 	// 插入数据
 	public Long insert(Employee employee) {
+		// Long department_id = (Long) employee.getDepartment_id();
+		// Department department=de;
+		// if (department_id==null) {
+		// employee.getDepartment()
+		// }
+
 		return (Long) session.getSession().save(employee);
-		// return (Long) this.getCurrentSession().save(employee);
 	}
 
 	// 更新数据
 	public Long update(Employee employee) {
 		session.getSession().update(employee);
-		// this.getCurrentSession().update(employee);
 		return 1L;
 	}
 
 	// 删除数据
 	public Long delete(Long id) {
-		// session.getSession().delete(new Employee(id));
 		Employee employee = getEmployee(id);
 		session.getSession().delete(employee);
-		// this.getCurrentSession().delete(employee);
 		return 1L;
 	}
 
@@ -60,7 +62,6 @@ public class EmployeeDao {
 	// 获取数据
 	public Employee getEmployee(Long id) {
 		return (Employee) session.getSession().get(Employee.class, id);
-		// return (Employee) this.getCurrentSession().get(Employee.class, id);
 	}
 
 	// 获取所有员工
@@ -68,39 +69,60 @@ public class EmployeeDao {
 	public List<Employee> getEmployeeList(Employee employee) {
 
 		String hql = "from employee_info where 1 = 1";
-		if (employee.getId() != null) {// 按照id查询
+		// 按照id查询
+		if (employee.getId() != null) {
 			hql += " and ID = :id";
 		}
-		/*
-		 * if (employee.getEmployee_id() != null) {// 按照员工编号查询 hql +=
-		 * " and employee_id = :employee_id"; } if
-		 * (StringUtils.isNotBlank(employee.getName())) {// 按照姓名查询 hql +=
-		 * " and name like :name"; } if (employee.getTel_number() != null) {// 按照电话号码查询
-		 * hql += " and tel_number = :tel_number"; } if (employee.getEducation() !=
-		 * null) {// 按照学历查询 hql += " and education = :education"; } if
-		 * (StringUtils.isNotBlank(employee.getProfession())) {// 按照专业查询 hql +=
-		 * " and address like :address"; } if (!employee.getDepartment().equals(null))
-		 * {// 按照部门查询 hql += " and department like :department"; }
-		 */
-		Query query = session.getSession().createQuery(hql);
-		// Query query = this.getCurrentSession().createQuery(hql);
-		// Query query = session.getSession().createQuery(hql);
-
-		/*
-		 * if (employee.getId() != null) { query.setLong("id", employee.getId()); } //
-		 * 编号查询 if (employee.getEmployee_id() != null) { query.setLong("employee_id",
-		 * employee.getEmployee_id()); } // 姓名查询 if
-		 * (StringUtils.isNotBlank(employee.getName())) { query.setString("name", "%" +
-		 * employee.getName() + "%"); } // 学历查询 if (employee.getEducation() != null) {
-		 * query.setInteger("education", employee.getEducation()); } // 专业查询 if
-		 * (StringUtils.isNotBlank(employee.getProfession())) {
-		 * query.setString("profession", "%" + employee.getProfession() + "%"); }
-		 */
+		// 按照员工编号查询
+		if (employee.getEmployee_id() != null) {
+			hql += " and employee_id = :employee_id";
+		}
+		// 按照姓名查询
+		if (StringUtils.isNotBlank(employee.getName())) {
+			hql += " and name like :name";
+		}
+		// 按照电话号码查询
+		if (employee.getTel_number() != null) {
+			hql += " and tel_number = :tel_number";
+		}
+		// 按照学历查询
+		if (employee.getEducation() != null) {
+			hql += " and education = :education";
+		}
+		// 按照专业查询
+		if (StringUtils.isNotBlank(employee.getProfession())) {
+			hql += " and address like :address";
+		}
 		// 按照部门查询
-		/*
-		 * if (!employee.getDepartment().equals(null)) { hql +=
-		 * " and department like :department"; }
-		 */
+		if (!employee.getDepartment_name().equals(null)) {
+			hql += " and department_name like :department_name";
+		}
+		Query query = session.getSession().createQuery(hql);
+
+		if (employee.getId() != null) {
+			query.setLong("id", employee.getId());
+		}
+		// 编号查询
+		if (employee.getEmployee_id() != null) {
+			query.setLong("employee_id", employee.getEmployee_id());
+		}
+		// 姓名查询
+		if (StringUtils.isNotBlank(employee.getName())) {
+			query.setString("name", "%" + employee.getName() + "%");
+		}
+		// 学历查询
+		if (StringUtils.isNotBlank(employee.getEducation())) {
+			query.setString("education", employee.getEducation());
+		}
+		// 专业查询
+		if (StringUtils.isNotBlank(employee.getProfession())) {
+			query.setString("profession", "%" + employee.getProfession() + "%");
+		}
+
+		// 按照部门查询
+		if (!employee.getDepartment_name().equals(null)) {
+			hql += " and department_name like :department_name";
+		}
 
 		List<Employee> employeeList = (List<Employee>) query.list();
 		return employeeList;
@@ -108,7 +130,6 @@ public class EmployeeDao {
 
 	@SuppressWarnings("unchecked")
 	public int getEmployeeCount(Employee employee) {
-		// Criteria criteria = this.getCurrentSession().createCriteria(Employee.class);
 		Criteria criteria = session.getSession().createCriteria(Employee.class);
 		if (employee.getId() != null) {
 			criteria.add(Restrictions.eq("id", employee.getId()));
@@ -144,7 +165,6 @@ public class EmployeeDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Employee> getEmployeePaginatedList(Employee employee, int first, int count) {
-		// Criteria criteria = this.getCurrentSession().createCriteria(Employee.class);
 		Criteria criteria = session.getSession().createCriteria(Employee.class);
 		if (employee.getId() != null) {
 			criteria.add(Restrictions.eq("id", employee.getId()));

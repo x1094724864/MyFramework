@@ -7,7 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -20,7 +22,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name="entity emp")
+@Entity(name = "entity emp")
 @Table(name = "emp_info")
 public class Employee {
 	@Id
@@ -31,13 +33,16 @@ public class Employee {
 	private String address;// 地址
 	private Long tel_number;// 电话号码
 	private String gender;// 性别
-	@ManyToOne(targetEntity=Department.class)
-	@JoinColumn(name="department_id")//外键
-	private Department department;// 部门
+//	@ManyToOne(targetEntity = Department.class)
+//	@JoinColumn(name = "department_id") // 外键
+//	private Long department_id;// 部门
+	
+	private String department_name;// 部门
 	private String education;// 学历
 	private String profession;// 专业
 	@Temporal(TemporalType.DATE)
 	private Date entry_Time; // 入职时间
+
 
 	public Employee(Long id) {
 		super();
@@ -48,10 +53,5 @@ public class Employee {
 		super();
 	}
 
-/*	public String toString() {
-		return "Employee [id=" + id + ", employee_id=" + employee_id + ", name=" + name + ", address=" + address
-				+ ", tel_number=" + tel_number + ", gender=" + gender + ", department=" + department + ", education="
-				+ education + ", profession=" + profession + ", entry_Time=" + entry_Time + "]";
-	}*/
 
 }

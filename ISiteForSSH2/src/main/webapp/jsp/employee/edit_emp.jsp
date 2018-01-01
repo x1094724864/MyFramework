@@ -15,6 +15,22 @@
 <script type="text/javascript" src="../../js/min.js"></script>
 <script type="text/javascript" src="../../js/main.js"></script>
 <link rel="stylesheet" href="../../css/style2.css">
+<style type="text/css">
+span.item{
+font-style: green;
+font-size:15px;
+font: 楷体;
+}
+
+td.item{
+font-weight: bold;
+font-size:15px;
+align-content: center;
+color: red;
+position: relative;
+left: 30px;
+}
+</style>
 </head>
 <body>
 	<!--     内容      -->
@@ -26,7 +42,8 @@
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="addOrModifyEmp.action" method="post">
+				<!-- <form action="addOrModifyEmp.action" method="post"> -->
+				<form action="saveEmp.action" method="post">
 					<table align="center">
 						<tr>
 							<td colspan="2"><input type="hidden" name="employee.id"
@@ -34,28 +51,38 @@
 						</tr>
 
 						<tr>
-							<td class="title">员工编号</td>
+							<td class="item"><span>员工编号</span></td>
 							<td><input type="text" name="employee.employee_id"
 								value="${employee.employee_id }" tabindex="1" /></td>
 						</tr>
 						<tr>
-							<td class="title">员工姓名</td>
+							<td ><span class="item" align="right">员工姓名</span></td>
 							<td><input type="text" name="employee.name"
 								value="${employee.name }" tabindex="2" /></td>
 						</tr>
 						<tr>
 							<td class="title">性别</td>
-							<td><input type="radio" name="employee.gender" value="男">男
-								<input type="radio" name="employee.gender" value="女">女 <%-- <input type="text" name="employee.gender"
-								value="${employee.gender }" /> --%></td>
+							<td><input type="radio" name="employee.gender" value="男" checked="checked">男
+								<input type="radio" name="employee.gender" value="女">女  </td>
 						</tr>
+					
 						<tr>
 							<td class="title">部门</td>
-							<td><select name="employee.department">
+							<td><select name="employee.department_name">
 							<option selected="selected">-----请选择部门-----</option>
 									<c:forEach var="depart" items="${departmentList}"
 										varStatus="vs">
 										<option>${depart.department_name}</option>
+									</c:forEach>
+							</select></td>
+						</tr>
+						<tr>
+							<td class="title">部门bianhao</td>
+							<td><select name="employee.department_id">
+							<option selected="selected">-----请选择部门-----</option>
+									<c:forEach var="depart" items="${departmentList}"
+										varStatus="vs">
+										<option>${depart.id}</option>
 									</c:forEach>
 							</select></td>
 						</tr>

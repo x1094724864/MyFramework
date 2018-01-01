@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.lx.dao.EmployeeDao;
 import com.lx.entity.Employee;
-import com.lx.service.IEmployee;
+import com.lx.service.IEmployeeService;
 
 @Service
-public class EmpServiceImpl implements IEmployee {
+public class EmpServiceImpl implements IEmployeeService {
 	@Autowired
 	private EmployeeDao employeeDao;
 

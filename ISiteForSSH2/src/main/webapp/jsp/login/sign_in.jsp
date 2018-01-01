@@ -18,7 +18,8 @@
 </head>
 <body>
 
-<form action="">
+<!-- <form action="indexMag.action" method="post"> -->
+<form action="login.action" method="post">
 	<div class="bg"></div>
 	<div class="container">
 		<div class="line bouncein">
@@ -34,7 +35,7 @@
 							style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
 							<div class="form-group">
 								<div class="field field-icon-right">
-									<input type="text" class="input input-big" name="name"
+									<input type="text" class="input input-big" name="username"
 										id="username" placeholder="登录账号" /> <span
 										class="icon icon-user margin-small-right"></span>
 								</div>
@@ -57,7 +58,7 @@
 							</div>
 						</div>
 						<div style="padding: 30px;">
-							<input type="button" id="button"
+							<input type="submit" id="button"
 								class="button button-block bg-main text-big input-big"
 								value="登录">
 						</div>

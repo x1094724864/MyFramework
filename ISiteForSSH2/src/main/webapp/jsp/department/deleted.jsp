@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,19 +10,13 @@
 <body>
 <h1>删除成功！</h1>
 
-<td>
-							<input type="radio" name="employee.gender" >value="男"
-							<input type="radio" name="employee.gender" >value="女"
-							<input type="text" name="employee.gender"
-								value="${employee.gender }" /></td>
-								
-								<td>
-							<select>
-							<option>本科</option>
-							<option>大专</option>
-							<option>高中</option>
-							<option>高中以下</option>
-							</select>
-							</td>
+成功删除了
+<c:forEach var="depart" items="${department_nameList}" varStatus="vs">
+								<tr>
+									<td>${depart.department_num}</td>
+								</tr>
+							</c:forEach>
+
+
 </body>
 </html>

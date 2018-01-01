@@ -3,8 +3,6 @@ package com.lx.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
@@ -12,11 +10,13 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lx.entity.Department;
 import com.lx.utils.GetSession;
 
 @Repository
+@Transactional
 public class DepartDao extends HibernateDaoSupport {
 	@Autowired
 	private GetSession session;
@@ -30,50 +30,42 @@ public class DepartDao extends HibernateDaoSupport {
 	// 插入数据
 	public Long insert(Department department) {
 		return (Long) session.getSession().save(department);
-		// return (Long) this.getCurrentSession().save(department);
 	}
+
+//	public void saveOrUpdate(Department department) {
+//		session.getSession().saveOrUpdate(department);
+//	}
 
 	// 更新数据
 	public Long update(Department department) {
 		session.getSession().update(department);
-		// this.getCurrentSession().update(department);
 		return 1L;
 	}
 
 	// 删除数据
-	public Long delete(Long id) {
+	public List<String> deleteById(Long id) {
 		Department department = getDepart(id);
+//		List<Department> list=getDepartmentList(department);
+		List<String> department_nameList=new ArrayList<String>();
+		department_nameList.add(department.getDepartment_name());
+		
 		session.getSession().delete(department);
-		// this.getCurrentSession().delete(department);
-		// session.getSession().delete(id);
-		return 1L;
+		 return department_nameList;
 	}
 
 	// 删除所有选定数据
+//	@Transactional
 	public void deleteAll(String[] ids) {
-
-		String idString = "";
-		for (int i = 0; i < ids.length - 1; i++) {
-			// Long id = Long.parseLong(ids[i]);
-			idString = idString + Long.parseLong(ids[i]) + ",";
-
-			// session.getSession().delete(id);
-			// delete(id);
+		for (int i = 0; i < ids.length ; i++) {
+			Long id = Long.parseLong(ids[i]);
+			deleteById(id);
 		}
-		idString = idString + Long.parseLong(ids[ids.length-1]);
-
-		String sql = "delete from department_info where ID in (" + idString + ")";
-
-		session.getSession().beginTransaction();
-		session.getSession().createQuery(sql).executeUpdate();
-
-		 session.getSession().close();
 	}
 
 	// 获取数据
 	public Department getDepart(Long id) {
-		return (Department) session.getSession().get(Department.class, id);
-		// return (Department) this.getCurrentSession().get(Department.class, id);
+		Department department= (Department) session.getSession().get(Department.class, id);
+		return department;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -124,8 +116,6 @@ public class DepartDao extends HibernateDaoSupport {
 
 	@SuppressWarnings("unchecked")
 	public int getDepartmentCount(Department department) {
-		// Criteria criteria =
-		// this.getCurrentSession().createCriteria(Department.class);
 		Criteria criteria = session.getSession().createCriteria(Department.class);
 		if (department.getId() != null) {
 			criteria.add(Restrictions.eq("id", department.getId()));

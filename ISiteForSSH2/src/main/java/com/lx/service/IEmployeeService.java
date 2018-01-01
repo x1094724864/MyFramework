@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.lx.entity.Employee;
 
-public interface IEmployee {
+public interface IEmployeeService {
 	    // 创建员工
 		public Long createEmployee(Employee employee);
 

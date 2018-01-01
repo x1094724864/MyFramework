@@ -7,24 +7,53 @@
 	<constant name="struts.action.extension" value="action" />
 	<package name="default" extends="struts-default">
 
-		<!-- 部门界面请求配置 -->
-		<!-- 保存，包括insert和update -->
-		<action name="saveDepart" method="saveDepart"
-			class="com.lx.action.DepartmentAction">
-			<result name="update" type="dispatcher">/jsp/department/depart_list.jsp
-			</result>
-			<result name="insert" type="redirectAction">listDepart
-			</result>
-			<result name="save" type="redirect">/jsp/department/depart_list.jsp
+		<!-- 登录验证 -->
+		<action name="login" method="Login" class="com.lx.action.LoginCheckAction">
+			<result name="login" type="redirect">/jsp/index/manage.jsp</result>
+			<result name="login_page" type="redirect">/jsp/login/sign_in.jsp</result>
+		</action>
+		<!-- 跳转到登录页面 -->
+		<action name="toLoginPage" method="toLoginPage"
+			class="com.lx.action.LoginCheckAction">
+			<!-- <result name="log_page" type="redirect">/jsp/index/manage.jsp</result> -->
+			<!-- <result name="login_page" type="redirect">/jsp/login/sign_in.jsp</result> -->
+			<result name="login_page" type="dispatcher">/jsp/login/sign_in.jsp</result>
+		</action>
+		<!-- 跳转到注销页面 -->
+		<action name="toLoguot" method="logout"
+			class="com.lx.action.LoginCheckAction">
+			<result name="logouted" type="dispatcher">/jsp/index/manage.jsp</result>
+		</action>
+
+		<!-- 登录跳转到主页 -->
+		<action name="indexMag" method="indexMag" class="com.lx.action.IndexAction">
+			<result name="manage_index" type="redirect">/jsp/index/manage.jsp
 			</result>
 		</action>
 
-		<!-- 进入修改主页面 -->
+
+
+
+
+
+		<!-- 部门界面请求配置 -->
+		<!-- 保存部门，包括insert和update -->
+		<action name="saveDepart" method="saveDepart"
+			class="com.lx.action.DepartmentAction">
+			<result name="modified" type="redirect">modDepart.action</result>
+			<result name="saved" type="dispatcher">/jsp/department/depart_list.jsp
+			</result>
+		</action>
+
+
+		<!-- 进入修改部门主页面 -->
 		<!-- 注意不要有 type="redirect" 不然会出错，页面不会跳转！ -->
 		<action name="modDepart" method="queryDepart"
 			class="com.lx.action.DepartmentAction">
 			<result name="list">/jsp/department/mod_depart.jsp</result>
 		</action>
+
+
 		<!-- 请求进入删除主页面 -->
 		<!-- 注意不要有 type="redirect" 不然会出错，页面不会跳转！ -->
 		<action name="removeDepart" method="queryDepart"
@@ -32,26 +61,25 @@
 			<result name="list">/jsp/department/remove_depart.jsp</result>
 		</action>
 
-		<!-- 请求进入删除页面 -->
-		<!-- <action name="removeDepart" method="removeDepart" class="com.lx.action.DepartmentAction"> 
-			<result name="remove_depart" type="redirect" >/jsp/department/remove_depart.jsp</result> 
-			</action> -->
 
-		<!-- 删除 -->
+		<!-- 删除 部门 -->
 		<action name="deleteDepart" method="deleteDepart"
 			class="com.lx.action.DepartmentAction">
 			<!-- <result name="delete" type="redirect" >/jsp/department/depart_list.jsp</result> -->
 			<!-- <result name="deleted" type="redirect" >/jsp/department/remove_depart.jsp</result> -->
 			<result name="deleted" type="redirect">/jsp/department/deleted.jsp
 			</result>
+			<!-- <result name="deleted" type="redirectAction">removeDepart.action 
+				</result> -->
 		</action>
 		<!-- 删除所选定的部门 -->
 		<action name="deleteAllDepart" method="deleteAllDepart"
 			class="com.lx.action.DepartmentAction">
 			<!-- <result name="delete" type="redirect" >/jsp/department/depart_list.jsp</result> -->
-			<!-- <result name="deleted" type="redirect" >/jsp/department/remove_depart.jsp</result> -->
 			<result name="deleted" type="redirect">/jsp/department/deleted.jsp
 			</result>
+			<!-- <result name="deleted" type="redirectAction">removeDepart.action 
+				</result> -->
 		</action>
 
 		<!-- 进入添加和修改编辑页面 -->
@@ -59,7 +87,6 @@
 			class="com.lx.action.DepartmentAction">
 			<result name="addOrModify">/jsp/department/edit_depart.jsp</result>
 		</action>
-
 
 		<!-- 查询所有部门信息 -->
 		<action name="listDepart" method="queryDepart"
@@ -72,29 +99,34 @@
 
 
 		<!-- 员工界面请求配置 -->
+
 		<!-- 请求查看员工页面 -->
 		<action name="listEmp" method="queryEmp" class="com.lx.action.EmployeeAction">
 			<result name="emp_list">/jsp/employee/emp_list.jsp</result>
 		</action>
-		<action name="test" method="queryEmp" class="com.lx.action.EmployeeAction">
-			<result name="emp_list">/jsp/employee/emp_list.jsp</result>
-		</action>
 
 		<!-- 请求添加员工页面 -->
-		<action name="addEmp" method="addOrModifyEmp" class="com.lx.action.EmployeeAction">
-			<result name="addOrModify">/jsp/employee/edit_emp.jsp</result>
-		</action>
+		<!-- <action name="addOrModEmp" method="addOrModifyEmp" class="com.lx.action.EmployeeAction"> 
+			<result name="addOrModify">/jsp/employee/edit_emp.jsp</result> </action> -->
 
-		<!-- 请求修改员工页面 -->
-		<action name="modEmp" method="addOrModifyEmp" class="com.lx.action.EmployeeAction">
-			<result name="addOrModify">/jsp/employee/edit_emp.jsp</result>
+		<!-- 请求修改员工主页面 -->
+		<action name="modEmp" method="queryEmp" class="com.lx.action.EmployeeAction">
+			<result name="emp_list">/jsp/employee/mod_emp.jsp</result>
 		</action>
 
 		<!-- 保存员工，包括insert和update -->
-		<action name="addOrModifyEmp" method="saveEmp"
-			class="com.lx.action.EmployeeAction">
-			<result name="insert" type="redirect">/jsp/employee/emp_list.jsp</result>
-			<result name="update" type="redirect">/jsp/employee/update.jsp</result>
+		<!-- <action name="addOrModifyEmp" method="saveEmp" class="com.lx.action.EmployeeAction"> 
+			<result name="insert" type="redirect">/jsp/employee/emp_list.jsp</result> 
+			<result name="update" type="redirect">/jsp/employee/update.jsp</result> </action> -->
+		<action name="saveEmp" method="saveEmp" class="com.lx.action.EmployeeAction">
+			<result name="insert" type="dispatcher">/jsp/employee/emp_list.jsp</result>
+			<result name="update" type="dispatcher">/jsp/employee/update.jsp</result>
+		</action>
+
+		<!-- 请求编辑员工页面，包括添加和修改 -->
+		<action name="editEmp" method="editEmp" class="com.lx.action.EmployeeAction">
+			<result name="edit_emp" type="dispatcher">/jsp/employee/edit_emp.jsp
+			</result>
 		</action>
 
 
@@ -109,9 +141,27 @@
 		</action>
 
 		<!-- 请求删除选定员工 -->
-		<action name="deleteAllEmp" method="deleteAllEmp" class="com.lx.action.EmployeeAction">
+		<action name="deleteAllEmp" method="deleteAllEmp"
+			class="com.lx.action.EmployeeAction">
 			<result name="deleted">/jsp/employee/remove_emp.jsp</result>
 		</action>
+
+
+
+
+		<!-- 添加管理账户 -->
+		<action name="saveMag" method="saveMag" class="com.lx.action.ManageUserAction">
+			<result name="save">/jsp/login/sign_in.jsp</result>
+		</action>
+
+
+
+
+
+
+
+
+
 
 
 
