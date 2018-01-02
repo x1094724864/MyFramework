@@ -49,8 +49,8 @@ a {
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
 									<td><input type="checkbox" name="ids" value="${depart.id}" /></td>
-									<td>${depart.department_num}</td>
-									<td>${depart.department_name}</td>
+									<td>${depart.departmenNum}</td>
+									<td>${depart.departmentName}</td>
 									<%-- <td>${depart.department_desc}</td> --%>
 									<td><textarea rows="2" cols="40" readonly="readonly">${depart.department_desc}</textarea>  </td>
 									<td><button>

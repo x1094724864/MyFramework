@@ -15,7 +15,6 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style2.css">
-<!-- <link rel="stylesheet" href="../../css/base.css"> -->
 
 <style>
 a {
@@ -48,16 +47,9 @@ a {
 						<tbody>
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
-									<td>${depart.department_num}</td>
-									<td>${depart.department_name}</td>
+									<td>${depart.departmentNum}</td>
+									<td>${depart.departmentName}</td>
 									<td style="size: 5">${depart.department_desc}</td>
-									<%-- <td><button>
-											<a href="editDepart.action?id=${depart.id}">修改</a>
-										</button>
-										<button>
-											<a href="deleteDepart.action?id=${depart.id}">删除</a>
-										</button></td>
- --%>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -19,16 +19,23 @@ public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 		System.out.println("权限拦截器------------" + request.getRequestURI());
 		String username = (String)request.getSession().getAttribute("username");
 		
-		if (request.getRequestURI().startsWith(request.getContextPath() + "/pc/mag")) {
-			// if (request.getRequestURI().contains("mag")) {
-			if (username == null || !username.equals("admin")) {
-				System.out.println("username="+username+"------return false");
-				response.sendRedirect(request.getContextPath() + "/error/permission"); // 返回提示页面
-				return false;
-			}
+//		if (request.getRequestURI().startsWith(request.getContextPath() + "/pc/mag")) {
+//			// if (request.getRequestURI().contains("mag")) {
+//			if (username == null || !username.equals("admin")) {
+//				System.out.println("username="+username+"------return false");
+//				response.sendRedirect(request.getContextPath() + "/error/permission"); // 返回提示页面
+//				return false;
+//			}
+//		}
+//		System.out.println("username=" + username+"------return true");
+////		return false;
+//		return true;
+		if(request.getRequestURI().startsWith(request.getContextPath() + "/api/")) {
+			response.sendRedirect(request.getContextPath() + "/index"); // 返回提示页面 
+//			request.getRequestDispatcher("index").forward(request, response);  
+			return false;
+//			return true;
 		}
-		System.out.println("username=" + username+"------return true");
-//		return false;
 		return true;
 	}
 

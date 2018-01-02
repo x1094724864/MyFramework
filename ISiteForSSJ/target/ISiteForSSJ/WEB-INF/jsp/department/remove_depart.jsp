@@ -34,7 +34,7 @@ a {
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="deleteAllDepart.action" method="post">
+				<form action="deleteDepartByIds" method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr align="right">
@@ -50,8 +50,8 @@ a {
 								<tr>
 									<td><input type="checkbox" name="depart_ids"
 										value="${depart.id}" /></td>
-									<td>${depart.department_num}</td>
-									<td>${depart.department_name}</td>
+									<td>${depart.departmentNum}</td>
+									<td>${depart.departmentName}</td>
 									<td>${depart.department_desc}</td>
 									<td>
 										<button>

@@ -28,23 +28,23 @@
 				<form action="saveDepart" method="post">
 					<table align="center">
 						<tr>
-							<td colspan="2"><input type="hidden" name="department.id"
+							<td colspan="2"><input type="hidden" name="id"
 								value="${department.id }" /></td>
 						</tr>
 						<tr>
 							<td><span class="title">部门编号</span></td>
-							<td><input type="text" name="department.department_num"
-								value="${department.department_num}" tabindex="1" /></td>
+							<td><input type="text" name="departmentNum"
+								value="${department.departmentNum}" tabindex="1" /></td>
 						</tr>
 						<tr>
 							<td><span class="title">部门名称</span></td>
-							<td><input type="text" name="department.department_name"
-								value="${department.department_name }" tabindex="2" /></td>
+							<td><input type="text" name="departmentName"
+								value="${department.departmentName }" tabindex="2" /></td>
 						</tr>
 						<tr>
 							<td><span class="title">部门描述</span></td>
 							<td><textarea rows="5" cols="21"
-									name="department.department_desc"
+									name="department_desc"
 									style="resize:none; margin: 0px; width: 160px; height: 100px; padding-right: 0px; border-right-width: 1px; padding-left: 0px; border-left-width: 1px;"
 									value="${department.department_desc }" tabindex="3"></textarea></td>
 						</tr>
