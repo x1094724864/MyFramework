@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.lx.dao.DepartDao;
 import com.lx.entity.Department;
 import com.lx.entity.Employee;
 import com.lx.service.impl.DepartServiceImpl;
@@ -27,7 +28,7 @@ public class EmployeeAction extends ActionSupport {
 	private EmpServiceImpl empServiceImpl;
 	private Employee employee = new Employee();
 
-	//导入部门是为了插入新员工时选择部门属性
+	// 导入部门是为了插入新员工时选择部门属性
 	@Autowired
 	private DepartServiceImpl departServiceImpl;
 	private Department department = new Department();
@@ -49,8 +50,12 @@ public class EmployeeAction extends ActionSupport {
 	}
 
 	// 保存或者修改员工信息
-	public String saveEmp() {
+	public String saveEmp() throws Exception {
 		Long id = employee.getId();
+		String department_name = employee.getDepartment_name();
+		employee.setDepartment(departServiceImpl.getDepartByDepartment_name(department_name));
+		// employee.setDepartment_id(empServiceImpl.getDepartment_idByDepartment_name(department_name));
+
 		if (id == null) {
 			empServiceImpl.createEmployee(employee);
 			return "insert";
@@ -80,13 +85,14 @@ public class EmployeeAction extends ActionSupport {
 		List<Department> departmentList = departServiceImpl.getDepartmentList(department);
 		ActionContext.getContext().put("departmentList", departmentList);
 		request.setAttribute("department", department);
-		
-		Long id=employee.getId();
-		if (id!=null) {
-			Employee emp=empServiceImpl.getEmployee(id);
+
+		Long id = employee.getId();
+		if (id != null) {
+			Employee emp = empServiceImpl.getEmployee(id);
 			employee.setName(emp.getName());
 			employee.setGender(emp.getGender());
 			employee.setDepartment_name(emp.getDepartment_name());
+//			employee.setDepartment_id(emp.getDepartment_id());
 			employee.setAddress(emp.getAddress());
 			employee.setEducation(emp.getEducation());
 			employee.setEmployee_id(emp.getEmployee_id());
@@ -105,7 +111,7 @@ public class EmployeeAction extends ActionSupport {
 	public String modEmp() {
 		return "mod_emp";
 	}
-	
+
 	// 查询所有员工信息
 	public String queryEmp() throws Exception {
 		HttpServletRequest request = ServletActionContext.getRequest();

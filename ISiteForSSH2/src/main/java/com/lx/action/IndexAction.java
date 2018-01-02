@@ -18,4 +18,8 @@ public class IndexAction extends ActionSupport {
 		
 	}
 	
+	
+	
+	
+	
 }

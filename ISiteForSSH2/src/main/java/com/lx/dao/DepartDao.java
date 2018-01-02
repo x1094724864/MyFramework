@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,47 +68,40 @@ public class DepartDao extends HibernateDaoSupport {
 		Department department= (Department) session.getSession().get(Department.class, id);
 		return department;
 	}
+	
+	
+	
+	//使用部门名称查询部门
+	@SuppressWarnings("unchecked")
+	public Department getDepartByDepartment_name(String department_name) throws Exception {
+		Criteria criteria = session.getSession().createCriteria(Department.class);
+		Department department=new Department();
+		department.setDepartment_name(department_name);
+		if (department.getId() != null) {
+			criteria.add(Restrictions.eq("id", department.getId()));
+		}
+		if (StringUtils.isNotBlank(department.getDepartment_name())) {
+			criteria.add(Restrictions.eq("department_name", department.getDepartment_name()));
+		}
+		List<Department> departmentList = criteria.list();
+//		List<Department> departmentList =getDepartmentList(department);
+		
+//		return departmentList;
+		return departmentList.get(0);
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Department> getDepartmentList(Department department) {
 
-		// String hql = "from department_info where 1 = 1";
-		// if (department.getId() != null) {
-		// hql += " and ID = :id";
-		// }
-		// if (StringUtils.isNotBlank(department.getDepartment_name())) {
-		// hql += " and department_name like :department_name";
-		// }
-		// /*
-		// * if (StringUtils.isNotBlank(department.getDepartment_desc())) { hql +=
-		// * " and department_desc = :department_desc"; }
-		// */
-		// if (department.getDepartment_num() != null) {
-		// hql += " and department_num = :department_num";
-		// }
-		// // Query query = this.getCurrentSession().createQuery(hql);
-		// Query query = session.getSession().createQuery(hql);
-		//
-		// if (department.getId() != null) {
-		// query.setLong("id", department.getId());
-		// }
-		// if (StringUtils.isNotBlank(department.getDepartment_name())) {
-		// query.setString("department_name", "%" + department.getDepartment_name() +
-		// "%");
-		// }
-		// if (department.getDepartment_num() != null) {
-		// query.setInteger("department_num", department.getDepartment_num());
-		// }
-		// List<Department> departmentList = (List<Department>) query.list();
 		Criteria criteria = session.getSession().createCriteria(Department.class);
 		if (department.getId() != null) {
 			criteria.add(Restrictions.eq("id", department.getId()));
 		}
 		if (StringUtils.isNotBlank(department.getDepartment_name())) {
-			criteria.add(Restrictions.like("name", department.getDepartment_name(), MatchMode.ANYWHERE));
+			criteria.add(Restrictions.like("department_name", department.getDepartment_name(), MatchMode.ANYWHERE));
 		}
 		if (department.getDepartment_num() != null) {
-			criteria.add(Restrictions.eq("getDepartment_num", department.getDepartment_num()));
+			criteria.add(Restrictions.eq("department_num", department.getDepartment_num()));
 		}
 
 		List<Department> departmentList = criteria.list();
