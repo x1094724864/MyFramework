@@ -28,7 +28,7 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">部门管理——修改部门信息
+			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">部门管理——修改部门信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
@@ -49,12 +49,12 @@ a {
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
 									<td><input type="checkbox" name="ids" value="${depart.id}" /></td>
-									<td>${depart.departmenNum}</td>
+									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
 									<%-- <td>${depart.department_desc}</td> --%>
 									<td><textarea rows="2" cols="40" readonly="readonly">${depart.department_desc}</textarea>  </td>
 									<td><button>
-											<a href="editDepart.action?department.id=${depart.id}">修改</a>
+											<a href="<%=request.getContextPath()%>/editDepart?id=${depart.id}">修改</a>
 										</button></td>
 
 								</tr>

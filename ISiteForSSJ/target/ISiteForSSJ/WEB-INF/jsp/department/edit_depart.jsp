@@ -1,3 +1,5 @@
+<%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
+<%@page import="com.lx.entity.Department"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,6 +17,10 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style2.css">
 </head>
+<%-- <%
+Department department= ModelAttribute.s
+%> --%>
+
 <body>
 	<!--     内容      -->
 	<div id="content" class="white">
@@ -55,22 +61,6 @@
 						</tr>
 
 					</table>
-					<%-- <div align="center">
-						<input type="hidden" name="department.id"
-							value="${department.id }" /> <span class="title">部门编号</span> <span><input
-							type="text" name="department.department_num"
-							value="${department.department_num}" tabindex="1" /></span><br> <span
-							class="title">部门名称</span> <span><input type="text"
-							name="department.department_name"
-							value="${department.department_name }" tabindex="2" /></span><br>
-						<span class="title">部门描述</span> <span><textarea rows="5"
-								cols="21" name="department.department_desc"
-								style="margin: 0px; width: 168px; height: 102px;"
-								 tabindex="3"></textarea></span><br>
-						<span></span> <span><input type="submit" value="提交"
-							tabindex="4" />&nbsp;&nbsp;<input type="reset" value="重置" /></span>
-					</div> --%>
-
 
 				</form>
 

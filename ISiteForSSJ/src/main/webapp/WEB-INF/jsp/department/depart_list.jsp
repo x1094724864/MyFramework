@@ -6,15 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>后台管理系统</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style2.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style2.css">
 
 <style>
 a {
@@ -28,7 +35,7 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="<%=request.getContextPath() %>/images/posts.png" alt="">部门管理
+			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">部门管理
 		</h1>
 		<br> <br>
 		<div class="bloc">
@@ -72,9 +79,9 @@ a {
 								<a style="cursor: pointer; text-decoration: underline;"
 								href="listDepart.action?requestPage=${pager.firstPage}">«</a> <a
 								style="cursor: pointer; text-decoration: underline;"
-								href="listDepart.action?requestPage=${pager.priviousPage}">Privious</a>
+								href="listDepartPage?requestPage=${pager.privious}">Privious</a>
 								<a style="cursor: pointer; text-decoration: underline;"
-								href="listDepart.action?requestPage=${pager.nextPage}">Next</a>
+								href="listDepart?requestPage=${pager.next}">Next</a>
 								<a style="cursor: pointer; text-decoration: underline;"
 								href="listDepart.action?requestPage=${pager.lastPage}">»</a> <input
 								style="text-align: center; border: 1px solid #CCCCCC;"
@@ -107,7 +114,7 @@ a {
 					<a href="listDepart.action">获取所有</a>
 				</button>
 
-				
+
 				<!-- <div class="pagination">
 					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
 						class="prev">«</a> <a

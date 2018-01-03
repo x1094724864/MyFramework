@@ -28,7 +28,7 @@ public class Department implements Serializable {
 	private Integer departmentNum;// 部门编号
 
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	@Column(name="department_name")
+	@Column(name="department_name",unique = true,nullable = false)
 	private String departmentName;// 部门名称
 	@Column(name = "department_desc", length = 400)
 	private String department_desc;// 部门描述

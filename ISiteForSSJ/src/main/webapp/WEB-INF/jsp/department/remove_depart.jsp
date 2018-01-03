@@ -48,7 +48,7 @@ a {
 						<tbody>
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" name="depart_ids"
+									<td><input type="checkbox" name="ids"
 										value="${depart.id}" /></td>
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>

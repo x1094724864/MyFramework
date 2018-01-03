@@ -28,13 +28,13 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">部门管理——删除部门信息
+			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">部门管理——删除部门信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="deleteDepartByIds" method="post">
+				<form action="<%=request.getContextPath()%>/deleteDepartByIds" method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr align="right">
@@ -48,14 +48,14 @@ a {
 						<tbody>
 							<c:forEach var="depart" items="${departmentList}" varStatus="vs">
 								<tr>
-									<td><input type="checkbox" name="depart_ids"
+									<td><input type="checkbox" name="ids"
 										value="${depart.id}" /></td>
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
 									<td>${depart.department_desc}</td>
 									<td>
 										<button>
-											<a href="deleteDepart.action?department.id=${depart.id}">删除</a>
+											<a href="<%=request.getContextPath()%>/deleteDepart?id=${depart.id}">删除</a>
 										</button>
 									</td>
 

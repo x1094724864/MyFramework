@@ -22,6 +22,7 @@
 			<li><a><img src="<%=request.getContextPath()%>/images/layout.png" alt="">部门管理</a>
 				<ul>
 					<li><a href="listDepart" target="right">所有部门</a></li>
+					<li><a href="<%=request.getContextPath()%>/listDepartPage" target="right">测试分页</a></li>
 					<li><a href="editDepart" target="right">添加部门</a></li>
 					<li><a href="modDepart" target="right">修改部门</a></li>
 					<li><a href="removeDepart" target="right">删除部门</a></li>

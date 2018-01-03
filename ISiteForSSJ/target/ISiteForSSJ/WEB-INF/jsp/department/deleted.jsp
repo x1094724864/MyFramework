@@ -9,7 +9,11 @@
 </head>
 <body>
 <h1>删除成功！</h1>
+<%
+response.sendRedirect("removeDepart");
 
+
+%>
 成功删除了
 <c:forEach var="depart" items="${department_nameList}" varStatus="vs">
 								<tr>
