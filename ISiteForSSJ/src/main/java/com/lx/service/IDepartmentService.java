@@ -2,6 +2,9 @@ package com.lx.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.lx.entity.Department;
 
 public interface IDepartmentService {
@@ -26,4 +29,7 @@ public interface IDepartmentService {
 
 	// 删除所选部门
 	void deleteDepartByIds(List<Long> ids);
+	
+	//分页
+	Page<Department> getPageByFlag(Byte flag,Pageable pageable);
 }

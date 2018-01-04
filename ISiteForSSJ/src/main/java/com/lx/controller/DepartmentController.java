@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,18 +18,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lx.entity.Department;
-import com.lx.repositroy.IDepartmentDao;
 import com.lx.service.impl.DepartmentServiceImpl;
-import com.lx.utils.Pager;
+import com.lx.vo.IConstant;
 
 @Controller
 // @RequestMapping("department")
 public class DepartmentController {
 	@Autowired
 	private DepartmentServiceImpl departmentServiceImpl;
-	@Autowired
-//	private Pager pager;
-	private IDepartmentDao iDepartmentDao;
+//	@Autowired
+////	private Pager pager;
+//	private IDepartmentDao iDepartmentDao;
 
 	private ModelAndView mView = new ModelAndView();
 
@@ -40,7 +38,8 @@ public class DepartmentController {
 	// }
 	private void getDepartmentList(HttpSession session) {
 		List<Department> departmentList = departmentServiceImpl.getAllDepart();
-		session.setAttribute("departmentList", departmentList);
+		session.getServletContext().setAttribute("departmentList", departmentList);
+//		session.setAttribute("departmentList", departmentList);
 	}
 
 	// 进入部门列表页面
@@ -87,8 +86,7 @@ public class DepartmentController {
 	// }
 	@RequestMapping(value = "saveDepart")
 	private String saveDepart(@ModelAttribute Department department) {
-		departmentServiceImpl.insertDepart(department);
-		// mView.setViewName("department/depart_list");
+		departmentServiceImpl.saveOrUpdateDepart(department);
 		return "redirect:listDepart";
 	}
 
@@ -111,9 +109,9 @@ public class DepartmentController {
 	// return "redirect:removeDepart";
 	// }
 
-	// 获取所有部门列表
+	// 根据所选ids删除部门
 	@RequestMapping(value = "deleteDepartByIds")
-	private String deleteAllDepart(@RequestParam("ids") String[] ids) {
+	private String deleteAllDepartByIds(@RequestParam("depart_ids") String[] ids) {
 		if (ids != null) {
 			List<Long> list = new ArrayList<Long>();
 			for (int i = 0; i < ids.length; i++) {
@@ -151,13 +149,14 @@ public class DepartmentController {
 	
 	
 	@RequestMapping("/pageable")
-	  public void pageable(){
+	  public String pageable(){
 	    //Pageable是接口，PageRequest是接口实现
 	    //PageRequest的对象构造函数有多个，page是页数，初始值是0，size是查询结果的条数，后两个参数参考Sort对象的构造方法
-	    Pageable pageable = new PageRequest(0,3, Sort.Direction.DESC,"id");
-	    Page<Department> page = iDepartmentDao.findByName("15",pageable);
+	    Pageable pageable = new PageRequest(0,10);
+	    Page<Department> page = departmentServiceImpl.getPageByFlag(IConstant.PRODUCT_IS_UP,pageable);
 	    //查询结果总行数
 	    System.out.println(page.getTotalElements());
+	    System.out.println("ssdsdsdsdsdsd");
 	    //按照当前分页大小，总页数
 	    System.out.println(page.getTotalPages());
 	    //按照当前页数、分页大小，查出的分页结果集合
@@ -165,7 +164,30 @@ public class DepartmentController {
 	      System.out.println(department.toString());
 	    }
 	    System.out.println("-------------------------------------------");
+	    
+	    return "redirect:listDepart";
 	  }
-	
 
+	@RequestMapping("getall")
+	public ModelAndView getAll(HttpServletRequest request,
+			@RequestParam(value="number",defaultValue="0")Integer number,
+			@RequestParam(value="size",defaultValue="10")Integer size){
+		return toAllProduct(number, size);
+	}
+	
+	
+	private ModelAndView toAllProduct(Integer number,Integer size){
+		ModelAndView mv = new ModelAndView();
+		Pageable pageable = new PageRequest(number, size);
+		Page<Department> pageList = departmentServiceImpl.getPageByFlag(IConstant.PRODUCT_IS_UP,pageable);
+		List<Department> departmentList = departmentServiceImpl.getAllDepart();
+		//商品分页信息
+		mv.addObject("pList", pageList);
+		mv.addObject("cList", departmentList);
+		mv.setViewName("product/all");
+		return mv;
+	}
+	
+	
+	
 }

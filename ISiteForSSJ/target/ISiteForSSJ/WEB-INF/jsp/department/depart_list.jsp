@@ -95,9 +95,9 @@ a {
 
 
 					<div class="pagination">
-						<a href="listDepart.action?requestPage=${pager.firstPage}"
+						<a href="listDepart?requestPage=${pager.firstPage}"
 							class="prev">«</a> <a
-							href="listDepart.action?requestPage=${pager.firstPage}">1</a> <a
+							href="listDepart?requestPage=${pager.firstPage}">1</a> <a
 							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
 							class="current">2</a> ... <a
 							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>

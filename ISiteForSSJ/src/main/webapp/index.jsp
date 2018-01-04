@@ -11,6 +11,8 @@ response.sendRedirect("/home");
 <a href="login">登陆</a>
 <a href="department/depart_list">所有部门</a>
 <a href="<%=request.getContextPath()%>/hello">hello</a>
+<a href="<%=request.getContextPath()%>/pageable">pageable</a>
+<a href="<%=request.getContextPath()%>/getall">getall</a>
 
 </body>
 </html>

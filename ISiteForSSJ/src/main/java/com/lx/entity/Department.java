@@ -14,13 +14,16 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "entity depart")
+@Entity(name = "entity Department")
 @Table(name = "department_info")
 public class Department implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5192658086866005588L;
+	@Column
+	private Byte flag=1;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

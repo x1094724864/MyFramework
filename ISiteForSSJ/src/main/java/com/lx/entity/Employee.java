@@ -3,6 +3,7 @@ package com.lx.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Entity(name = "entity emp")
+@Entity(name = "entity Employee")
 @Table(name = "employee_info")
 public class Employee {
 	@Id
@@ -33,7 +34,8 @@ public class Employee {
 	@JoinColumn(name = "department_id") // 外键
 	private Department department;
 //	private Long department_id;// 部门
-	private String department_name;// 部门
+	@Column(name="department_name")
+	private String departmentName;// 部门
 	private String education;// 学历
 	private String profession;// 专业
 	@Temporal(TemporalType.DATE)

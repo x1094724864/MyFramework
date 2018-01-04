@@ -76,7 +76,7 @@ body {
 			</div>
 			<div class="right">
 				<iframe name="right" width="100%" height="100%" src="http://www.baidu.com"
-					scrolling="no"></iframe>
+					scrolling=""></iframe>
 			</div>
 		</div>
 	</div>

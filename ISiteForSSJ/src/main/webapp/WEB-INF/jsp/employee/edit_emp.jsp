@@ -47,15 +47,14 @@ left: 30px;
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<!-- <form action="addOrModifyEmp.action" method="post"> -->
-				<form action="saveEmp.action" method="post">
+				<form action="saveEmployee" method="post">
 					<table align="center">
 						<tr class="hidden" style="height: 0px;">
-							<td colspan="2"><input type="hidden" name="employee.id"
+							<td colspan="2"><input type="hidden" name="id"
 								value="${employee.id }" /></td>
 						</tr>
 						<tr class="hidden">
-							<td colspan="2"><input type="hidden" name="employee.department"
+							<td colspan="2"><input type="hidden" name="department"
 								value="${employee.department }" /></td>
 						</tr>
 <%-- 						<tr>
@@ -65,34 +64,34 @@ left: 30px;
 
 						<tr>
 							<td><span class="title" >员工编号</span></td>
-							<td><input type="text" name="employee.employee_id"
+							<td><input type="text" name="employee_id"
 								value="${employee.employee_id }" tabindex="1" /></td>
 						</tr>
 						<tr>
 							<td ><span class="title">员工姓名</span></td>
-							<td><input type="text" name="employee.name"
+							<td><input type="text" name="name"
 								value="${employee.name }" tabindex="2" /></td>
 						</tr>
 						<tr>
 							<td><span class="title" >性别</span></td>
-							<td><input type="radio" name="employee.gender" value="男" checked="checked" tabindex="3">男
-								<input type="radio" name="employee.gender" value="女" tabindex="4">女  </td>
+							<td><input type="radio" name="gender" value="男" checked="checked" tabindex="3">男
+								<input type="radio" name="gender" value="女" tabindex="4">女  </td>
 						</tr>
 					
 						<tr>
 							<td ><span class="title" >部门</span></td>
-							<td><select name="employee.department_name" tabindex="5">
+							<td><select name="departmentName" tabindex="5">
 							<option selected="selected">-----请选择部门-----</option>
-									<c:forEach var="depart" items="${departmentList}"
+									<c:forEach var="depart" items="${List}"
 										varStatus="vs">
-										<option>${depart.department_name}</option>
+										<option>${depart.departmentName}</option>
 									</c:forEach>
 							</select></td>
 						</tr>
 
 						<tr>
 							<td ><span span class="title">学历</span></td>
-							<td><select name="employee.education" tabindex="6">
+							<td><select name="education" tabindex="6">
 									<option selected="selected">-----请选择学历-----</option>
 									<option>本科</option>
 									<option>大专</option>
@@ -103,22 +102,22 @@ left: 30px;
 						</tr>
 						<tr>
 							<td><span span class="title" >专业</span></td>
-							<td><input type="text" name="employee.profession"
+							<td><input type="text" name="profession"
 								value="${employee.profession}" tabindex="7" /></td>
 						</tr>
 						<%-- <tr>
 							<td ><span class="title">入职时间</span></td>
-							<td><input type="text" name="employee.entry_Time"
+							<td><input type="text" name="entry_Time"
 								value="${employee.entry_Time }" tabindex="8"/></td>
 						</tr> --%>
 						<tr>
 							<td ><span span class="title">地址</span></td>
-							<td><input type="text" name="employee.address"
+							<td><input type="text" name="address"
 								value="${employee.address }" tabindex="9" /></td>
 						</tr>
 						<tr>
 							<td><span span class="title" >电话号码</span></td>
-							<td><input type="text" name="employee.tel_number"
+							<td><input type="text" name="tel_number"
 								value="${employee.tel_number }" tabindex="10" /></td>
 						</tr>
 

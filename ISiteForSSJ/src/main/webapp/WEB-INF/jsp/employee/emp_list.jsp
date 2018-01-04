@@ -57,7 +57,7 @@ a {
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
 									<td>${emp.gender }</td>
-									<td>${emp.department_name }</td>
+									<td>${emp.departmentName }</td>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
 									<td>${emp.entry_Time }</td>

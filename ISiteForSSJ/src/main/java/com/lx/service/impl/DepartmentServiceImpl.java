@@ -2,11 +2,11 @@ package com.lx.service.impl;
 
 import java.util.List;
 
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.lx.entity.Department;
@@ -18,14 +18,19 @@ import com.lx.service.IDepartmentService;
 public class DepartmentServiceImpl implements IDepartmentService {
 	@Autowired
 	private IDepartmentDao iDepartmentDao;
-//	@Autowired
-	TypedQuery<Department> query;
+
 	// 增加部门
 	public Long insertDepart(Department department) {
 		iDepartmentDao.save(department);
 		return 1L;
 	}
 
+	//保存或者更新部门
+	public Long saveOrUpdateDepart(Department department) {
+		iDepartmentDao.save(department);
+		return 1L;
+	}
+	
 	// 更新部门
 	public Long updateDepart(Department department) {
 		iDepartmentDao.save(department);
@@ -40,8 +45,8 @@ public class DepartmentServiceImpl implements IDepartmentService {
 
 	// 查找所有部门
 	public List<Department> getAllDepart() {
-		List<Department> list = iDepartmentDao.findAll();
-		return list;
+		List<Department> DepartList = iDepartmentDao.findAll();
+		return DepartList;
 	}
 
 	// 删除所有部门
@@ -60,26 +65,19 @@ public class DepartmentServiceImpl implements IDepartmentService {
 		iDepartmentDao.deteleByIds(ids);
 	}
 
-//	public int getDepartmentCount(Department department) {
-//		long count = iDepartmentDao.count();
-//		if (count > 0) {
-//			return (int) count;
-//		}
-//		return 0;
-//	}
-//
-//	public List<Department> getDepartmentPaginatedList(Department department, int first, int count) {
-//		query.setFirstResult(first);
-//		query.setMaxResults(count);
-//		return (List<Department>) query.getResultList();
 
-//	}
 
-	Page<Department> get(){
+	public Page<Department> getPageByFlag(Byte flag,Pageable pageable) {
+
+		// return iDepartmentDao.findAll(pageable);
+		System.out.println("-------");
+		Page<Department> list = iDepartmentDao.queryFirst10ByFlag(flag, pageable);
 		
-		iDepartmentDao.findByName(departmentName, pageable);
+//		Page<Department> list = iDepartmentDao.findAll(pageable);
 		
-		
+
+		System.out.println("333333333333333333");
+		return list;
 	}
-	
+
 }
