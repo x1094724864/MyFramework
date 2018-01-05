@@ -30,6 +30,7 @@
 			<li><a><img src="<%=request.getContextPath()%>/images/huser.png" alt="">员工管理</a>
 				<ul>
 					<li><a href="listEmp" target="right">查看员工</a></li>
+					<li><a href="<%=request.getContextPath()%>/listEmpPage" target="right">测试员工分页</a></li>
 					<li><a href="editEmp" target="right">添加员工</a></li>
 					<li><a href="modEmp" target="right">修改员工</a></li>
 					<li><a href="removeEmp" target="right">删除员工</a></li>

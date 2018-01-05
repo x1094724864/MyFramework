@@ -28,13 +28,13 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">员工管理——修改员工信息
+			<img src="<%=request.getContextPath() %>/images/posts.png" alt="">员工管理——修改员工信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="deleteAllDepart.action" method="post">
+				<form action="" method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr>
@@ -57,7 +57,7 @@ a {
 									<td align="right">${emp.employee_id}</td>
 									<td>${emp.name }</td>
 									<td>${emp.gender }</td>
-									<td>${emp.department_name }</td>
+									<td>${emp.departmentName }</td>
 									<td>${emp.education }</td>
 									<td>${emp.profession }</td>
 									<td>${emp.entry_Time }</td>
@@ -65,7 +65,7 @@ a {
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="editEmp.action?employee.id=${emp.id}">修改</a>
+											<a href="editEmp?id=${emp.id}">修改</a>
 										</button>
 									</td>
 

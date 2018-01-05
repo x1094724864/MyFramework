@@ -16,10 +16,11 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
 
-<style>
+<style type="text/css">
 a {
 	text-decoration: none
 }
+
 </style>
 </head>
 <body>
@@ -28,7 +29,7 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">员工管理
+			<img src="<%=request.getContextPath() %>/images/posts.png" alt="">员工管理
 		</h1>
 		<br> <br>
 		<div class="bloc">
@@ -43,12 +44,12 @@ a {
 								<th>员工姓名</th>
 								<th>性别</th>
 								<th>部门</th>
-								<th>学历</th>
-								<th>专业</th>
+								<!-- <th>学历</th>
+								<th>专业</th> -->
 								<th>入职时间</th>
-								<th>地址</th>
-								<th>电话号码</th>
-								<!-- <th>操作</th> -->
+								<!-- <th>地址</th>
+								<th>电话号码</th> -->
+								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -58,11 +59,12 @@ a {
 									<td>${emp.name }</td>
 									<td>${emp.gender }</td>
 									<td>${emp.departmentName }</td>
-									<td>${emp.education }</td>
-									<td>${emp.profession }</td>
+									<%-- <td>${emp.education }</td>
+									<td>${emp.profession }</td> --%>
 									<td>${emp.entry_Time }</td>
-									<td>${emp.address }</td>
-									<td>${emp.tel_number }</td>
+									<%-- <td>${emp.address }</td>
+									<td>${emp.tel_number }</td> --%>
+									<td><a href="<%=request.getContextPath() %>/detailsEmp?id=${emp.id}">详细信息</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

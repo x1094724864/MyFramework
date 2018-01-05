@@ -9,11 +9,12 @@ import com.lx.entity.Employee;
 
 public interface IEmployeeService {
 	// 增加员工
-	Long insertEmp(Employee employee);
+	public Long insertEmp(Employee employee);
 
 	// 更新员工
 	Long updateEmp(Employee employee);
-
+	//保存或修改员工
+	Long saveOrUpdateEmp(Employee employee);
 	// 查找员工
 	Employee getEmpById(Long id);
 
@@ -27,5 +28,8 @@ public interface IEmployeeService {
 	void deleteEmpByIds(List<Long> ids);
 
 	// 分页
-	Page<Employee> getPageByFlag(Pageable pageable);
+	Page<Employee> getEmpPage(Pageable pageable);
+
+	void deleteEmpById(Long id);
+
 }

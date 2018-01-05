@@ -18,9 +18,12 @@ public interface IDepartmentService {
 	// 更新部门
 	Long updateDepart(Department department);
 
-	// 查找部门
+	// 用id查找部门
 	Department getDepartById(Long id);
 
+	//用部门名称查找部门
+	Department getDepartByDepartmentName(String departmentName);
+	
 	// 查找所有部门
 	List<Department> getAllDepart();
 
@@ -32,4 +35,8 @@ public interface IDepartmentService {
 	
 	//分页
 	Page<Department> getPageByFlag(Byte flag,Pageable pageable);
+
+	void deleteDepart(Long id);
+
+	Long saveOrUpdateDepart(Department department);
 }

@@ -17,7 +17,10 @@ public interface IDepartmentDao extends JpaRepository<Department, Long> {
 		// 根据ID查找制定部门
 		@Query(value = "SELECT * FROM department_info WHERE id = ?1", nativeQuery = true)
 		Department findOne(Long id);
-
+		
+		// 根据部门名称查找制定部门
+		@Query(value = "SELECT * FROM department_info WHERE department_name = ?1", nativeQuery = true)
+		List<Department> findByDepartmentName(String departmentName);
 		// 查找所有部门
 		@Query(value = "select * from department_info", nativeQuery = true)
 		List<Department> findAll();
@@ -32,7 +35,8 @@ public interface IDepartmentDao extends JpaRepository<Department, Long> {
 		void delete(Long id);
 
 		// 根据部门名称查找
-		List<Department> findBydepartmentName(String departmentName);
+//		@Query(value = "select * from department_info", nativeQuery = true)
+//		List<Department> findBydepartmentName(String departmentName);
 
 		// 删除选定ID
 		@Modifying

@@ -75,7 +75,7 @@ body {
 					src="home_left" scrolling="no"></iframe>
 			</div>
 			<div class="right">
-				<iframe name="right" width="100%" height="100%" src="http://www.baidu.com"
+				<iframe name="right" width="100%" height="100%" src="<%=request.getContextPath() %>/emp_details.jsp"
 					scrolling=""></iframe>
 			</div>
 		</div>

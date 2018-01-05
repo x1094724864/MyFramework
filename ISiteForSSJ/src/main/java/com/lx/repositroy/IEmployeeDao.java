@@ -7,10 +7,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
 import com.lx.entity.Employee;
-
-public interface IEmployeeDao extends JpaRepository<Employee, Long> {
+@Repository
+public interface IEmployeeDao extends PagingAndSortingRepository<Employee, Long> {
+//	public interface IEmployeeDao extends JpaRepository<Employee, Long> {
 	// 更新并保存部门
 	<S extends Employee> S save(S employee);
 
@@ -45,5 +48,7 @@ public interface IEmployeeDao extends JpaRepository<Employee, Long> {
 	
 	
 	//分页
-	Page<Employee> findAll(Pageable pageable);
+	Page<Employee> findAll( Pageable pageable);
+	
+//	Page<Employee> queryFirst8(Pageable pageable);
 }

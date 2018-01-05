@@ -28,7 +28,7 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="../../images/posts.png" alt="">员工管理——修改员工信息
+			<img src="<%=request.getContextPath() %>/images/posts.png" alt="">员工管理——修改员工信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
@@ -65,7 +65,7 @@ a {
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="editEmp?employee.id=${emp.id}">修改</a>
+											<a href="editEmp?id=${emp.id}">修改</a>
 										</button>
 									</td>
 

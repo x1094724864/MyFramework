@@ -58,10 +58,6 @@ left: 30px;
 							<td colspan="2"><input type="hidden" name="employee.department"
 								value="${employee.department }" /></td>
 						</tr>
-<%-- 						<tr>
-							<td colspan="2"><input type="hidden" name="employee.department_id"
-								value="${employee.department_id }" /></td>
-						</tr> --%>
 
 						<tr>
 							<td><span class="title" >员工编号</span></td>

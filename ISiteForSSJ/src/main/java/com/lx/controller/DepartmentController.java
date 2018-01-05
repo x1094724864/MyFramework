@@ -26,20 +26,12 @@ import com.lx.vo.IConstant;
 public class DepartmentController {
 	@Autowired
 	private DepartmentServiceImpl departmentServiceImpl;
-//	@Autowired
-////	private Pager pager;
-//	private IDepartmentDao iDepartmentDao;
 
 	private ModelAndView mView = new ModelAndView();
 
-	// public List<Department> getDepartmentList(HttpSession session) {
-	// List<Department> departmentList = departmentServiceImpl.getAllDepart();
-	// session.setAttribute("departmentList", departmentList);
-	// }
 	private void getDepartmentList(HttpSession session) {
 		List<Department> departmentList = departmentServiceImpl.getAllDepart();
 		session.getServletContext().setAttribute("departmentList", departmentList);
-//		session.setAttribute("departmentList", departmentList);
 	}
 
 	// 进入部门列表页面
@@ -78,12 +70,6 @@ public class DepartmentController {
 	}
 
 	// 保存、更新部门
-	// @RequestMapping(value = "saveDepart")
-	// private ModelAndView saveDepart(@ModelAttribute Department department) {
-	// departmentServiceImpl.insertDepart(department);
-	// mView.setViewName("department/depart_list");
-	// return mView;
-	// }
 	@RequestMapping(value = "saveDepart")
 	private String saveDepart(@ModelAttribute Department department) {
 		departmentServiceImpl.saveOrUpdateDepart(department);
@@ -91,23 +77,12 @@ public class DepartmentController {
 	}
 
 	// 删除单个部门
-	// @RequestMapping(value = "deleteDepart")
-	// private ModelAndView deleteDepart(@RequestParam("id") Long id) {
-	// departmentServiceImpl.deleteDepart(id);
-	// mView.setViewName("department/deleted");
-	// return mView;
-	// }
 	@RequestMapping(value = "deleteDepart")
 	private String deleteDepart(@RequestParam("id") Long id) {
 		departmentServiceImpl.deleteDepart(id);
 		return "redirect:removeDepart";
 	}
 
-	// @RequestMapping(value = "editDepart")
-	// private String editDepart(@RequestParam("id") Long id) {
-	// departmentServiceImpl.updateDepart(department);
-	// return "redirect:removeDepart";
-	// }
 
 	// 根据所选ids删除部门
 	@RequestMapping(value = "deleteDepartByIds")
@@ -121,8 +96,6 @@ public class DepartmentController {
 			departmentServiceImpl.deleteDepartByIds(list);
 		}
 		System.out.println("执行方法");
-		// mView.setViewName("department/depart_list");
-		// return mView;
 		return "redirect:removeDepart";
 	}
 
