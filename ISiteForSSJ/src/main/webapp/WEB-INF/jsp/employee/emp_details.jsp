@@ -90,7 +90,7 @@ td.showinfo {
 								<td class=" item">性别</td>
 								<td class="showinfo">${emp.gender }</td>
 								<td colspan="2" rowspan="3" style="text-align: center;" ><img
-									src="<%=request.getContextPath()%>/photo_picture/myself.jpg" alt="photo_picture" class="image">
+									src="<%=request.getContextPath()%>/photo_picture/${emp.photoName}" alt="加载失败" class="image">
 								</td>
 							</tr>
 							<tr>
@@ -120,10 +120,12 @@ td.showinfo {
 								<td class="showinfo">${emp.tel_number }</td>
 								<td class="item">邮箱</td>
 								<td class="showinfo">${emp.mail }</td>
-								<td class="item" style="text-align: center;" colspan="2"><button>
-										<a href="editEmp?id=${emp.id }" style="text-align: center;font-size: 18px;">修改信息</a>
+								<td class="item" style="text-align: center;" colspan="1"><button>
+										<a href="employee/editEmp?id=${emp.id }" style="text-align: center;font-size: 18px;">修改信息</a>
 									</button></td>
-								<td></td>
+								<td><button>
+										<a href="employee/deleteEmpById?id=${emp.id }" style="text-align: left;font-size: 18px;">删除员工</a>
+									</button></td>
 							</tr>
 						</tbody>
 						<tfoot></tfoot>
@@ -134,5 +136,6 @@ td.showinfo {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		
 </body>
 </html>

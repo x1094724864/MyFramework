@@ -34,7 +34,7 @@ public interface IDepartmentService {
 	void deleteDepartByIds(List<Long> ids);
 	
 	//分页
-	Page<Department> getPageByFlag(Byte flag,Pageable pageable);
+//	Page<Department> getPage(Pageable pageable);
 
 	void deleteDepart(Long id);
 

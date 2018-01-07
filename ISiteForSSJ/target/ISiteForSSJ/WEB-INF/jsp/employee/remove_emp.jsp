@@ -120,9 +120,10 @@ a {
 								</div>
 							</form> --%>
 						</tfoot>
-					</table>
+					</table><hr>
+					<br><br>
 					<input type="submit" value="确认删除" />&nbsp;&nbsp;<input
-						type="reset" value="取消删除">
+						type="reset" value="取消删除"><br><br>
 				</form>
 
 			</div>
@@ -130,5 +131,6 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<br><br><br><br><br><br><br><br>
 </body>
 </html>

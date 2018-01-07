@@ -5,15 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style2.css">
 <!-- <link rel="stylesheet" href="../../css/base.css"> -->
 
 <style>
@@ -41,8 +48,8 @@ a {
 								<th style="width: 50px;" align="center">选择</th>
 								<th style="width: 90px;">部门编号</th>
 								<th style="width: 200px;">部门名称</th>
-								<th style="width: 350px; " >部门描述</th>
-								<th style="width: 90px;" >操作</th>
+								<th style="width: 350px;">部门描述</th>
+								<th style="width: 90px;">操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -52,9 +59,11 @@ a {
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
 									<%-- <td>${depart.department_desc}</td> --%>
-									<td><textarea rows="2" cols="40" readonly="readonly">${depart.department_desc}</textarea>  </td>
+									<td><textarea rows="2" cols="40" readonly="readonly">${depart.department_desc}</textarea>
+									</td>
 									<td><button>
-											<a href="<%=request.getContextPath()%>/editDepart?id=${depart.id}">修改</a>
+											<a
+												href="<%=request.getContextPath()%>/editDepart?id=${depart.id}">修改</a>
 										</button></td>
 
 								</tr>
@@ -62,7 +71,9 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-
+					<hr>
+					<br>
+					<br>
 				</form>
 
 				<!-- <button>
@@ -75,5 +86,13 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>

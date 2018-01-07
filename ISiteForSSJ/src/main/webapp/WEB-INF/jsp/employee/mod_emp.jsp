@@ -65,7 +65,7 @@ a {
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="editEmp?id=${emp.id}">修改</a>
+											<a href="employee/editEmp?id=${emp.id}">修改</a>
 										</button>
 									</td>
 
@@ -87,5 +87,6 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<br><br><br><br><br><br><br><br>
 </body>
 </html>

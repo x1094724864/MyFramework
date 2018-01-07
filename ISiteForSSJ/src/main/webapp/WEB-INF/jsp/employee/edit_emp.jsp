@@ -6,30 +6,42 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>修改部门信息</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style2.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/previewImage.js"></script>
+
+<!-- 以下 是自己添加的页面样式 -->
 <style type="text/css">
-span.item{
-font-style: green;
-font-size:15px;
-font: 楷体;
+
+span.item {
+	font-style: green;
+	font-size: 15px;
+	font: 楷体;
 }
 
 }
-.item{
-font-weight: bold;
-font-size:15px;
-align-content: center;
-color: red;
-position: relative;
-left: 30px;
+.item {
+	font-weight: bold;
+	font-size: 15px;
+	align-content: center;
+	color: red;
+	position: relative;
+	left: 30px;
 }
 </style>
 </head>
@@ -38,13 +50,14 @@ left: 30px;
 	<!-- <div id="content" class="white"> -->
 	<div id="content" class="white">
 		<h1>
-			<img src="<%=request.getContextPath() %>/images/posts.png" alt="">员工管理——编辑员工信息
+			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理——编辑员工信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="saveEmp" method="post">
+				<form action="employee/saveEmp" method="post" enctype="multipart/form-data">
+					<!-- <form action="saveEmp" method="post" > -->
 					<table align="center">
 						<tr class="hidden" style="height: 0px;">
 							<td colspan="2"><input type="hidden" name="id"
@@ -56,34 +69,34 @@ left: 30px;
 						</tr> --%>
 
 						<tr>
-							<td><span class="title" >员工编号</span></td>
+							<td><span class="title">员工编号</span></td>
 							<td><input type="text" name="employee_id"
 								value="${employee.employee_id }" tabindex="1" /></td>
 						</tr>
 						<tr>
-							<td ><span class="title">员工姓名</span></td>
-							<td><input type="text" name="name"
-								value="${employee.name }" tabindex="2" /></td>
+							<td><span class="title">员工姓名</span></td>
+							<td><input type="text" name="name" value="${employee.name }"
+								tabindex="2" /></td>
 						</tr>
 						<tr>
-							<td><span class="title" >性别</span></td>
-							<td><input type="radio" name="gender" value="男" checked="checked" tabindex="3">男
-								<input type="radio" name="gender" value="女" tabindex="4">女  </td>
+							<td><span class="title">性别</span></td>
+							<td><input type="radio" name="gender" value="男"
+								checked="checked" tabindex="3">男 <input type="radio"
+								name="gender" value="女" tabindex="4">女</td>
 						</tr>
-					
+
 						<tr>
-							<td ><span class="title" >部门</span></td>
+							<td><span class="title">部门</span></td>
 							<td><select name="departmentName" tabindex="5">
-							<option selected="selected">-----请选择部门-----</option>
-									<c:forEach var="depart" items="${List}"
-										varStatus="vs">
+									<option selected="selected">-----请选择部门-----</option>
+									<c:forEach var="depart" items="${List}" varStatus="vs">
 										<option>${depart.departmentName}</option>
 									</c:forEach>
 							</select></td>
 						</tr>
 
 						<tr>
-							<td ><span span class="title">学历</span></td>
+							<td><span span class="title">学历</span></td>
 							<td><select name="education" tabindex="6">
 									<option selected="selected">-----请选择学历-----</option>
 									<option>本科</option>
@@ -94,7 +107,7 @@ left: 30px;
 
 						</tr>
 						<tr>
-							<td><span span class="title" >专业</span></td>
+							<td><span span class="title">专业</span></td>
 							<td><input type="text" name="profession"
 								value="${employee.profession}" tabindex="7" /></td>
 						</tr>
@@ -104,14 +117,30 @@ left: 30px;
 								value="${employee.entry_Time }" tabindex="8"/></td>
 						</tr> --%>
 						<tr>
-							<td ><span span class="title">地址</span></td>
+							<td><span span class="title">地址</span></td>
 							<td><input type="text" name="address"
 								value="${employee.address }" tabindex="9" /></td>
 						</tr>
 						<tr>
-							<td><span span class="title" >电话号码</span></td>
+							<td><span span class="title">电话号码</span></td>
 							<td><input type="text" name="tel_number"
 								value="${employee.tel_number }" tabindex="10" /></td>
+						</tr>
+						<tr>
+							<td><div id="preview" class="controls">头像预览
+									<img id="imghead" border="0"
+										onclick="$('#previewImg').click();">
+								</div></td>
+							<td><div class="col-md-6">
+									<input id="previewImg" type="file"
+										onchange="previewImage(this)" name="previewImg"
+										data-show-upload="false">
+								</div></td>
+						</tr>
+						<tr>
+							<td><span span class="title">头像</span></td>
+							<td><input type="file" accept="image/*" name="photo"
+								value="" tabindex="10" /></td>
 						</tr>
 
 						<tr>

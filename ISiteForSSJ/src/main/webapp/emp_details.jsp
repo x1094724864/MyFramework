@@ -58,17 +58,6 @@ td.showinfo {
 	height: 160px;
 	width: 120px;
 }
-
-input.show {
-vertical-align: middle;
-	border-bottom: 1px solid #DADADA;
-	border-top: 1px solid #FFFFFF;
-height: 55px;
-	border-bottom-width: 0px;
-	border-right-width: 0px;
-	border-top-width: 0px;
-	border-left-width: 0px;
-}
 </style>
 </head>
 <body>
@@ -99,55 +88,54 @@ height: 55px;
 								<td class=" item">姓名</td>
 								<td class="showinfo"><span value="dede">${emp.name }</span></td>
 								<td class=" item">性别</td>
-								<td class="showinfo"><input class="show" value="显示框"></td>
-								<td colspan="2" rowspan="3" style="text-align: center;"><img
-									src="<%=request.getContextPath()%>/photo_picture/myself.jpg"
-									alt="photo_picture" class="image"></td>
+								<td class="showinfo">${emp.gender }</td>
+								<td colspan="2" rowspan="3" style="text-align: center;" ><img
+									src="<%=request.getContextPath()%>/photo_picture/${emp.photoName}" alt="加载失败" class="image">
+								</td>
 							</tr>
 							<tr>
 								<td class=" item">部门</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.departmentName }</td>
 								<td class="item">年龄</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.age }</td>
 								<!-- <td>头像</td> -->
 							</tr>
 							<tr>
 								<td class="item">入职时间</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.entry_Time }</td>
 								<td class="item">地址</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.address }</td>
 								<!-- <td>头像</td> -->
 							</tr>
 							<tr>
 								<td class="item">所学专业</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.profession }</td>
 								<td class="item">学历</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.education }</td>
 								<td class="item" style="text-align: center;">员工编号</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.employee_id}</td>
 							</tr>
 							<tr>
 								<td class="item">手机号</td>
-								<td class="showinfo">显示框</td>
+								<td class="showinfo">${emp.tel_number }</td>
 								<td class="item">邮箱</td>
-								<td class="showinfo">显示框</td>
-								<td class="item" style="text-align: center;" colspan="2"><button>
-										<a href="" style="text-align: center; font-size: 18px;">修改信息</a>
+								<td class="showinfo">${emp.mail }</td>
+								<td class="item" style="text-align: center;" colspan="1"><button>
+										<a href="editEmp?id=${emp.id }" style="text-align: center;font-size: 18px;">修改信息</a>
 									</button></td>
-								<td></td>
+								<td><button>
+										<a href="deleteEmpById?id=${emp.id }" style="text-align: left;font-size: 18px;">删除员工</a>
+									</button></td>
 							</tr>
 						</tbody>
 						<tfoot></tfoot>
 					</table>
 				</form>
-
-
-
-
 			</div>
 		</div>
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		
 </body>
 </html>

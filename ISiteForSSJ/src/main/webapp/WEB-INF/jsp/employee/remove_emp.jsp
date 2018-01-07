@@ -35,7 +35,7 @@ a {
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="deleteEmpByIds" method="post">
+				<form action="employee/deleteEmpByIds" method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr>
@@ -68,7 +68,7 @@ a {
 									<td>${emp.tel_number }</td>
 									<%-- 	<td>
 										<button>
-											<a href="deleteEmp.action?employee.id=${emp.id}">删除</a>
+											<a href="employee/deleteEmp?employee.id=${emp.id}">删除</a>
 										</button>
 									</td> --%>
 
@@ -120,9 +120,10 @@ a {
 								</div>
 							</form> --%>
 						</tfoot>
-					</table>
+					</table><hr>
+					<br><br>
 					<input type="submit" value="确认删除" />&nbsp;&nbsp;<input
-						type="reset" value="取消删除">
+						type="reset" value="取消删除"><br><br>
 				</form>
 
 			</div>
@@ -130,5 +131,6 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<br><br><br><br><br><br><br><br>
 </body>
 </html>

@@ -33,10 +33,10 @@
 				<c:otherwise>
 					<c:choose>
 						<c:when test="<%=username == null%>">
-							游客未登录，请<a href="login" target="_parent">登录</a>
+							您的身份是游客，您可以选择<a href="tosign_in" target="_parent">登录</a>
 						</c:when>
 						<c:otherwise>
-							你好！<%=username%>&nbsp;|&nbsp;<a href="loguot" target="_parent">注销</a>
+							你好！<%=username%>&nbsp;|&nbsp;<a href="tologout" target="_parent">注销</a>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>

@@ -21,19 +21,17 @@
 		<ul>
 			<li><a><img src="<%=request.getContextPath()%>/images/layout.png" alt="">部门管理</a>
 				<ul>
-					<li><a href="listDepart" target="right">所有部门</a></li>
-					<li><a href="<%=request.getContextPath()%>/listDepartPage" target="right">测试分页</a></li>
-					<li><a href="editDepart" target="right">添加部门</a></li>
-					<li><a href="modDepart" target="right">修改部门</a></li>
-					<li><a href="removeDepart" target="right">删除部门</a></li>
+					<li><a href="department/listDepart" target="right">所有部门</a></li>
+					<li><a href="department/editDepart" target="right">添加部门</a></li>
+					<li><a href="department/modDepart" target="right">修改部门</a></li>
+					<li><a href="department/removeDepart" target="right">删除部门</a></li>
 				</ul></li>
 			<li><a><img src="<%=request.getContextPath()%>/images/huser.png" alt="">员工管理</a>
 				<ul>
-					<li><a href="listEmp" target="right">查看员工</a></li>
-					<li><a href="<%=request.getContextPath()%>/listEmpPage" target="right">测试员工分页</a></li>
-					<li><a href="editEmp" target="right">添加员工</a></li>
-					<li><a href="modEmp" target="right">修改员工</a></li>
-					<li><a href="removeEmp" target="right">删除员工</a></li>
+					<li><a href="employee/listEmp" target="right">查看员工</a></li>
+					<li><a href="employee/editEmp" target="right">添加员工</a></li>
+					<li><a href="employee/modEmp" target="right">修改员工</a></li>
+					<li><a href="employee/removeEmp" target="right">删除员工</a></li>
 				</ul></li>
 
 		</ul>

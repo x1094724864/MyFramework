@@ -65,39 +65,32 @@ a {
 
 				</form>
 
-				<form action="listDepart.action" method="post">
+				<form action="listDepart" method="post">
 					<input type="hidden" name="depart.id" value="${depart.id}" /> <input
-						type="hidden" name="depart.department_num"
-						value="${depart.department_num}" /> <input type="hidden"
-						name="depart.department_name" value="${depart.department_name}" />
+						type="hidden" name="depart.departmentNum"
+						value="${depart.departmentNum}" /> <input type="hidden"
+						name="depart.departmentName" value="${depart.departmentName}" />
 					<input type="hidden" name="depart.department_desc"
 						value="${depart.department_desc}" />
 					<table align="center" border="0" cellspacing="0" width="680">
 						<tr align="center">
 							<td align="center">
 								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-								<a style="cursor: pointer; text-decoration: underline;"
-								href="listDepart.action?requestPage=${pager.firstPage}">«</a> <a
-								style="cursor: pointer; text-decoration: underline;"
-								href="listDepartPage?requestPage=${pager.privious}">Privious</a>
-								<a style="cursor: pointer; text-decoration: underline;"
-								href="listDepart?requestPage=${pager.next}">Next</a>
-								<a style="cursor: pointer; text-decoration: underline;"
-								href="listDepart.action?requestPage=${pager.lastPage}">»</a> <input
-								style="text-align: center; border: 1px solid #CCCCCC;"
-								type="text" name="requestPage"
-								onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
-								value="${param.requestPage}" size="2" /> <input type="submit"
-								value="go" />
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.firstPage}">«</a>
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.priviousPage}">Privious</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.nextPage}">Next</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.lastPage}">»</a> 
+								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${requestPage}" size="2" /> 
+								<input type="submit" value="go" />
 							</td>
 						</tr>
 					</table>
 
 
 					<div class="pagination">
-						<a href="listDepart?requestPage=${pager.firstPage}"
-							class="prev">«</a> <a
-							href="listDepart?requestPage=${pager.firstPage}">1</a> <a
+						<a href="listDepart?requestPage=${pager.firstPage}" class="prev">«</a>
+						<a href="listDepart?requestPage=${pager.firstPage}">1</a> <a
 							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
 							class="current">2</a> ... <a
 							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
@@ -131,5 +124,13 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>

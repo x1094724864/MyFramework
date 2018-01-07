@@ -34,7 +34,7 @@ a {
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="<%=request.getContextPath()%>/deleteDepartByIds" method="post">
+				<form action="<%=request.getContextPath()%>/department/deleteDepartByIds" method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr align="right">
@@ -55,7 +55,7 @@ a {
 									<td>${depart.department_desc}</td>
 									<td>
 										<button>
-											<a href="<%=request.getContextPath()%>/deleteDepart?id=${depart.id}">删除</a>
+											<a href="<%=request.getContextPath()%>/department/deleteDepart?id=${depart.id}">删除</a>
 										</button>
 									</td>
 
@@ -64,6 +64,8 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
+					<hr>
+					<br><br>
 					<input type="submit" value="确认删除" /><input type="reset"
 						value="取消删除">
 				</form>
@@ -73,10 +75,10 @@ a {
 	<tr>
 		<td align="center">
 			共${pager.recordCount}条记录    每页显示${pager.pageSize}条    分${pager.pageCount}页/第${pager.currentPage}页
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.firstPage}">首页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.priviousPage}">上一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.nextPage}">下一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="listDepart.action?requestPage=${pager.lastPage}">尾页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="department/listDepart.action?requestPage=${pager.firstPage}">首页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="department/listDepart.action?requestPage=${pager.priviousPage}">上一页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="department/listDepart.action?requestPage=${pager.nextPage}">下一页</a>
+		   	 <a style="cursor:pointer;text-decoration: underline;" href="department/listDepart.action?requestPage=${pager.lastPage}">尾页</a>
 		   	 <input style="text-align:center;border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1" value="${param.requestPage}" size="2"/>
 		   	 <input type="submit" value="转到"/>
 		</td>
@@ -99,5 +101,6 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<br><br><br><br><br><br><br><br>
 </body>
 </html>

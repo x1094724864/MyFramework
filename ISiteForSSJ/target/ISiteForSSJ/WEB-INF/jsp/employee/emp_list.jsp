@@ -74,9 +74,43 @@ a {
 				</form>
 
 				<button>
-					<a href="listEmp.action">获取所有</a>
+					<a href="listEmp">获取所有</a>
 				</button>
+				<form action="listEmpPage" method="post">
+					<input type="hidden" name="depart.id" value="${depart.id}" /> <input
+						type="hidden" name="depart.departmentNum"
+						value="${depart.departmentNum}" /> <input type="hidden"
+						name="depart.departmentName" value="${depart.departmentName}" />
+					<input type="hidden" name="depart.department_desc"
+						value="${depart.department_desc}" />
+					<table align="center" border="0" cellspacing="0" width="680">
+						<tr align="center">
+							<td align="center">
+								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmpPage?requestPage=${pager.firstPage}">«</a>
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmpPage?requestPage=${pager.priviousPage}">Privious</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmpPage?requestPage=${pager.nextPage}">Next</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmpPage?requestPage=${pager.lastPage}">»</a> 
+								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${requestPage}" size="2" /> 
+								<input type="submit" value="go" />
+							</td>
+						</tr>
+					</table>
 
+
+					<div class="pagination">
+						<a href="listEmpPage?requestPage=${pager.firstPage}" class="prev">«</a>
+						<%-- <a href="listEmpPage?requestPage=${pager.firstPage}">${pager.firstPage}</a>  --%>
+						<a href="listEmpPage?requestPage=${pager.priviousPage-1}">${pager.priviousPage-1}</a> 
+						<a href="listEmpPage?requestPage=${pager.priviousPage}">${pager.priviousPage}</a> 
+						<a href="listEmpPage?requestPage=${pager.currentPage}" class="current">${pager.currentPage}</a>
+						<a href="listEmpPage?requestPage=${pager.nextPage}">${pager.nextPage}</a>
+						<a href="listEmpPage?requestPage=${pager.nextPage+1}">${pager.nextPage+1}</a>
+						<%-- <a href="listEmpPage?requestPage=${pager.lastPage}">${pager.lastPage-1}</a> --%>
+						<a href="listEmpPage?requestPage=${pager.lastPage}" class="next">»</a>
+					</div>
+				</form>
 
 				<!-- <div class="left input">
 					<div class="selector" id="uniform-tableaction">
@@ -105,5 +139,6 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
+		<br><br><br><br><br><br><br><br>
 </body>
 </html>

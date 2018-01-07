@@ -44,7 +44,8 @@ left: 30px;
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="saveEmp" method="post">
+				<form action="saveEmp" method="post" enctype="multipart/form-data">
+				<!-- <form action="saveEmp" method="post" > -->
 					<table align="center">
 						<tr class="hidden" style="height: 0px;">
 							<td colspan="2"><input type="hidden" name="id"
@@ -112,6 +113,11 @@ left: 30px;
 							<td><span span class="title" >电话号码</span></td>
 							<td><input type="text" name="tel_number"
 								value="${employee.tel_number }" tabindex="10" /></td>
+						</tr>
+						<tr>
+							<td><span span class="title" >头像</span></td>
+							<td><input type="file" accept="image/*" name="photo"
+								value="" tabindex="10" /></td>
 						</tr>
 
 						<tr>

@@ -8,6 +8,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 
+	
+	
 	/**
 	 * 在业务处理器处理请求之前被调用 如果返回false 从当前的拦截器往回执行所有拦截器的afterCompletion(),再退出拦截器链
 	 * 
@@ -15,27 +17,42 @@ public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 	 * 从最后一个拦截器往回执行所有的postHandle() 接着再从最后一个拦截器往回执行所有的afterCompletion()
 	 */
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
 		System.out.println("权限拦截器------------" + request.getRequestURI());
-		String username = (String)request.getSession().getAttribute("username");
-		
-//		if (request.getRequestURI().startsWith(request.getContextPath() + "/pc/mag")) {
-//			// if (request.getRequestURI().contains("mag")) {
-//			if (username == null || !username.equals("admin")) {
-//				System.out.println("username="+username+"------return false");
-//				response.sendRedirect(request.getContextPath() + "/error/permission"); // 返回提示页面
-//				return false;
-//			}
-//		}
-//		System.out.println("username=" + username+"------return true");
-////		return false;
-//		return true;
-		if(request.getRequestURI().startsWith(request.getContextPath() + "/api/")) {
-			response.sendRedirect(request.getContextPath() + "/index"); // 返回提示页面 
-//			request.getRequestDispatcher("index").forward(request, response);  
-			return false;
-//			return true;
+		String username = (String) request.getSession().getAttribute("username");
+
+		if (request.getRequestURI().startsWith(request.getContextPath() + "/employee/")
+				|| request.getRequestURI().startsWith(request.getContextPath() + "/department/")) {
+			if (username == null || !username.equals("admin")) {
+				System.out.println("username=" + username + "------return false");
+				response.sendRedirect(request.getContextPath() + "/error/permission"); // 返回提示页面
+				return false;
+			}
 		}
+		System.out.println("username=" + username + "------return true");
+		// return false;
+		return true;
+		// if(request.getRequestURI().startsWith(request.getContextPath() + "/api/")) {
+		// response.sendRedirect(request.getContextPath() + "/index"); // 返回提示页面
+		//// request.getRequestDispatcher("index").forward(request, response);
+		// return false;
+		//// return true;
+		// }
+		// return true;
+	}
+
+	public boolean flag(HttpServletRequest request) {
+
+		boolean employeePath1 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/saveEmp");//保存员工
+		boolean employeePath2 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/editEmp");//编辑员工
+		boolean employeePath3 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/deleteEmp");//删除员工
+//		boolean employeePath4 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/");
+		boolean departmentPath1 = request.getRequestURI().startsWith(request.getContextPath() + "/department/saveDepart");//保存部门
+		boolean departmentPath2 = request.getRequestURI().startsWith(request.getContextPath() + "/department/editDepart");//编辑部门
+		boolean departmentPath3 = request.getRequestURI().startsWith(request.getContextPath() + "/department/deleteDepart");//删除部门
+//		boolean departmentPath4 = request.getRequestURI().startsWith(request.getContextPath() + "/department/");
+
 		return true;
 	}
 
