@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import com.lx.entity.Users;
 import com.lx.service.impl.UsersServiceImpl;
 
 @Controller
+//@RequestMapping("users")
 public class UsersController {
 
 	@Autowired
@@ -28,7 +28,7 @@ public class UsersController {
 	@RequestMapping("saveUser")
 	public String createUser(Users user) {
 		usersServiceImpl.createUsers(user);
-		return "redirect:home";
+		return "redirect:userList";
 	}
 
 	// 修改
@@ -48,7 +48,6 @@ public class UsersController {
 	}
 
 	// 分页
-	@SuppressWarnings("unchecked")
 	public List<Users> getUsersPage() {
 		Pageable pageable = new PageRequest(0, 5);
 		List<Users> usersPageList = usersServiceImpl.getUsersPage(pageable);
@@ -57,8 +56,7 @@ public class UsersController {
 
 	
 	
-	@SuppressWarnings("unchecked")
-	@RequestMapping("userList")
+	@RequestMapping("users/userList")
 	public ModelAndView userList(HttpSession session) {
 		ModelAndView mView=new ModelAndView();
 		List<Users> usersList = getUsersPage();//分页
@@ -71,7 +69,7 @@ public class UsersController {
 	
 	
 	//返回用户编辑页面
-	@RequestMapping("editUser")
+	@RequestMapping("users/editUser")
 	public ModelAndView editUser(@RequestParam("id") Long id) {
 		user=usersServiceImpl.getUsers(id);
 		ModelAndView mView=new ModelAndView();

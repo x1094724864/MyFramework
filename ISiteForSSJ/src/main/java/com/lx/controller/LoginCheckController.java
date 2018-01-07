@@ -12,23 +12,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lx.entity.Users;
 import com.lx.service.impl.UsersServiceImpl;
+
 @Controller
 public class LoginCheckController {
-	@Autowired 
+	@Autowired
 	private UsersServiceImpl usersServiceImpl;
-	
-	
+
 	private ModelAndView mView = new ModelAndView();
-	private Users user=new Users();
-	
-	
+	private Users user = new Users();
+
 	@RequestMapping("depart_list")
 	public ModelAndView listDepart() {
-		
+
 		mView.setViewName("department/depart_list");
 		return mView;
 	}
-	
+
 	public boolean flag(HttpServletRequest request) {
 		// 获取请求中的 username
 		String username = request.getParameter("username");
@@ -43,71 +42,64 @@ public class LoginCheckController {
 		}
 		return false; // 表示无用户
 	}
-	
-	
-	
-	
-	//点击登陆
+
+	// 点击登陆
 	@RequestMapping("tosign_in")
 	private ModelAndView toSign_in() {
 		System.out.println("进入登陆页面！");
 		mView.setViewName("login/sign_in");
 		return mView;
-	}	
-	//点击登陆
+	}
+
+	// 点击登陆
 	@RequestMapping("tosign_up")
 	private ModelAndView toSign_up() {
 		System.out.println("进入注册页面！");
 		mView.setViewName("login/sign_up");
 		return mView;
-	}	
-	//点击注销
+	}
+
+	// 点击注销
 	@RequestMapping("tologout")
 	private String toLogout(HttpSession session) {
 		System.out.println("进入注销页面！");
 		session.invalidate();
-//		mView.setViewName("login/sign_up");
 		return "redirect:home";
-	}	
-	
-	
-	
-	
-	//进入主页
+	}
+
+	// 进入主页
 	@RequestMapping("home")
-	private ModelAndView toHome(HttpServletRequest request,HttpSession session, Users user) {
-		String username=user.getUsername();
-		String password=user.getPassword();
+	private ModelAndView toHome(HttpServletRequest request, HttpSession session, Users user) {
 		mView.setViewName("home/home");
 		if (flag(request)) {
+			String username = user.getUsername();
+			String password = user.getPassword();
+			Users user1 = usersServiceImpl.getUsersByNameAndPass(username, password).get(0);
+			int permission = user1.getPermission();
 			session.setAttribute("username", username);
+			session.setAttribute("permission", permission);
 			boolean flag = username.equals(null) || "".equals(username);
 			session.setAttribute("flag", flag);
-			System.out.println(session.getAttribute("username"));
-			System.out.println(session.getAttribute("flag"));
-			System.out.println("进入主页面！");
 			return mView;
 		}
-		
-//		System.out.println("登录失败，进入登录页面！");
-//		return toSign_in();
+
+		// return toSign_in();
 		System.out.println("登录失败，游客身份进入主页面！");
 		return mView;
-	}	
+	}
+
 	@RequestMapping("home_top")
 	private ModelAndView toHome_top() {
 		System.out.println("进入上页面！");
 		mView.setViewName("home/home_top");
 		return mView;
-	}	
+	}
+
 	@RequestMapping("home_left")
 	private ModelAndView toHome_left() {
 		System.out.println("进入左页面！");
 		mView.setViewName("home/home_left");
 		return mView;
-	}	
-	
-	
-	
-	
+	}
+
 }

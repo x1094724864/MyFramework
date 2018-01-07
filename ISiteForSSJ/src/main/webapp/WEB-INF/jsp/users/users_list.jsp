@@ -58,7 +58,7 @@ a {
 								<tr>
 									<td>${user.username}</td>
 									<td>${user.password}</td>
-									<td>${user.permission}</td>
+									<td>${user.permissionName}</td>
 									<td>
 										<button>
 											<a href="editUser?id=${user.id}">修改</a>

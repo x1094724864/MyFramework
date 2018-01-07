@@ -26,11 +26,12 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 			HttpServletResponse response, Object handler) throws Exception {
 		System.out.println("RequestInterceptor preHandle------------" + request.getRequestURI());
 		if(request.getRequestURI().startsWith(request.getContextPath() + "/api/")) {
-			response.sendRedirect(request.getContextPath() + "/index"); // 返回提示页面 
+			response.sendRedirect(request.getContextPath() + "/error"); // 返回提示页面 
 //			request.getRequestDispatcher("index").forward(request, response);  
 			return false;
 //			return true;
 		}
+		System.out.println("RequestInterceptor preHandle------------" + request.getRequestURI());
 		return true;
 	}
 

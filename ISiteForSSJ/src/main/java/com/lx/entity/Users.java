@@ -1,17 +1,11 @@
 package com.lx.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.lx.vo.PermissionTest;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,16 +21,39 @@ public class Users {
 	private Long id;
 	private String username;
 	private String password;
-	
-	@ManyToOne
-	@JoinColumn(name = "permission") 
-	private Permission permission;	// 用户权限
 
-//	@Enumerated(EnumType.ORDINAL)
-//	@Column(name="permission")
-//	private PermissionTest permission;
-	
-	
+	public static final int READ_ONLY = 0;// 只读权限
+	public static final int MODIFY = 1;// 修改权限
+	public static final int SUPERADMIN = 2;// 超级权限
+	private int permission;
+	@Transient
+	private String permissionName;
+
+	// public String getPermission() {
+	// return permission;
+	// }
+
+/*	public void setPermission(int permission) {
+		if (permission == 2) {
+			this.permissionName = "高级管理";
+		} else if (permission == 1) {
+			this.permissionName = "普通管理";
+		} else {
+			this.permissionName = "普通用户";
+		}
+	}*/
+
+	public String getPermissionName() {
+		if (permission == 2) {
+			this.permissionName = "高级管理";
+		} else if (permission == 1) {
+			this.permissionName = "普通管理";
+		} else {
+			this.permissionName = "普通用户";
+		}
+		return permissionName;
+	}
+
 	public Users(Long id) {
 		super();
 		this.id = id;

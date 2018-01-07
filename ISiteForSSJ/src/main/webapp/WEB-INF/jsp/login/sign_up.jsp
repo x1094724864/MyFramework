@@ -61,7 +61,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- <input type="hidden" name="permission" value="0" />  -->
+							<input type="hidden" name="permission" value="0" /> 
 							<div style="padding: 30px;">
 								<input type="submit" id="button"
 									class="button button-block bg-main text-big input-big"

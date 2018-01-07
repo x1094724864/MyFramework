@@ -31,7 +31,7 @@ Department department= ModelAttribute.s
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="users/saveUser" method="post">
+				<form action="<%=request.getContextPath() %>/saveUser" method="post">
 					<table align="center">
 						<tr>
 							<td colspan="2"><input type="hidden" name="id"
