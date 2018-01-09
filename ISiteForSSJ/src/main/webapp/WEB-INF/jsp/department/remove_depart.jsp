@@ -55,7 +55,7 @@ a {
 									<td>${depart.department_desc}</td>
 									<td>
 										<button>
-											<a href="<%=request.getContextPath()%>/department/deleteDepart?id=${depart.id}">删除</a>
+											<a href="<%=request.getContextPath()%>/department/deleteDepartById?id=${depart.id}">删除</a>
 										</button>
 									</td>
 

@@ -5,10 +5,12 @@
 <h2>Hello World!</h2>
 <h1>index</h1>
 
-<%-- <%
-response.sendRedirect("/home");
-%> --%>
-<a href="login">登陆</a>
+<%
+response.sendRedirect("tosign_in");
+%>
+<a href="<%=request.getContextPath()%>/tosign_in">登陆</a>
+<a href="tosign_up">注册</a>
+<a href="users/userList">用户列表</a>
 <a href="department/depart_list">所有部门</a>
 <a href="<%=request.getContextPath()%>/hello">hello</a>
 <a href="<%=request.getContextPath()%>/pageable">pageable</a>

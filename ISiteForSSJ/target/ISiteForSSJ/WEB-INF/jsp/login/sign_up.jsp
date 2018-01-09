@@ -16,14 +16,14 @@
 </head>
 <body>
 
-	<form action="saveMag.action" method="post">
+	<!-- <form action="saveUser" method="post"> -->
+	<form action="temporary" method="post">
 		<div class="bg"></div>
 		<div class="container">
 			<div class="line bouncein">
 				<div class="xs6 xm4 xs3-move xm4-move">
 					<div style="height: 150px;"></div>
 					<div class="media media-y margin-big-bottom"></div>
-					<form action="index.html" method="post">
 						<div class="panel loginbox">
 							<div class="text-center margin-big padding-big-top">
 								<h1>用户注册</h1>
@@ -32,14 +32,14 @@
 								style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
 								<div class="form-group">
 									<div class="field field-icon-right">
-										<input type="text" class="input input-big" name="manageUsers.name"
+										<input type="text" class="input input-big" name="username"
 											id="username" placeholder="注册账号" /> <span
 											class="icon icon-user margin-small-right"></span>
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="field field-icon-right">
-										<input type="password" class="input input-big" name="manageUsers.password"
+										<input type="password" class="input input-big" name="password"
 											id="password" placeholder="密码" /> <span
 											class="icon icon-key margin-small-right"></span>
 									</div>
@@ -62,13 +62,13 @@
 									</div>
 								</div>
 							</div>
+							<input type="hidden" name="permission" value="0" /> 
 							<div style="padding: 30px;">
 								<input type="submit" id="button"
 									class="button button-block bg-main text-big input-big"
 									value="注册">
 							</div>
 						</div>
-					</form>
 				</div>
 			</div>
 		</div>

@@ -30,15 +30,39 @@ public class UsersController {
 		usersServiceImpl.createUsers(user);
 		return "redirect:userList";
 	}
+	
+	// 添加临时用户
+	@RequestMapping("temporary")
+	public ModelAndView temporaryUser(HttpSession session,Users user) {
+		usersServiceImpl.createUsers(user);
+		String username = user.getUsername();
+//		String password = user.getPassword();
+//		Users user1 = usersServiceImpl.getUsersByNameAndPass(username, password).get(0);
+		int permission = user.getPermission();
+		session.setAttribute("username", username);
+		session.setAttribute("permission", permission);
+		boolean flag = username.equals(null) || "".equals(username);
+		session.setAttribute("flag", flag);
+		session.setAttribute("user", user);
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("user", user);
+		mView.setViewName("home/home");
+//		return "redirect:home";
+		return mView;
+	}
 
 	// 修改
-	public void modifyUser(Users user) {
+	@RequestMapping("modifyUser")
+	public String modifyUser(Users user) {
 		usersServiceImpl.modifyUsers(user);
+		return "redirect:users/userList";
 	}
 
 	// 删除
-	public void deleteUser(Long id) {
+	@RequestMapping("users/deleteUser")
+	public String deleteUser(Long id) {
 		usersServiceImpl.removeUsers(id);
+		return "redirect:userList";
 	}
 
 	// 查询用户
@@ -78,7 +102,13 @@ public class UsersController {
 		return mView;
 	}
 	
-	
+	//进入用户添加页面
+	@RequestMapping("users/addUser")
+	public ModelAndView addUser() {
+		ModelAndView mView=new ModelAndView();
+		mView.setViewName("users/edit_user");
+		return mView;
+	}
 	
 	
 	

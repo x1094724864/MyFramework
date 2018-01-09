@@ -25,31 +25,43 @@ public class Users {
 	public static final int READ_ONLY = 0;// 只读权限
 	public static final int MODIFY = 1;// 修改权限
 	public static final int SUPERADMIN = 2;// 超级权限
-	private int permission;
+	private Integer permission;
 	@Transient
 	private String permissionName;
 
+	private String email;
 	// public String getPermission() {
 	// return permission;
 	// }
 
-/*	public void setPermission(int permission) {
-		if (permission == 2) {
-			this.permissionName = "高级管理";
-		} else if (permission == 1) {
-			this.permissionName = "普通管理";
-		} else {
-			this.permissionName = "普通用户";
-		}
-	}*/
+	// public void setPermissionName(int permission) {
+	// if (permission > 9) {
+	// this.permissionName = "超级至尊无敌大管理";
+	// } else if (permission == 3) {
+	// this.permissionName = "超级管理";
+	// } else if (permission == 2) {
+	// this.permissionName = "管理用户";
+	// } else if (permission == 1) {
+	// this.permissionName = "普通用户";
+	// } else {
+	// this.permissionName = "临时用户";
+	// }
+	// }
 
 	public String getPermissionName() {
-		if (permission == 2) {
-			this.permissionName = "高级管理";
+
+		if (permission > 9) {
+			this.permissionName = "超级至尊无敌大管理";
+		} else if (permission == 3) {
+			this.permissionName = "超级管理";
+		} else if (permission == 2) {
+			this.permissionName = "管理用户";
 		} else if (permission == 1) {
-			this.permissionName = "普通管理";
-		} else {
 			this.permissionName = "普通用户";
+		} else if (permission == 0) {
+			this.permissionName = "临时用户";
+		} else if (permission == null) {
+			this.permissionName = "游客";
 		}
 		return permissionName;
 	}

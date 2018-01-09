@@ -66,7 +66,8 @@ td.showinfo {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理
+			<%-- <img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理 --%>
+			<img src="<%=request.getContextPath()%>/images/user_detail.png" alt="">员工管理
 		</h1>
 		<br> <br>
 		<div class="bloc">

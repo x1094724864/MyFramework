@@ -6,15 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>后台管理系统</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style2.css">
 <!-- <link rel="stylesheet" href="../../css/base.css"> -->
 
 <style>
@@ -29,13 +36,14 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="<%=request.getContextPath() %>/images/posts.png" alt="">员工管理——删除员工信息
+			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理——删除员工信息
 		</h1>
 		<br> <br>
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="employee/deleteEmpByIds" method="post">
+				<form action="<%=request.getContextPath()%>/employee/deleteEmpByIds"
+					method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr>
@@ -66,11 +74,12 @@ a {
 									<%-- <td>${emp.entry_Time }</td> --%>
 									<td>${emp.address }</td>
 									<td>${emp.tel_number }</td>
-									<%-- 	<td>
+									<td>
 										<button>
-											<a href="employee/deleteEmp?employee.id=${emp.id}">删除</a>
+											<a
+												href="<%=request.getContextPath()%>/employee/deleteEmpById?id=${emp.id}">删除</a>
 										</button>
-									</td> --%>
+									</td>
 
 								</tr>
 							</c:forEach>
@@ -120,10 +129,12 @@ a {
 								</div>
 							</form> --%>
 						</tfoot>
-					</table><hr>
-					<br><br>
-					<input type="submit" value="确认删除" />&nbsp;&nbsp;<input
-						type="reset" value="取消删除"><br><br>
+					</table>
+					<br> 
+					<hr>
+					<br> 
+					<br> <input type="submit" value="确认删除" />&nbsp;&nbsp;<input
+						type="reset" value="取消删除"><br> <br>
 				</form>
 
 			</div>
@@ -131,6 +142,13 @@ a {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
-		<br><br><br><br><br><br><br><br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 </body>
 </html>

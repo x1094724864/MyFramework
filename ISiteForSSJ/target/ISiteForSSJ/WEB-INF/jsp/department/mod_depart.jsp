@@ -63,7 +63,7 @@ a {
 									</td>
 									<td><button>
 											<a
-												href="<%=request.getContextPath()%>/editDepart?id=${depart.id}">修改</a>
+												href="<%=request.getContextPath()%>/department/editDepart?id=${depart.id}">修改</a>
 										</button></td>
 
 								</tr>

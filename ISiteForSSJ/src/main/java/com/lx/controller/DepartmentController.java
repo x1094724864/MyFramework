@@ -96,7 +96,7 @@ public class DepartmentController {
 	}
 
 	// 删除单个部门
-	@RequestMapping(value = "deleteDepart")
+	@RequestMapping(value = "deleteDepartById")
 	private String deleteDepart(@RequestParam("id") Long id) {
 		departmentServiceImpl.deleteDepart(id);
 		return "redirect:removeDepart";

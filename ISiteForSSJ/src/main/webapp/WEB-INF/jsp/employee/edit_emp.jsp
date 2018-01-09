@@ -56,7 +56,7 @@ span.item {
 		<div class="bloc">
 			<div class="title">员工列表</div>
 			<div class="content">
-				<form action="employee/saveEmp" method="post" enctype="multipart/form-data">
+				<form action="saveEmp" method="post" enctype="multipart/form-data">
 					<!-- <form action="saveEmp" method="post" > -->
 					<table align="center">
 						<tr class="hidden" style="height: 0px;">
@@ -99,6 +99,7 @@ span.item {
 							<td><span span class="title">学历</span></td>
 							<td><select name="education" tabindex="6">
 									<option selected="selected">-----请选择学历-----</option>
+									<option>硕士及以上</option>
 									<option>本科</option>
 									<option>大专</option>
 									<option>高中</option>

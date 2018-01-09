@@ -14,7 +14,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
 	
 	// 更新并保存部门
-		<S extends Users> S save(Users users);
+		<S extends Users> S save(S users);
 
 		// 根据ID查找制定部门
 //		@Query(value = "SELECT * FROM employee_info WHERE id = ?1", nativeQuery = true)
@@ -35,7 +35,7 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 		void delete(Long id);
 
 		// 根据姓名查找
-		List<Users> findByUsername(String Usersname);
+		List<Users> findByUsername(String username);
 
 		// 根据部门查找
 //		List<Users> findByDepartmentName(String departmentName);

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 
-public class RequestInterceptor extends HandlerInterceptorAdapter {
+public class RequestInterceptor2 extends HandlerInterceptorAdapter {
 
 	/** 
      * 在业务处理器处理请求之前被调用 

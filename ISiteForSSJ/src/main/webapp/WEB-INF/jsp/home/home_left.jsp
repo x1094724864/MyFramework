@@ -5,31 +5,49 @@
 <head>
 <title>后台管理</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style2.css">
 </head>
 <body>
 	<!--      左侧菜单     -->
 	<div id="sidebar">
 		<ul>
-			<li><a><img src="<%=request.getContextPath()%>/images/layout.png" alt="">部门管理</a>
+			<li><a><img
+					src="<%=request.getContextPath()%>/images/layout.png" alt="">部门管理</a>
 				<ul>
 					<li><a href="department/listDepart" target="right">所有部门</a></li>
 					<li><a href="department/editDepart" target="right">添加部门</a></li>
 					<li><a href="department/modDepart" target="right">修改部门</a></li>
 					<li><a href="department/removeDepart" target="right">删除部门</a></li>
 				</ul></li>
-			<li><a><img src="<%=request.getContextPath()%>/images/huser.png" alt="">员工管理</a>
+			<li><a>&nbsp;<img
+					src="<%=request.getContextPath()%>/images/huser.png" alt="">员工管理</a>
 				<ul>
 					<li><a href="employee/listEmp" target="right">查看员工</a></li>
 					<li><a href="employee/editEmp" target="right">添加员工</a></li>
+					<li><a href="employee/modEmp" target="right">修改员工</a></li>
+					<li><a href="employee/removeEmp" target="right">删除员工</a></li>
+				</ul></li>
+			<li><a><img
+					src="<%=request.getContextPath()%>/images/husers.png" alt="">用户管理</a>
+				<ul>
+					<li><a href="users/userList" target="right">用户列表</a></li>
+					<li><a href="users/addUser" target="right">添加用户</a></li>
 					<li><a href="employee/modEmp" target="right">修改员工</a></li>
 					<li><a href="employee/removeEmp" target="right">删除员工</a></li>
 				</ul></li>

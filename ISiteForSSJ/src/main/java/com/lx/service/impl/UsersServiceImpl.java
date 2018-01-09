@@ -2,9 +2,7 @@ package com.lx.service.impl;
 
 import java.util.List;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +56,12 @@ public class UsersServiceImpl implements IUsersService {
 		return usersList;
 	}
 
+	// 根据用户名获取用户
+	public List<Users> getUsersByName(String username) {
+		List<Users> usersList = usersRepository.findByUsername(username);
+		return usersList;
+	}
+	
 	@Override
 	public List<Users> getUsersPage(Pageable pageable) {
 		List<Users> page=usersRepository.findAll(pageable).getContent();

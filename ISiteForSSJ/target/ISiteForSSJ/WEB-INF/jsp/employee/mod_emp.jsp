@@ -65,7 +65,7 @@ a {
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="editEmp?id=${emp.id}">修改</a>
+											<a href="employee/editEmp?id=${emp.id}">修改</a>
 										</button>
 									</td>
 

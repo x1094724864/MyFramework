@@ -31,7 +31,7 @@ Department department= ModelAttribute.s
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="<%=request.getContextPath() %>/saveUser" method="post">
+				<form action="<%=request.getContextPath() %>/modifyUser" method="post">
 					<table align="center">
 						<tr>
 							<td colspan="2"><input type="hidden" name="id"
@@ -40,7 +40,7 @@ Department department= ModelAttribute.s
 						<tr>
 							<td><span class="title">用户名</span></td>
 							<td><input type="text" name="username"
-								value="${user.username}" tabindex="1" readonly="readonly" disabled="disabled"/></td>
+								value="${user.username}" tabindex="1" readonly="readonly" /></td>
 						</tr>
 						<tr>
 							<td><span class="title">密码</span></td>
@@ -50,9 +50,10 @@ Department department= ModelAttribute.s
 						<tr>
 							<td><span class="title">权限等级</span></td>
 							<td><select name="permission" tabindex="3">
-									<option value="0">普通用户</option>
-									<option value="1">普通管理</option>
-									<option value="2">高级管理</option>
+									<option value="0">临时用户</option>
+									<option value="1">普通用户</option>
+									<option value="2">管理用户</option>
+									<option value="3">超级管理</option>
 							</select></td>
 						</tr>
 						<tr>

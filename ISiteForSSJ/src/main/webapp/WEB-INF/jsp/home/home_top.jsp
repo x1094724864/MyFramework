@@ -28,15 +28,15 @@
 			<!-- Hi, <a>MyMaster</a> -->
 			<c:choose>
 				<c:when test="${flag }">
-					<a href="login">登录</a>
+					<a href="<%=request.getContextPath() %>/tosign_in">登录</a>
 				</c:when>
 				<c:otherwise>
 					<c:choose>
 						<c:when test="<%=username == null%>">
-							您的身份是游客，您可以选择<a href="tosign_in" target="_parent">登录</a>
+							您的身份是游客，您可以选择<a href="<%=request.getContextPath() %>/tosign_in" target="_parent">登录</a>
 						</c:when>
 						<c:otherwise>
-							你好！<%=username%>&nbsp;|&nbsp;<a href="tologout" target="_parent">注销</a>
+							你好！<%=username%>&nbsp;|&nbsp;<a href="<%=request.getContextPath() %>/tologout" target="_parent">注销</a>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>

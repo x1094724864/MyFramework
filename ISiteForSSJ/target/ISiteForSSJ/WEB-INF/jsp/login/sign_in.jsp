@@ -62,6 +62,11 @@
 								class="button button-block bg-main text-big input-big"
 								value="登录">
 						</div>
+						<div style="padding: 30px;">
+							<a href="tosign_up"><span style="text-align: center;">没有账号？注册临时游客账户</span></a>
+							<a href="home"><span style="text-align: center;">不登录，直接游客访问</span></a>
+						</div>
+						
 					</div>
 				<!-- </form> -->
 			</div>

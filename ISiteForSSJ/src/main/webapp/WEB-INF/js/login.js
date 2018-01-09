@@ -1,140 +1,108 @@
-$(function(){
-	
-	$('#switch_qlogin').click(function(){
-		$('#switch_login').removeClass("switch_btn_focus").addClass('switch_btn');
-		$('#switch_qlogin').removeClass("switch_btn").addClass('switch_btn_focus');
-		$('#switch_bottom').animate({left:'0px',width:'70px'});
-		$('#qlogin').css('display','none');
-		$('#web_qr_login').css('display','block');
-		
-		});
-	$('#switch_login').click(function(){
-		
-		$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
-		$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
-		$('#switch_bottom').animate({left:'154px',width:'70px'});
-		
-		$('#qlogin').css('display','block');
-		$('#web_qr_login').css('display','none');
-		});
-if(getParam("a")=='0')
-{
-	$('#switch_login').trigger('click');
+//js的验证码
+//var code;
+//function createCode() {
+//	code = "";
+//	var codeLength = 4; // 验证码的长度
+//	var checkCode = $('#checkCode');
+//	var codeChars = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd',
+//			'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r',
+//			's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E',
+//			'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S',
+//			'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); // 所有候选组成验证码的字符，当然也可以用中文的
+//	for (var i = 0; i < codeLength; i++) {
+//		var charNum = Math.floor(Math.random() * 52);
+//		code += codeChars[charNum];
+//	}
+//	if (checkCode) {
+//		checkCode.className = "code";
+//		checkCode.innerHTML = code;
+//	}
+//}
+//function validateCode() {
+//	var inputCode = $('#inputCode').val();
+//	if (inputCode.length <= 0) {
+//		alert("请输入验证码！");
+//	} else if (inputCode.toUpperCase() != code.toUpperCase()) {
+//		alert("验证码输入有误！");
+//		createCode();
+//	} else {
+//		alert("验证码正确！");
+//	}
+//}
+
+//java后台验证码
+function chageCode() {
+	$('#codeImage').attr('src', 'authCode?abc=' + Math.random());
+	// 链接后添加Math.random，确保每次产生新的验证码，避免缓存问题。
 }
 
-	});
-	
-function logintab(){
-	scrollTo(0);
-	$('#switch_qlogin').removeClass("switch_btn_focus").addClass('switch_btn');
-	$('#switch_login').removeClass("switch_btn").addClass('switch_btn_focus');
-	$('#switch_bottom').animate({left:'154px',width:'96px'});
-	$('#qlogin').css('display','none');
-	$('#web_qr_login').css('display','block');
-	
-}
-
-
-//鏍规嵁鍙傛暟鍚嶈幏寰楄鍙傛暟 pname绛変簬鎯宠鐨勫弬鏁板悕 
-function getParam(pname) { 
-    var params = location.search.substr(1); // 鑾峰彇鍙傛暟 骞充笖鍘绘帀锛� 
-    var ArrParam = params.split('&'); 
-    if (ArrParam.length == 1) { 
-        //鍙湁涓€涓弬鏁扮殑鎯呭喌 
-        return params.split('=')[1]; 
-    } 
-    else { 
-         //澶氫釜鍙傛暟鍙傛暟鐨勬儏鍐� 
-        for (var i = 0; i < ArrParam.length; i++) { 
-            if (ArrParam[i].split('=')[0] == pname) { 
-                return ArrParam[i].split('=')[1]; 
-            } 
-        } 
-    } 
-}  
-
-
-var reMethod = "GET",
-	pwdmin = 6;
-
-$(document).ready(function() {
-
-
-	$('#reg').click(function() {
-
-		if ($('#user').val() == "") {
-			$('#user').focus().css({
-				border: "1px solid red",
-				boxShadow: "0 0 2px red"
-			});
-			$('#userCue').html("<font color='red'><b>脳鐢ㄦ埛鍚嶄笉鑳戒负绌�</b></font>");
-			return false;
-		}
-
-
-
-		if ($('#user').val().length < 4 || $('#user').val().length > 16) {
-
-			$('#user').focus().css({
-				border: "1px solid red",
-				boxShadow: "0 0 2px red"
-			});
-			$('#userCue').html("<font color='red'><b>脳鐢ㄦ埛鍚嶄綅4-16瀛楃</b></font>");
-			return false;
-
-		}
+function validateCode() {
+	var inputCode = $('#verification_code').val();
+	if (inputCode == "") {
+		alert("请填写验证码");
+	} else {
+		alert("进入ajax");
 		$.ajax({
-			type: reMethod,
-			url: "/member/ajaxyz.php",
-			data: "uid=" + $("#user").val() + '&temp=' + new Date(),
-			dataType: 'html',
-			success: function(result) {
-
-				if (result.length > 2) {
-					$('#user').focus().css({
-						border: "1px solid red",
-						boxShadow: "0 0 2px red"
-					});$("#userCue").html(result);
-					return false;
+			type : "Post",
+			contentType : "application/json",
+			// url : chageCode(),
+			url : "trueOrFalse?inputCode=" + inputCode,
+			processData : false,
+			dataType : "json",
+			data : "{}",
+			success : function(data) {
+				if (data) {
+					checkLogin()
 				} else {
-					$('#user').css({
-						border: "1px solid #D7D7D7",
-						boxShadow: "none"
-					});
+					alert("后台传来的是" + data);
 				}
-
-			}
+			},
+		// error : function(data) {
+		// alert("inputCode:" + inputCode);
+		// }
 		});
+	}
+}
 
+function checkLogin() {
+	var name = $('#username').val();
+	var password = $('#password').val();
+	if (name == "") {
+		// $('#username_span').html("用户名不能包含空格，请重新输入").css("color", "red");
+		alert("请填写用户名！");
+	} else if (password == "") {
+		/* $('#username_span').html("用户名太短，请重新输入").css("color", "red"); */
+		alert("请填写密码！");
+	} else if (password != "" && name != "") {
+		$
+				.ajax({
+					type : "Post",
+					contentType : "application/json",
+					url : "checkUsernameAndPassword?username=" + name
+							+ "&password=" + password,
+					processData : false,
+					dataType : "json",
+					data : "{}",
+					success : function(data) {
+						if (data) {
+							// window.location.href = "home?username=" + name+
+							// "&password=" + password;
+							document
+									.write("<form action='home' method=post name=form1 style='display:none'>");
+							document
+									.write("<input type='hidden' name='username' value='"
+											+ name + "'/>");
+							document
+									.write("<input type='hidden' name='password' value='"
+											+ password + "'/>");
+							document.write("</form>");
+							document.form1.submit();
 
-		if ($('#passwd').val().length < pwdmin) {
-			$('#passwd').focus();
-			$('#userCue').html("<font color='red'><b>脳瀵嗙爜涓嶈兘灏忎簬" + pwdmin + "浣�</b></font>");
-			return false;
-		}
-		if ($('#passwd2').val() != $('#passwd').val()) {
-			$('#passwd2').focus();
-			$('#userCue').html("<font color='red'><b>脳涓ゆ瀵嗙爜涓嶄竴鑷达紒</b></font>");
-			return false;
-		}
-
-		var sqq = /^[1-9]{1}[0-9]{4,9}$/;
-		if (!sqq.test($('#qq').val()) || $('#qq').val().length < 5 || $('#qq').val().length > 12) {
-			$('#qq').focus().css({
-				border: "1px solid red",
-				boxShadow: "0 0 2px red"
-			});
-			$('#userCue').html("<font color='red'><b>脳QQ鍙风爜鏍煎紡涓嶆纭�</b></font>");return false;
-		} else {
-			$('#qq').css({
-				border: "1px solid #D7D7D7",
-				boxShadow: "none"
-			});
-			
-		}
-
-		$('#regUser').submit();
-	});
-	
-
-});
+							alert("登陆成功！确认跳转");
+						} else {
+							alert("用户名或密码错误！");
+						}
+					}
+				});
+	}
+}

@@ -66,7 +66,8 @@ td.showinfo {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理
+			<%-- <img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理 --%>
+			<img src="<%=request.getContextPath()%>/images/user_detail.png" alt="">员工管理
 		</h1>
 		<br> <br>
 		<div class="bloc">
@@ -121,10 +122,10 @@ td.showinfo {
 								<td class="item">邮箱</td>
 								<td class="showinfo">${emp.mail }</td>
 								<td class="item" style="text-align: center;" colspan="1"><button>
-										<a href="editEmp?id=${emp.id }" style="text-align: center;font-size: 18px;">修改信息</a>
+										<a href="employee/editEmp?id=${emp.id }" style="text-align: center;font-size: 18px;">修改信息</a>
 									</button></td>
 								<td><button>
-										<a href="deleteEmpById?id=${emp.id }" style="text-align: left;font-size: 18px;">删除员工</a>
+										<a href="employee/deleteEmpById?id=${emp.id }" style="text-align: left;font-size: 18px;">删除员工</a>
 									</button></td>
 							</tr>
 						</tbody>

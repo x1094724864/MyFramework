@@ -35,7 +35,8 @@ a {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="<%=request.getContextPath()%>/images/posts.png" alt="">用户管理
+			<img src="<%=request.getContextPath()%>/images/users1.png" alt=""> 用户管理
+			<%-- <img src="<%=request.getContextPath()%>/images/users_manage.png" alt=""> 用户管理 --%>
 		</h1>
 		<br> <br>
 		<div class="bloc">
@@ -53,7 +54,6 @@ a {
 							</tr>
 						</thead>
 						<tbody>
-							<%-- <c:forEach var="user" items="${usersList}" varStatus="vs"> --%>
 							<c:forEach var="user" items="${usersList}" varStatus="vs">
 								<tr>
 									<td>${user.username}</td>
@@ -62,6 +62,9 @@ a {
 									<td>
 										<button>
 											<a href="editUser?id=${user.id}">修改</a>
+										</button>
+										<button>
+											<a href="deleteUser?id=${user.id}">删除</a>
 										</button>
 									</td>
 								</tr>

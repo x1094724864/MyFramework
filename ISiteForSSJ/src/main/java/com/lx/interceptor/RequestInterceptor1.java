@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.lx.entity.Users;
-
 public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 
 	/**
@@ -20,62 +18,63 @@ public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		System.out.println("权限拦截器1------------" + request.getRequestURI());
-		
-		 String username = (String) request.getSession().getAttribute("username");
-		 Integer permission=  (Integer) request.getSession().getAttribute("permission");
-//		 int permission=(int) request.getSession().getAttribute("permission");
-//		Users user = (Users) request.getSession().getAttribute("user");
-		 System.err.println(request.getContextPath() );
-		if (request.getRequestURI().startsWith(request.getContextPath() + "/employee/")
-				|| request.getRequestURI().startsWith(request.getContextPath() + "/department/")) {
-		/*	if (username == null || !username.equals("admin")) {
-				System.out.println("username=" + username + "------return false");
-				response.sendRedirect(request.getContextPath() + "/errors/error"); // 返回提示页面
-				return false;
-			}*/
-//			String username = user.getUsername();
-		
-			if (permission==0) {
+
+//		String username = (String) request.getSession().getAttribute("username");
+		Integer permission = (Integer) request.getSession().getAttribute("permission");
+		//加入请求的是增删改等方法，则进行权限判定
+		if (permissionRequest(request)) {
+			if (permission <=1||permission==null) {
 				System.out.println("permission=" + permission + "------return false");
 				response.sendRedirect(request.getContextPath() + "/error"); // 返回提示页面
 				return false;
-				
 			}
-			
-			
+			return true;
+		}else if (usersManagePermissionRequest(request)) {
+			if (permission <3||permission==null) {
+				System.out.println("permission=" + permission + "------return false");
+				response.sendRedirect(request.getContextPath() + "/error"); // 返回提示页面
+				return false;
+			}
+			return true;
 		}
-//		System.out.println("username=" + username + "------return true");
-		// return false;
 		return true;
-		// if(request.getRequestURI().startsWith(request.getContextPath() + "/api/")) {
-		// response.sendRedirect(request.getContextPath() + "/index"); // 返回提示页面
-		//// request.getRequestDispatcher("index").forward(request, response);
-		// return false;
-		//// return true;
-		// }
-		// return true;
 	}
 
-	public boolean flag(HttpServletRequest request) {
-
+	public boolean permissionRequest(HttpServletRequest request) {
 		boolean employeePath1 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/saveEmp");// 保存员工
 		boolean employeePath2 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/editEmp");// 编辑员工
 		boolean employeePath3 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/deleteEmp");// 删除员工
-		// boolean employeePath4 =
-		// request.getRequestURI().startsWith(request.getContextPath() + "/employee/");
+		boolean employeePath4 = request.getRequestURI().startsWith(request.getContextPath() + "/employee/detailsEmp");// 员工详细信息
+
 		boolean departmentPath1 = request.getRequestURI()
 				.startsWith(request.getContextPath() + "/department/saveDepart");// 保存部门
 		boolean departmentPath2 = request.getRequestURI()
 				.startsWith(request.getContextPath() + "/department/editDepart");// 编辑部门
 		boolean departmentPath3 = request.getRequestURI()
 				.startsWith(request.getContextPath() + "/department/deleteDepart");// 删除部门
-		// boolean departmentPath4 =
-		// request.getRequestURI().startsWith(request.getContextPath() +
-		// "/department/");
-
-		return true;
+		//加入请求的是以上方法，返回true
+		if (employeePath1 || employeePath2 || employeePath3 ||employeePath4 || departmentPath1 || departmentPath2 || departmentPath3) {
+			return true;
+		}
+		return false;
 	}
 
+	public boolean usersManagePermissionRequest(HttpServletRequest request) {
+		boolean permissionRequest = request.getRequestURI().startsWith(request.getContextPath() + "/users");// 访问用户管理相关
+		//加入请求的是以上方法，返回true
+		if (permissionRequest) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
