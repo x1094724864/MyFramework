@@ -17,12 +17,14 @@ import org.hibernate.dialect.MySQL5InnoDBDialect;
 import org.hibernate.dialect.Oracle10gDialect;
 import org.hibernate.dialect.PostgreSQL82Dialect;
 import org.hibernate.dialect.SQLServer2008Dialect;
+import org.springframework.stereotype.Component;
 /**
  * 根据application.properties文件配置，动态匹配数据库
  * 在applicationContext.xml调用
  * @author mxy
  *
  */
+@Component
 public class Hibernates {
 	/**
 	 * Initialize the lazy property value.

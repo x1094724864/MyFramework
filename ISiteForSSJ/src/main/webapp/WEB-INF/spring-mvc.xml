@@ -60,7 +60,7 @@
 	<!-- <mvc:view-controller path="tosign_in" view-name="redirect:login/sign_in"/> -->
 
 	<!-- 配置 拦截器，好像不能使用通配符,可能是因为要分配拦截顺序 -->
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/*" />
 			<mvc:exclude-mapping path="/**/fonts/*" />
@@ -87,7 +87,7 @@
 			<mvc:exclude-mapping path="/**/*.woff" />
 			<bean class="com.lx.interceptor.RequestInterceptor2"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	<!-- 将Controller抛出的异常转到特定View 打开注释后会跳转到500.jsp中 -->
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

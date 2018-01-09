@@ -15,14 +15,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ValidateCode {
 	@RequestMapping({ "authCode" })
 	public void getAuthCode(HttpServletRequest request, HttpServletResponse response, HttpSession session)
 			throws IOException {
-		int width = 63;
-		int height = 37;
+		int width = 65;
+		int height = 40;
 		Random random = new Random();
 		// 设置response头信息
 		// 禁止缓存
@@ -66,7 +67,7 @@ public class ValidateCode {
 	}
 
 	@RequestMapping("trueOrFalse")
-	public boolean trueOrFalse(HttpSession session, @RequestParam("inputCode") String inputCode) {
+	public @ResponseBody boolean trueOrFalse(HttpSession session, @RequestParam("inputCode") String inputCode) {
 		String realCode = (String) session.getAttribute("strCode");
 		if (realCode.equals(inputCode)) {
 			return true;

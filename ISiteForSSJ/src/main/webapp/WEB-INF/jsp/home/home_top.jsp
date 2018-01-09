@@ -28,7 +28,7 @@
 			<!-- Hi, <a>MyMaster</a> -->
 			<c:choose>
 				<c:when test="${flag }">
-					<a href="<%=request.getContextPath() %>/tosign_in">登录</a>
+					<a href="<%=request.getContextPath() %>/tosign_in" target="_parent">登录</a>
 				</c:when>
 				<c:otherwise>
 					<c:choose>

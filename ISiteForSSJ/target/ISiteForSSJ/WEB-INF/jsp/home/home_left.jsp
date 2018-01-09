@@ -35,7 +35,7 @@
 					<li><a href="department/modDepart" target="right">修改部门</a></li>
 					<li><a href="department/removeDepart" target="right">删除部门</a></li>
 				</ul></li>
-			<li><a><img
+			<li><a>&nbsp;<img
 					src="<%=request.getContextPath()%>/images/huser.png" alt="">员工管理</a>
 				<ul>
 					<li><a href="employee/listEmp" target="right">查看员工</a></li>
@@ -47,7 +47,7 @@
 					src="<%=request.getContextPath()%>/images/husers.png" alt="">用户管理</a>
 				<ul>
 					<li><a href="users/userList" target="right">用户列表</a></li>
-					<li><a href="employee/editEmp" target="right">添加员工</a></li>
+					<li><a href="users/addUser" target="right">添加用户</a></li>
 					<li><a href="employee/modEmp" target="right">修改员工</a></li>
 					<li><a href="employee/removeEmp" target="right">删除员工</a></li>
 				</ul></li>

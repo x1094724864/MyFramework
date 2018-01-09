@@ -99,6 +99,7 @@ span.item {
 							<td><span span class="title">学历</span></td>
 							<td><select name="education" tabindex="6">
 									<option selected="selected">-----请选择学历-----</option>
+									<option>硕士及以上</option>
 									<option>本科</option>
 									<option>大专</option>
 									<option>高中</option>
