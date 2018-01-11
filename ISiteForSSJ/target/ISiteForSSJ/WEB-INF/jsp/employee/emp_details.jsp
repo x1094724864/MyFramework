@@ -91,7 +91,7 @@ td.showinfo {
 								<td class=" item">性别</td>
 								<td class="showinfo">${emp.gender }</td>
 								<td colspan="2" rowspan="3" style="text-align: center;" ><img
-									src="<%=request.getContextPath()%>/photo_picture/${emp.photoName}" alt="加载失败" class="image">
+									src="<%=request.getContextPath()%>/employee_photo_picture/${emp.photoName}" alt="加载失败" class="image">
 								</td>
 							</tr>
 							<tr>

@@ -51,11 +51,26 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	@Override
 	public Department getDepartByDepartmentName(String departmentName) {
 		List<Department> departmentList=departmentRepository.findByDepartmentName(departmentName);
-		
 		Department department = departmentList.get(0);
 		return department;
 	}
 
+	public List<Department> getDepartsByDepartmentName(String departmentName) {
+		List<Department> departmentList=departmentRepository.findByDepartmentName(departmentName);
+		return departmentList;
+	}
+	
+	// 用部门编号查找部门
+	public List<Department> getDepartsByDepartmentNum(Integer departmentNum) {
+		List<Department> departmentList=departmentRepository.findByDepartmentNum(departmentNum);
+		return departmentList;
+	}
+	
+	
+	
+	
+	
+	
 	// 查找所有部门
 	@Override
 	public List<Department> getAllDepart() {

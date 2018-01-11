@@ -70,12 +70,9 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-
+<br>
 				</form>
 
-				<button>
-					<a href="listEmp">获取所有</a>
-				</button>
 				<form action="listEmp" method="post">
 					<input type="hidden" name="depart.id" value="${depart.id}" /> <input
 						type="hidden" name="depart.departmentNum"
@@ -92,58 +89,13 @@ a {
 								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.nextPage}">Next</a> 
 								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.lastPage}">»</a> 
 								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
-								value="${requestPage}" size="2" /> 
+								value="${param.requestPage}" size="2" /> 
 								<input type="submit" value="go" />
 							</td>
 						</tr>
 					</table>
-<div class="pagination">
-<ul>
-<li><a href="employee/listEmpPage?requestPage=${pager.priviousPage}" class="prev">«</a></li>
-<li><a href="employee/listEmpPage?requestPage=${pager.priviousPage-1}">${pager.priviousPage-1}</a></li>
-<li><a href="employee/listEmpPage?requestPage=${pager.priviousPage}">${pager.priviousPage}</a> </li>
-<li><a href="employee/listEmpPage?requestPage=${pager.currentPage}" class="current">${pager.currentPage}</a></li>
-<li><a href="employee/listEmpPage?requestPage=${pager.nextPage}">${pager.nextPage}</a></li>
-<li><a href="employee/listEmpPage?requestPage=${pager.nextPage+1}">${pager.nextPage+1}</a></li>
-<li><a href="employee/listEmpPage?requestPage=${pager.nextPage}" class="next">»</a></li>
-</ul>
-</div>
-
-					<div class="pagination">
-						<a href="employee/listEmpPage?requestPage=${pager.priviousPage}" class="prev">«</a>
-						<%-- <a href="listEmpPage?requestPage=${pager.firstPage}">${pager.firstPage}</a>  --%>
-						<a href="employee/listEmpPage?requestPage=${pager.priviousPage-1}">${pager.priviousPage-1}</a> 
-						<a href="employee/listEmpPage?requestPage=${pager.priviousPage}">${pager.priviousPage}</a> 
-						<a href="employee/listEmpPage?requestPage=${pager.currentPage}" class="current">${pager.currentPage}</a>
-						<a href="employee/listEmpPage?requestPage=${pager.nextPage}">${pager.nextPage}</a>
-						<a href="employee/listEmpPage?requestPage=${pager.nextPage+1}">${pager.nextPage+1}</a>
-						<%-- <a href="listEmpPage?requestPage=${pager.lastPage}">${pager.lastPage-1}</a> --%>
-						<a href="employee/listEmpPage?requestPage=${pager.nextPage}" class="next">»</a>
-					</div>
 				</form>
 
-				<!-- <div class="left input">
-					<div class="selector" id="uniform-tableaction">
-						<span>全部</span> <select name="action" id="tableaction"
-							style="opacity: 0;">
-							<option value="">全部</option>
-							<option value="">已审核</option>
-							<option>审核中</option>
-							<option>未处理</option>
-						</select>
-					</div>
-				</div> -->
-				<!-- <div class="pagination">
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-						class="prev">«</a> <a
-						href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">1</a>
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-						class="current">2</a> ... <a
-						href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a>
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-						class="next">»</a>
-				</div> -->
 			</div>
 		</div>
 	</div>

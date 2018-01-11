@@ -1,6 +1,7 @@
 //注册页面js文件
 var username;
-var password;
+var password1;
+var initPassword;
 // var tell;
 var email;
 // var permission=0;
@@ -11,13 +12,16 @@ function checkUsername() {
 
 	if (name.indexOf(" ") != -1) {
 		$('#username_span').html("用户名不能包含空格，请重新输入").css("color", "red");
-		return checkName = false;
+		return checkedName = false;
+	} else if (name == " ") {
+		$('#username_span').html("请填写用户名").css("color", "red");
+		return checkedName = false;
 	} else if (name.length < 4) {
 		$('#username_span').html("用户名太短，请重新输入").css("color", "red");
-		return checkName = false;
+		return checkedName = false;
 	} else if (name.length > 8) {
 		$('#username_span').html("用户名太长，请重新输入").css("color", "red");
-		return checkName = false;
+		return checkedName = false;
 	} else {
 		$.ajax({
 			type : "Post",
@@ -30,11 +34,11 @@ function checkUsername() {
 			success : function(data) {
 				if (data) {
 					$('#username_span').html("该用户名已被注册！").css("color", "red");
-					return checkName = false;
+					return checkedName = false;
 				} else {
 					$('#username_span').html("此用户名可用").css("color", "green");
 					username = name;
-					return checkName = true;
+					return checkedName = true;
 				}
 			}
 		});
@@ -42,38 +46,67 @@ function checkUsername() {
 }
 
 // 判断输入的密码是否符合要求
-function checkPwd1() {
-	var password1 = $('#password').val();
-	if (password1.indexOf(" ") != -1) {
-		$('#error_pwd').html("密码不能包含空格，请重新输入！").css("color", "red");
-		return checkPwd1 = false;
-	} else if (password1.length < 6) {
-		$('#error_pwd').html("密码太短，请重新输入！");
-		return checkPwd1 = false;
-	} else if (password1.length > 16) {
-		$('#error_pwd').html("密码超出限制，请重新输入！");
-		return checkPwd1 = false;
-	} else {
-		$('#error_pwd').html("密码符合要求").css("color", "green");
-		password = password1;
-		return checkPwd1 = true;
+function checkInitPassword() {
+	var init_password = $('#init_password').val();
+	var repeat_password = $('#repeat_password').val();
+	if (repeat_password == "") {
+		if (init_password.indexOf(" ") != -1) {
+			$('#error_init_pwd').html("密码不能包含空格，请重新输入！").css("color", "red");
+			return checkedInitPwd = false;
+		} else if (init_password.length < 6) {
+			$('#error_init_pwd').html("密码太短，请重新输入！").css("color", "red");
+			return checkedInitPwd = false;
+		} else if (init_password.length > 16) {
+			$('#error_init_pwd').html("密码超出限制，请重新输入！").css("color", "red");
+			return checkedInitPwd = false;
+		} else {
+			$('#error_init_pwd').html("密码符合要求").css("color", "green");
+			// password1= init_password;
+			return checkedInitPwd = true;
+		}
+	} else if (repeat_password != "") {
+		$('#error_init_pwd').html("");
+		$('#error_init_pwd2').html("");
+		if (init_password.indexOf(" ") != -1) {
+			$('#error_init_pwd').html("密码不能包含空格，请重新输入！").css("color", "red");
+			return checkedInitPwd = false;
+		} else if (init_password.length < 6) {
+			$('#error_init_pwd').html("密码太短，请重新输入！").css("color", "red");
+			return checkedInitPwd = false;
+		} else if (init_password.length > 16) {
+			$('#error_init_pwd').html("密码超出限制，请重新输入！").css("color", "red");
+			return checkedInitPwd = false;
+		} else if (init_password != repeat_password) {
+			$('#error_init_pwd').html("密码符合要求").css("color", "green");
+			$('#error_repeat_pwd').html("两次输入密码不一致！").css("color", "red");
+			return checkedInitPwd = false;
+		} else {
+			$('#error_repeat_pwd').html("密码输入一致").css("color", "green");
+			// password= init_password;
+			// initPassword= init_password;
+			checkedRepeatPwd = true;
+			return checkedInitPwd = true;
+		}
 	}
 }
 
 // 验证2次输入的密码是否一致
-function checkPwd2() {
-	var password = $('#password').val();
-	var password2 = $('#repassword').val();
-	if (password2 == "") {
-		$('#error2_pwd').html("密码不能为空！").css("color", "red");
-		return checkPwd2 = false;
+function checkRepeatPassword() {
+	var init_password = $('#init_password').val();
+	var repeat_password = $('#repeat_password').val();
+	if (repeat_password == "") {
+		$('#error_repeat_pwd').html("密码不能为空！").css("color", "red");
+		return checkedRepeatPwd = false;
 	} else {
-		if (password != password2) {
-			$('#error2_pwd').html("两次输入密码不一致！").css("color", "red");
-			return checkPwd2 = false;
+		if (init_password != repeat_password) {
+			$('#error_repeat_pwd').html("两次输入密码不一致！").css("color", "red");
+			return checkedRepeatPwd = false;
 		} else {
-			$('#error2_pwd').html("密码输入一致").css("color", "green");
-			return checkPwd2 = true;
+			$('#error_repeat_pwd').html("密码输入一致").css("color", "green");
+			password2 = repeat_password;
+			initPassword = init_password;
+			checkedInitPwd = true;
+			return checkedRepeatPwd = true;
 		}
 	}
 }
@@ -86,10 +119,10 @@ function checkTell() {
 	var expr = /\D/i;
 	if (expr.test(tell)) {
 		$('#error_tell').html("不能输入非数字字符").css("color", "red");
-		return checkTell = false;
+		return checkedTell = false;
 	} else {
 		$('#error_tell').html("√").css("color", "green");
-		return checkTell = true;
+		return checkedTell = true;
 	}
 }
 
@@ -101,11 +134,11 @@ function checkEmail() {
 	var expr = /^([0-9]|[a-z])+@([0-9]|[a-z])+(\.[c][o][m])$/i;
 	if (!expr.test(input_email)) {
 		$('#error_email').html("输入的邮箱格式有误").css("color", "red");
-		return checkEmail = false;
+		return checkedEmail = false;
 	} else {
 		$('#error_email').html("√").css("color", "green");
 		email = input_email;
-		return checkEmail = true;
+		return checkedEmail = true;
 	}
 }
 
@@ -135,10 +168,10 @@ function checkBirth() {
 
 	if (date_birth > date_now) {
 		$('#error_birth').html("您输入的日期不合法，请重新选择！").css("color", "red");
-		return checkBirth = false;
+		return checkedBirth = false;
 	} else {
 		$('#error_birth').html("√").css("color", "green");
-		return checkBirth = true;
+		return checkedBirth = true;
 	}
 }
 
@@ -154,8 +187,8 @@ function validateCode() {
 	if (inputCode == "") {
 		alert("请填写验证码");
 		chageCode();
-	} else {
-		alert("进入ajax");
+	} else if (checkedName && checkedInitPwd && checkedRepeatPwd
+			&& checkedEmail) {
 		$.ajax({
 			type : "Post",
 			contentType : "application/json",
@@ -166,91 +199,50 @@ function validateCode() {
 			data : "{}",
 			success : function(data) {
 				if (data) {
-					// alert("后台传来的是" + data);
-					// checkLogin();
-					// return validateResult = true;
 					register();
-					// return data;
 				} else {
 					alert("验证码错误！");
 					chageCode();
-					// return validateResult=false;
-					// return data;
 				}
 			},
 			error : function(data) {
-				// alert("inputCode:" + inputCode);
-				// alert("data:" + data);
 				chageCode();
 				return validateCode = false;
 			}
 		});
+	} else if (!checkedName) {
+		alert("用户名有问题！")
+	} else if (!checkedInitPwd) {
+		alert("密码有问题！")
+	} else if (!checkedRepeatPwd) {
+		alert("两次密码不一致！")
+	} else if (!checkedEmail) {
+		alert("邮箱有问题！")
 	}
 }
 
 function test() {
-	// var checkUsername=checkUsername().val();
 	alert("username=" + username)
-	alert("password=" + password)
-	alert("checkPwd2=" + checkPwd2)
+	alert("init_password=" + init_password)
+	alert("initPassword=" + initPassword)
+	alert("repeat_password=" + repeat_password)
 	alert("email=" + email)
 	alert("validateCode=" + validateResult)
 
 }
 
 function register() {
-	if (checkName && checkPwd1 && checkPwd2 && checkEmail) {
+	if (checkedName && checkedInitPwd && checkedRepeatPwd && checkedEmail) {
 		window.location.href = "temporary?username=" + username + "&password="
-				+ password + "&email=" + email + "&permission=0";
-	} else if (!checkName) {
+				+ initPassword + "&email=" + email + "&permission=0";
+	} else if (!checkedName) {
 		alert("用户名有问题！")
-	} else if (!checkPwd1) {
+	} else if (!checkedInitPwd) {
 		alert("密码有问题！")
-	} else if (!checkPwd2) {
+	} else if (!checkedRepeatPwd) {
 		alert("两次密码不长一智！")
-	} else if (!checkEmail) {
+	} else if (!checkedEmail) {
 		alert("邮箱有问题！")
 	}
 
 }
-
-// function register(){
-// if (checkName&&checkPwd1&&checkPwd2&&checkEmail) {
-// $.ajax({
-// type : "Post",
-// contentType : "application/json",
-// url : "temporary?username=" + name
-// + "&password=" + password,
-// processData : false,
-// dataType : "json",
-// data : "{}",
-// success : function(data) {
-// if (data) {
-// // window.location.href = "home?username=" + name+
-// // "&password=" + password;
-// document
-// .write("<form action='home' method=post name=form1 style='display:none'>");
-// document
-// .write("<input type='hidden' name='username' value='"
-// + name + "'/>");
-// document
-// .write("<input type='hidden' name='password' value='"
-// + password + "'/>");
-// document.write("</form>");
-// document.form1.submit();
-//
-// alert("登陆成功！确认跳转");
-// } else {
-// alert("用户名或密码错误！");
-// // chageCode();
-// window.location.href = "tosign_in";
-// }
-// }
-// });
-//		
-// }
-//	
-//	
-// }
-//
-

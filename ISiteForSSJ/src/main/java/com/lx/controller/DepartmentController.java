@@ -3,6 +3,7 @@ package com.lx.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lx.entity.Department;
+import com.lx.entity.Users;
 import com.lx.service.impl.DepartmentServiceImpl;
 import com.lx.utils.Pager;
 
@@ -27,11 +29,6 @@ public class DepartmentController {
 
 	private ModelAndView mView = new ModelAndView();
 
-	private void getDepartmentList(HttpSession session) {
-		List<Department> departmentList = departmentServiceImpl.getAllDepart();
-		session.getServletContext().setAttribute("departmentList", departmentList);
-	}
-
 	// 分页部门列表
 	private List<Department> getDepartWithPage(String requestPage) {
 		int recordCount = departmentServiceImpl.getRecordCount();
@@ -43,14 +40,7 @@ public class DepartmentController {
 		return departmentPageList;
 	}
 
-	// 进入部门列表页面
-	// @RequestMapping("listDepart")
-	// private ModelAndView listDepart(HttpSession session) {
-	// getDepartmentList(session);
-	// mView.setViewName("department/depart_list");
-	// return mView;
-	// }
-
+	// 部门分页列表
 	@RequestMapping("listDepart")
 	private ModelAndView listDepart(HttpSession session,
 			@RequestParam(value = "requestPage", defaultValue = "0") String requestPage) {
@@ -65,25 +55,31 @@ public class DepartmentController {
 	@RequestMapping("editDepart")
 	private @ResponseBody ModelAndView editDepart(HttpSession session, Long id) {
 		Department department = departmentServiceImpl.getDepartById(id);
-
 		mView.addObject("department", department);
-
 		mView.setViewName("department/edit_depart");
 		return mView;
 	}
 
 	// 进入部门修改页面
 	@RequestMapping("modDepart")
-	private ModelAndView modDepart(HttpSession session) {
-		getDepartmentList(session);
+	private ModelAndView modDepart(HttpSession session,
+			@RequestParam(value = "requestPage", defaultValue = "0") String requestPage) {
+		// getDepartmentList(session);
+		List<Department> departmentList = getDepartWithPage(requestPage);
+		session.getServletContext().setAttribute("departmentList", departmentList);
+		session.getServletContext().setAttribute("pager", pager);
 		mView.setViewName("department/mod_depart");
 		return mView;
 	}
 
 	// 进入部门删除页面
 	@RequestMapping("removeDepart")
-	private ModelAndView removeDepart(HttpSession session) {
-		getDepartmentList(session);
+	private ModelAndView removeDepart(HttpSession session,
+			@RequestParam(value = "requestPage", defaultValue = "0") String requestPage) {
+		// getDepartmentList(session);
+		List<Department> departmentList = getDepartWithPage(requestPage);
+		session.getServletContext().setAttribute("departmentList", departmentList);
+		session.getServletContext().setAttribute("pager", pager);
 		mView.setViewName("department/remove_depart");
 		return mView;
 	}
@@ -117,26 +113,29 @@ public class DepartmentController {
 		return "redirect:removeDepart";
 	}
 
-	@RequestMapping("/pageable")
-	public String pageable() {
-		// Pageable是接口，PageRequest是接口实现
-		// PageRequest的对象构造函数有多个，page是页数，初始值是0，size是查询结果的条数，后两个参数参考Sort对象的构造方法
-		// Pageable pageable = new PageRequest(0,10);
-		// List<Department> list = departmentServiceImpl.getDepartByPage(pageable);
-		List<Department> list = departmentServiceImpl.getDepartByPage(0, 10);
-		// 查询结果总行数
-		// System.out.println(page.getTotalElements());
-		System.out.println("ssdsdsdsdsdsd");
-		System.out.println(list);
-		// 按照当前分页大小，总页数
-		// System.out.println(page.getTotalPages());
-		// 按照当前页数、分页大小，查出的分页结果集合
-		for (Department department : list) {
-			System.out.println(department.toString());
+	
+	//部门名验证部门是否存在
+	@RequestMapping("departIsExistByDepartName")
+	@ResponseBody
+	public boolean departIsExistByDepartName(HttpServletRequest request, @RequestParam("departmentName") String departmentName) {
+		List<Department> list = departmentServiceImpl.getDepartsByDepartmentName(departmentName);
+		if (list.size() > 0) {
+			return true; // 表示存在
 		}
-		System.out.println("-------15115611515151---------------------");
-
-		return "redirect:listDepart";
+		return false; // 表示不存在
 	}
-
+	
+	//部门编号验证部门是否存在
+	@RequestMapping("departIsExistByDepartNum")
+	@ResponseBody
+	public boolean departIsExistByDepartNum(HttpServletRequest request, @RequestParam("departmentNum") Integer departmentNum) {
+		List<Department> list = departmentServiceImpl.getDepartsByDepartmentNum(departmentNum);
+		if (list.size() > 0) {
+			return true; // 表示存在
+		}
+		return false; // 表示不存在
+	}
+	
+	
+	
 }

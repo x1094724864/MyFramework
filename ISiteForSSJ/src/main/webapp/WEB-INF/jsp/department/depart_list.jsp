@@ -62,16 +62,10 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-
+<br>
 				</form>
 
 				<form action="listDepart" method="post">
-					<input type="hidden" name="depart.id" value="${depart.id}" /> <input
-						type="hidden" name="depart.departmentNum"
-						value="${depart.departmentNum}" /> <input type="hidden"
-						name="depart.departmentName" value="${depart.departmentName}" />
-					<input type="hidden" name="depart.department_desc"
-						value="${depart.department_desc}" />
 					<table align="center" border="0" cellspacing="0" width="680">
 						<tr align="center">
 							<td align="center">
@@ -81,7 +75,7 @@ a {
 								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.nextPage}">Next</a> 
 								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.lastPage}">»</a> 
 								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
-								value="${requestPage}" size="2" /> 
+								value="${param.requestPage}"  size="2" /> 
 								<input type="submit" value="go" />
 							</td>
 						</tr>
@@ -102,10 +96,6 @@ a {
 				</form>
 
 
-
-				<button>
-					<a href="listDepart.action">获取所有</a>
-				</button>
 
 
 				<!-- <div class="pagination">

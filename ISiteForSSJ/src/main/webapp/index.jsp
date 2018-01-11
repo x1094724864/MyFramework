@@ -13,7 +13,8 @@
 	<a href="users/userList">用户列表</a>
 	<a href="department/depart_list">所有部门</a>
 	<a href="<%=request.getContextPath()%>/hello">hello</a>
-	<a href="<%=request.getContextPath()%>/pageable">pageable</a>
+	<a href="<%=request.getContextPath()%>/department/pageable">pageable</a>
+	<a href="<%=request.getContextPath()%>/users/pageable">users_pageable</a>
 	<a href="<%=request.getContextPath()%>/getall">getall</a>
 
 </body>

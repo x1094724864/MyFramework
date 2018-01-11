@@ -62,8 +62,7 @@ a {
 									<td><textarea rows="2" cols="40" readonly="readonly">${depart.department_desc}</textarea>
 									</td>
 									<td><button>
-											<a
-												href="<%=request.getContextPath()%>/department/editDepart?id=${depart.id}">修改</a>
+											<a href="<%=request.getContextPath()%>/department/editDepart?id=${depart.id}">修改</a>
 										</button></td>
 
 								</tr>
@@ -71,16 +70,25 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-					<hr>
-					<br>
 					<br>
 				</form>
 
-				<!-- <button>
-					<a href="modDepart.action">获取所有</a>
-				</button> -->
-
-
+				<form action="modDepart" method="post">
+					<table align="center" border="0" cellspacing="0" width="680">
+						<tr align="center">
+							<td align="center">
+								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
+								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.firstPage}">«</a>
+								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.priviousPage}">Privious</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.nextPage}">Next</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.lastPage}">»</a> 
+								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${param.requestPage}"  size="2" /> 
+								<input type="submit" value="go" />
+							</td>
+						</tr>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>

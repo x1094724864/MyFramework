@@ -37,9 +37,7 @@
 
 
 <body class="bg">
-
-	<!-- <form action="saveUser" method="post"> -->
-	<form action="temporary" method="post">
+	<!-- <form action="temporary" method="post"> -->
 		<!-- <div class="bg"></div> -->
 		<div class="container">
 			<div class="line bouncein">
@@ -55,7 +53,7 @@
 							<div class="form-group">
 								<div class="field field-icon-right">
 									<input type="text" class="input input-big" name="username"
-										id="username" placeholder="4-8位用户名" onchange="checkUsername()" />
+										id="username" placeholder="4-8位用户名" onblur="checkUsername()" />
 									<!-- <span class="icon icon-user margin-small-right"></span> -->
 									<span id="username_span" class="tip"></span><br>
 								</div>
@@ -63,19 +61,19 @@
 							<div class="form-group">
 								<div class="field field-icon-right">
 									<input type="password" class="input input-big" name="password"
-										id="password" placeholder="6-16位密码" onchange="checkPwd1()" />
+										id="init_password" placeholder="6-16位密码" onchange="checkInitPassword()" />
 									<!-- <span
 										class="icon icon-key margin-small-right"> -->
-									</span> <span class="tip" id="error_pwd"></span>
+									</span> <span class="tip" id="error_init_pwd"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="field field-icon-right">
 									<input type="password" class="input input-big" name=""
-										id="repassword" placeholder="再次确认密码" onblur="checkPwd2()" />
+										id="repeat_password" placeholder="再次确认密码" onchange="checkRepeatPassword()" />
 									<!-- <span
 										class="icon icon-key margin-small-right"> -->
-									</span><span id="error2_pwd" class="tip"></span>
+									</span><span id="error_repeat_pwd" class="tip"></span>
 								</div>
 							</div>
 							<div class="form-group">
@@ -87,7 +85,7 @@
 							</div>
 							<div class="form-group">
 								<div class="field">
-									<input type="text" class="input input-big"
+									<input type="text" class="input input-big" ondblclick="validateCode()"
 										name="verification_code" id="verification_code"
 										placeholder="填写右侧的验证码" /> <img src="authCode" id="codeImage"
 										onclick="chageCode()" title="图片看不清？点击重新得到验证码" class="passcode"
@@ -98,15 +96,15 @@
 						</div>
 						<input type="hidden" name="permission" value="0" />
 						<div style="padding: 30px;">
-							<input type="submit" id="button"
+							<input type="submit" id="button" onclick="validateCode()"
 								class="button button-block bg-main text-big input-big"
 								value="注册">
 						</div>
-						<div style="padding: 30px;">
+						<!-- <div style="padding: 30px;">
 							<input type="button" id="button_submit" onclick="validateCode()"
 								class="button button-block bg-main text-big input-big"
 								value="注册">
-						</div>
+						</div> -->
 						<div style="padding: 30px;">
 							<a href="tosign_in"><span
 								class="icon icon-mail-reply margin-small-right"
@@ -117,8 +115,8 @@
 				</div>
 			</div>
 		</div>
-	</form>
-	<button onclick="test()">测试</button>
-	<button onclick="validateCode()">注册测试</button>
+	<!-- </form> -->
+<!-- 	<button onclick="test()">测试</button>
+	<button onclick="validateCode()">注册测试</button> -->
 </body>
 </html>

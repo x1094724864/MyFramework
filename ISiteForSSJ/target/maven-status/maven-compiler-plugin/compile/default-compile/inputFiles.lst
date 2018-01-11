@@ -6,7 +6,6 @@ K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\NetUtil.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\controller\UsersController.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\UnicodeUtils.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\interceptor\RequestInterceptor2.java
-K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\service\IManageService.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\Hibernates.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\VerifyCodeUtils.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\interceptor\RequestInterceptor1.java
@@ -32,7 +31,6 @@ K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\entity\GeneralUsers.
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\IOUtil.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\entity\Department.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\PropertiesLoader.java
-K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\controller\SecCodeController.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\repository\UsersRepository.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\utils\Base64EncodeDecode.java
 K:\JavaDoc\Git\MyFramework\ISiteForSSJ\src\main\java\com\lx\vo\ResultObject.java

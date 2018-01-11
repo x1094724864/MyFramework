@@ -3,10 +3,12 @@ package com.lx.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lx.entity.Department;
 import com.lx.entity.Users;
 import com.lx.repository.UsersRepository;
 import com.lx.service.IUsersService;
@@ -61,16 +63,29 @@ public class UsersServiceImpl implements IUsersService {
 		List<Users> usersList = usersRepository.findByUsername(username);
 		return usersList;
 	}
-	
-	@Override
-	public List<Users> getUsersPage(Pageable pageable) {
-		List<Users> page=usersRepository.findAll(pageable).getContent();
-		return page;
+
+	// 获取总记录数
+	public int getRecordCount() {
+		System.out.println("查询总记录数");
+		int recordCount = (int) usersRepository.count();
+		return recordCount;
+	}
+
+	//分页
+	public List<Users> getUsersByPage( int firstRow, int rowCount){
+		return usersRepository.findUsersByPage(firstRow, rowCount);
 	}
 	
-//	public List<Users> getUsersPageByUsername(String name, Pageable pageable) {
-//		List<Users> page =usersRepository.findAllByUsername(name, pageable).getContent();
-//		return page;
-//	}
+	@Override
+	public Page<Users> getUsersPage(Pageable pageable) {
+		Page<Users> userPageList = usersRepository.findAll(pageable);
+		return userPageList;
+	}
+
+	// public List<Users> getUsersPageByUsername(String name, Pageable pageable) {
+	// List<Users> page =usersRepository.findAllByUsername(name,
+	// pageable).getContent();
+	// return page;
+	// }
 
 }

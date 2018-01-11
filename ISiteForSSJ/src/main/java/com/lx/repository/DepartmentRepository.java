@@ -18,10 +18,14 @@ public interface DepartmentRepository extends JpaRepository<Department, Long> {
 	@Query(value = "SELECT * FROM department_info WHERE id = ?1", nativeQuery = true)
 	Department findOne(Long id);
 
-	// 根据部门名称查找制定部门
+	// 根据部门名称查找指定部门
 	@Query(value = "SELECT * FROM department_info WHERE department_name = ?1", nativeQuery = true)
 	List<Department> findByDepartmentName(String departmentName);
 
+	// 根据部门编号查找指定部门
+	@Query(value = "SELECT * FROM department_info WHERE department_num = ?1", nativeQuery = true)
+	List<Department> findByDepartmentNum(Integer departmentNum);
+	
 	// 查找所有部门
 	@Query(value = "select * from department_info", nativeQuery = true)
 	List<Department> findAll();

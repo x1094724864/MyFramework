@@ -2,6 +2,7 @@ package com.lx.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.lx.entity.Users;
@@ -26,6 +27,6 @@ public interface IUsersService {
 	public List<Users> getUsersList();
 
 	// 用户分页
-	public List<Users> getUsersPage(Pageable pageable);
+	public Page<Users> getUsersPage(Pageable pageable);
 	
 }

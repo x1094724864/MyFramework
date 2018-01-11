@@ -42,7 +42,6 @@ function validateCode() {
 		alert("请填写验证码");
 		chageCode();
 	} else {
-		alert("进入ajax");
 		$.ajax({
 			type : "Post",
 			contentType : "application/json",
@@ -53,7 +52,6 @@ function validateCode() {
 			data : "{}",
 			success : function(data) {
 				if (data) {
-					alert("后台传来的是" + data);
 					checkLogin();
 				} else {
 					alert("验证码错误！");
@@ -96,7 +94,7 @@ function checkLogin() {
 							// window.location.href = "home?username=" + name+
 							// "&password=" + password;
 							document
-									.write("<form action='home' method=post name=form1 style='display:none'>");
+									.write("<form action='home' method=post name=login style='display:none'>");
 							document
 									.write("<input type='hidden' name='username' value='"
 											+ name + "'/>");
@@ -104,7 +102,7 @@ function checkLogin() {
 									.write("<input type='hidden' name='password' value='"
 											+ password + "'/>");
 							document.write("</form>");
-							document.form1.submit();
+							document.login.submit();
 
 							alert("登陆成功！确认跳转");
 						} else {
