@@ -59,6 +59,20 @@ public class EmployeeController {
 		return mView;
 	}
 
+	//根据部门查找员工
+	@RequestMapping("listEmpByDepart")
+	private ModelAndView listEmpByDepart(HttpSession session,Long id,
+			@RequestParam(value = "requestPage", defaultValue = "0") String requestPage) {
+//		List<Employee> employeeList = getEmpWithPage(requestPage);
+		List<Employee> employeeList =employeeServiceImpl.getEmpByDepart(id);
+		session.setAttribute("employeeList", employeeList);
+		session.getServletContext().setAttribute("pager", pager);
+		mView.setViewName("employee/emp_list");
+		return mView;
+	}
+	
+	
+	
 	// 进入员工详细信息页面
 	@RequestMapping("detailsEmp")
 	private ModelAndView detailsEmp(HttpSession session, Employee employee) {
@@ -201,7 +215,7 @@ public class EmployeeController {
 			// String savePath = "/ISiteForSSJ/src/main/webapp/WEB-INF/picture";
 			// String savePath = "photo_picture";
 //			String savePath = "/ISiteForSSJ/src/main/webapp/picture";
-			 String savePath =request.getServletContext().getRealPath("/WEB-INF/employee_photo_picture/");
+			 String savePath =request.getServletContext().getRealPath("/photo_picture/");
 			File targetFile = new File(savePath, photoFileName);
 			if (!targetFile.getParentFile().exists()) { // 判断路径是否存在
 				targetFile.getParentFile().mkdirs(); // 不存在则创建

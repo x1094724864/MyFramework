@@ -23,7 +23,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
+	href="<%=request.getContextPath()%>/css/my_style.css">
 
 <style>
 a {
@@ -35,6 +35,7 @@ a {
 	vertical-align: middle;
 	border-bottom: 1px solid #DADADA;
 	border-top: 1px solid #FFFFFF;
+	left: 10px;
 	/* font-size: 18px; */
 }
 
@@ -45,12 +46,20 @@ td.showinfo {
 	font-size: 15px;
 }
 
+span.info{
+
+	position: relative;
+	right: 10px;
+
+}
+
 .item {
-	text-align: right;
+	text-align: center;
 	width: 200px;
 	color: #2C2C2C;
 	font-size: 18px;
 	font-weight: bold;
+	/* left: 50px; */
 }
 
 .image {
@@ -66,66 +75,68 @@ td.showinfo {
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<%-- <img src="<%=request.getContextPath()%>/images/posts.png" alt="">员工管理 --%>
-			<img src="<%=request.getContextPath()%>/images/user_detail.png" alt="">员工管理
+			<img src="<%=request.getContextPath()%>/images/user_detail.png"
+				alt="">员工管理
 		</h1>
 		<br> <br>
 		<div class="bloc">
-			<!-- <div  class=" item"  style="width: 100%; text-align: center; height: 65px;">
-				<span style="font-size: 35px;">员工详细信息</span>
-			</div> -->
+			<div class=" title" style="text-align: center;">
+				<span style="font-size: 30px;">员工详细信息</span>
+			</div>
 			<div class="content">
 				<form action="" method="post">
 					<table align="center" style="text-align: center;" border="2">
 						<thead>
-							<tr>
-								<th colspan="6"
+							<!-- <tr>
+								<th class="title" colspan="6"
 									style="width: 100%; text-align: center; height: 65px; padding-top: 5px; border-bottom-width: 2px;""><span
 									style="font-size: 35px;">员工详细信息</span></th>
-							</tr>
+							</tr> -->
 						</thead>
 						<tbody>
 							<tr>
 								<td class=" item">姓名</td>
-								<td class="showinfo"><span value="dede">${emp.name }</span></td>
+								<td class="showinfo"><span class="info">${emp.name }</span></td>
 								<td class=" item">性别</td>
-								<td class="showinfo">${emp.gender }</td>
-								<td colspan="2" rowspan="3" style="text-align: center;" ><img
-									src="<%=request.getContextPath()%>/employee_photo_picture/${emp.photoName}" alt="加载失败" class="image">
-								</td>
+								<td class="showinfo"><span class="info">${emp.gender }</span></td>
+								<td colspan="2" rowspan="3" style="text-align: center;"><img
+									src="<%=request.getContextPath()%>/photo_picture/${emp.photoName}"
+									alt="加载失败" class="image"></td>
 							</tr>
 							<tr>
 								<td class=" item">部门</td>
-								<td class="showinfo">${emp.departmentName }</td>
+								<td class="showinfo"><span class="info">${emp.departmentName }</span></td>
 								<td class="item">年龄</td>
-								<td class="showinfo">${emp.age }</td>
+								<td class="showinfo"><span class="info">${emp.age }</span></td>
 								<!-- <td>头像</td> -->
 							</tr>
 							<tr>
 								<td class="item">入职时间</td>
-								<td class="showinfo">${emp.entry_Time }</td>
+								<td class="showinfo"><span class="info">${emp.entry_Time }</span></td>
 								<td class="item">地址</td>
-								<td class="showinfo">${emp.address }</td>
+								<td class="showinfo"><span class="info">${emp.address }</span></td>
 								<!-- <td>头像</td> -->
 							</tr>
 							<tr>
 								<td class="item">所学专业</td>
-								<td class="showinfo">${emp.profession }</td>
+								<td class="showinfo"><span class="info">${emp.profession }</span></td>
 								<td class="item">学历</td>
-								<td class="showinfo">${emp.education }</td>
+								<td class="showinfo"><span class="info">${emp.education }</span></td>
 								<td class="item" style="text-align: center;">员工编号</td>
-								<td class="showinfo">${emp.employee_id}</td>
+								<td class="showinfo"><span class="info">${emp.employee_id}</span></td>
 							</tr>
 							<tr>
 								<td class="item">手机号</td>
-								<td class="showinfo">${emp.tel_number }</td>
+								<td class="showinfo"><span class="info">${emp.tel_number }</span></td>
 								<td class="item">邮箱</td>
-								<td class="showinfo">${emp.mail }</td>
-								<td class="item" style="text-align: center;" colspan="1"><button>
-										<a href="employee/editEmp?id=${emp.id }" style="text-align: center;font-size: 18px;">修改信息</a>
-									</button></td>
-								<td><button>
-										<a href="employee/deleteEmpById?id=${emp.id }" style="text-align: left;font-size: 18px;">删除员工</a>
+								<td class="showinfo"><span class="info">${emp.mail }</span></td>
+								<td class="showinfo" style="text-align: center;"><button>
+										<a href="employee/editEmp?id=${emp.id }"
+											style="font-size: 18px;">修改信息</a>
+									</button> </td>
+								<td class="showinfo" style="text-align: left;"><button>
+										<a href="employee/deleteEmpById?id=${emp.id }"
+											style=" font-size: 18px;">删除员工</a>
 									</button></td>
 							</tr>
 						</tbody>
@@ -137,6 +148,6 @@ td.showinfo {
 	</div>
 	<div id="ui-datepicker-div"
 		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
-		
+
 </body>
 </html>

@@ -21,7 +21,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
+	href="<%=request.getContextPath()%>/css/my_style.css">
 </head>
 <%
 	String username = (String) session.getAttribute("username");
@@ -30,7 +30,7 @@
 	<!--    顶部   -->
 	<div id="head">
 		<div class="left">
-			<a class="button profile"><img
+			<a class="button profile" href="<%=request.getContextPath() %>/home_right" target="right"><img
 				src="<%=request.getContextPath()%>/images/huser.png" alt=""
 				style="margin-top: 5px;"></a>
 			<!-- Hi, <a>MyMaster</a> -->

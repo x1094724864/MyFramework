@@ -385,7 +385,7 @@ body{
 	display: block;
 	height: 18px;
 	width: 18px;
-	background: url(../images/slidebuttons.png) left top;
+	background: url(../images/logo/slidebuttons.png) left top;
 	position: absolute;
 	top: 8px;
 	right: 10px;
@@ -1604,7 +1604,8 @@ plugin styles*/
 	height: 18px;
 	vertical-align: sub;
 	margin: 0 50px;
-	background: url(img/slidebuttons.png);
+	/* background: url(img/slidebuttons.png); */
+	background: url(../images/logo/slidebuttons.png);
 	position: absolute;
 }
 #content .calendar .title .next{
@@ -1774,7 +1775,7 @@ Background*/
 }
 /*White blocks*/
 #content.white .bloc .title{
-	background: url(/images/logo/white-title.png);
+	background: url(../images/logo/white-title.png);
 	color: #2C2C2C;
 	/*+text-shadow:0px 1px #FFFFFF;*/
 	-moz-text-shadow: 0px 1px #FFFFFF;

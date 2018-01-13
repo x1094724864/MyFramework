@@ -19,10 +19,10 @@
 	src="<%=request.getContextPath()%>/js/min.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
-<!-- <link rel="stylesheet" href="../../css/base.css"> -->
 
+<!-- <link rel="stylesheet" href="../../css/base.css"> -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/my_style.css">
 <style>
 a {
 	text-decoration: none

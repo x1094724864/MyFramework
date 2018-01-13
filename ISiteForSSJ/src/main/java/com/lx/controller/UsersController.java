@@ -2,6 +2,7 @@ package com.lx.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,8 +122,10 @@ public class UsersController {
 
 	// 进入用户添加页面
 	@RequestMapping("users/addUser")
-	public ModelAndView addUser() {
+	public ModelAndView addUser(HttpServletRequest request,Users user) {
 		ModelAndView mView = new ModelAndView();
+//		request.setAttribute("users",users);
+		mView.addObject("user",user);
 		mView.setViewName("users/edit_user");
 		return mView;
 	}

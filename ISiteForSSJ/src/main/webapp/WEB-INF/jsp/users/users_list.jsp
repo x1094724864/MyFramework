@@ -21,7 +21,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
+	href="<%=request.getContextPath()%>/css/my_style.css">
 
 <style>
 a {

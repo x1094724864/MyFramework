@@ -25,7 +25,7 @@
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <!-- 下面是注册校验 -->
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/sign_up.js"></script>
+	src="<%=request.getContextPath()%>/js/register.js"></script>
 
 <style type="text/css">
 .tip {
@@ -34,10 +34,13 @@
 </style>
 
 </head>
+	
+</script>
 
+<body  class="bg">
 
-<body class="bg">
-	<!-- <form action="temporary" method="post"> -->
+	<!-- <form action="saveUser" method="post"> -->
+	<form action="temporary" method="post">
 		<!-- <div class="bg"></div> -->
 		<div class="container">
 			<div class="line bouncein">
@@ -54,69 +57,69 @@
 								<div class="field field-icon-right">
 									<input type="text" class="input input-big" name="username"
 										id="username" placeholder="4-8位用户名" onblur="checkUsername()" />
-									<!-- <span class="icon icon-user margin-small-right"></span> -->
-									<span id="username_span" class="tip"></span><br>
+									<!-- <span class="icon icon-user margin-small-right"></span> --><span
+										id="username_span" class="tip"></span><br>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="field field-icon-right">
 									<input type="password" class="input input-big" name="password"
-										id="init_password" placeholder="6-16位密码" onchange="checkInitPassword()" />
-									<!-- <span
-										class="icon icon-key margin-small-right"> -->
-									</span> <span class="tip" id="error_init_pwd"></span>
+										id="password" placeholder="6-16位密码" onblur="checkPwd1()" /> <!-- <span
+										class="icon icon-key margin-small-right"> --></span> <span
+										class="tip" id="error_pwd"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="field field-icon-right">
 									<input type="password" class="input input-big" name=""
-										id="repeat_password" placeholder="再次确认密码" onchange="checkRepeatPassword()" />
-									<!-- <span
-										class="icon icon-key margin-small-right"> -->
-									</span><span id="error_repeat_pwd" class="tip"></span>
+										id="repassword" placeholder="再次确认密码" onblur="checkPwd2()"/> <!-- <span
+										class="icon icon-key margin-small-right"> --></span><span
+										id="error2_pwd" class="tip"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="field field-icon-right">
-									<input type="text" class="input input-big" name="email"
-										id="email" placeholder="邮箱" onchange="checkEmail()" />
-									<span class="tip" id="error_email"></span>
+									<input type="test" class="input input-big reg_email"
+										name="email" id="email" placeholder="邮箱" onblur="checkEmail()"/> <!-- <span
+										class="icon icon-reply margin-small-right"> --></span><span
+										class="tip" id="error_email"></span>
 								</div>
 							</div>
 							<div class="form-group">
 								<div class="field">
-									<input type="text" class="input input-big" ondblclick="validateCode()"
-										name="verification_code" id="verification_code"
-										placeholder="填写右侧的验证码" /> <img src="authCode" id="codeImage"
-										onclick="chageCode()" title="图片看不清？点击重新得到验证码" class="passcode"
-										style="height: 43px; cursor: pointer; width: 80px;"
-										onClick="chageCode()">
+									<input type="text" class="input input-big" name="code"
+										placeholder="填写右侧的验证码" /> <img
+										src="./../../images/passcode.jpg" alt="" width="100"
+										height="32" class="passcode"
+										style="height: 43px; cursor: pointer;"
+										onClick="this.src=this.src+'?'">
 								</div>
 							</div>
 						</div>
 						<input type="hidden" name="permission" value="0" />
 						<div style="padding: 30px;">
-							<input type="submit" id="button" onclick="validateCode()"
+							<input type="submit" id="button"
 								class="button button-block bg-main text-big input-big"
 								value="注册">
 						</div>
+						<span class="tip password_hint"></span>
 						<!-- <div style="padding: 30px;">
-							<input type="button" id="button_submit" onclick="validateCode()"
+							<input type="button" id="button_submit"
 								class="button button-block bg-main text-big input-big"
 								value="注册">
 						</div> -->
+
 						<div style="padding: 30px;">
 							<a href="tosign_in"><span
 								class="icon icon-mail-reply margin-small-right"
 								style="color: blue; text-align: left;"> 有账号，立即登陆</span></a>
 						</div>
 					</div>
-					<br> <br>
+					<br><br>
 				</div>
 			</div>
 		</div>
-	<!-- </form> -->
-<!-- 	<button onclick="test()">测试</button>
-	<button onclick="validateCode()">注册测试</button> -->
+
+	</form>
 </body>
 </html>

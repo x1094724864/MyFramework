@@ -42,8 +42,9 @@ public class Employee {
 	private String departmentName; 				// 部门
 	private String education; 					// 学历
 	private String profession; 					// 专业
-	@Temporal(TemporalType.DATE)
-	private Date entry_Time; 					// 入职时间
+//	@Temporal(TemporalType.DATE)
+//	private Date entry_Time; 					// 入职时间
+	private String entry_Time; 					// 入职时间
 	@Transient
 	private MultipartFile photo; 				// 不保存到数据库
 	private String photoName; 					// 头像(只保存图片名称)

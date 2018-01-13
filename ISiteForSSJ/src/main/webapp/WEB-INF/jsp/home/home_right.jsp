@@ -22,7 +22,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
+	href="<%=request.getContextPath()%>/css/my_style.css">
 
 </head>
 <%
@@ -33,7 +33,7 @@
 	<!--     内容      -->
 	<div id="content" class="white">
 		<h1>
-			<img src="images/logo/logo1.png" alt="">微信4S后台管理
+			<img src="images/logo/logo1.png" alt="">后台管理——个人中心
 		</h1>
 		<div class="bloc left">
 			<div class="title">快捷入口</div>

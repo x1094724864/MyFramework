@@ -40,18 +40,17 @@
 			</props>
 		</property>
 	</bean>
-	<!-- 我使用的是mysql，直接写明是mysql就好了 -->
-	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-	    <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-	</bean>
-	<!-- 根据数据库，获取对应方言 -->
+	
 	<!-- <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+	    <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+	</bean> -->
+	<bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform">
 			<bean factory-method="getDialect" class="com.lx.utils.Hibernates">
 				<constructor-arg ref="dataSource"/>
 			</bean>
 		</property>
-	</bean> -->
+	</bean>
 
 	<!-- 使用配置文件加载数据库配置 -->
 	<context:property-placeholder
@@ -88,7 +87,7 @@
  	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
  	
  	<!-- Spring Data Jpa配置 -->
- 	<jpa:repositories base-package="com.lx.repository"  transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
+ 	<jpa:repositories base-package="com.lx"  transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
  	
  	<!-- Jpa 事务配置 -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">

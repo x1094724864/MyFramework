@@ -13,7 +13,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/my_style.css">
 
 <style type="text/css">
 body {

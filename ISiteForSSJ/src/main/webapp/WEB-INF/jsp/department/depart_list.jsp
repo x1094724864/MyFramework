@@ -21,7 +21,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
+	href="<%=request.getContextPath()%>/css/my_style.css">
 
 <style>
 a {
@@ -49,6 +49,7 @@ a {
 								<th style="width: 90px;">部门编号</th>
 								<th style="width: 200px;">部门名称</th>
 								<th style="width: 350px; align-content: right:;" align="center">部门描述</th>
+								<th style="width: 200px;">操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,6 +58,7 @@ a {
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
 									<td style="size: 5">${depart.department_desc}</td>
+									<td><a href="<%=request.getContextPath()%>/employee/listEmpByDepart?id=${depart.id}">查看部门员工</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

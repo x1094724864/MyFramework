@@ -85,7 +85,7 @@ function checkLogin() {
 					contentType : "application/json",
 					url : "checkUsernameAndPassword?username=" + name
 							+ "&password=" + password,
-//					url:"checkUsernameAndPassword",
+					// url:"checkUsernameAndPassword",
 					processData : false,
 					dataType : "json",
 					data : "{}",

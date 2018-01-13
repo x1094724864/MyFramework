@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.lx.entity.Department;
 import com.lx.entity.Employee;
 @Repository
 	public interface EmployeeRepository extends JpaRepository<Employee, Long> {
@@ -39,6 +40,12 @@ import com.lx.entity.Employee;
 	// 根据部门查找
 	List<Employee> findByDepartmentName(String departmentName);
 
+	
+	//根据部门外键查找员工
+	@Query(value = "SELECT * FROM employee_info where department_id=?1", nativeQuery = true)
+	List<Employee> findByDepartment(Long id);
+	
+	
 	// 删除选定ID
 	@Modifying
 	@Query(value = "delete from employee_info where id in (?1)", nativeQuery = true)
@@ -46,7 +53,6 @@ import com.lx.entity.Employee;
 	
 	
 	//分页
-	
 	@Query(value = "SELECT * FROM employee_info Limit ?1,?2", nativeQuery = true)
 	List<Employee> findEmployeeByPage(int firstRow,  int rowCount);
 	

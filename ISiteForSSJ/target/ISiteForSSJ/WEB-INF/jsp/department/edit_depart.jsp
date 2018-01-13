@@ -8,16 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>修改部门信息</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.wysiwyg.old-school.css"> --%>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
-<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui.min.js"></script> --%>
-<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script> --%>
-<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style2.css"> --%>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/add_department.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/main.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style2.css">
 </head>
+<%-- <%
+Department department= ModelAttribute.s
+%> --%>
 
 <body>
 	<!--     内容      -->
@@ -37,21 +39,20 @@
 						</tr>
 						<tr>
 							<td><span class="title">部门编号</span></td>
-							<td><input type="text" name="departmentNum" id="departmentNum"
-								value="${department.departmentNum}" tabindex="1" onblur="checkDepartNum()"/><span id="depart_num_span"></span></td>
+							<td><input type="text" name="departmentNum"
+								value="${department.departmentNum}" tabindex="1" /></td>
 						</tr>
 						<tr>
 							<td><span class="title">部门名称</span></td>
-							<td><input type="text" name="departmentName" id="departmentName"
-								value="${department.departmentName }" tabindex="2" onblur="checkDepartName()" /><span id="depart_name_span"></span></td>
+							<td><input type="text" name="departmentName"
+								value="${department.departmentName }" tabindex="2" /></td>
 						</tr>
-						
 						<tr>
 							<td><span class="title">部门描述</span></td>
 							<td><textarea rows="5" cols="21"
-									name="department_desc" id="department_desc" onblur="checkDepartDesc()"
+									name="department_desc"
 									style="resize:none; margin: 0px; width: 160px; height: 100px; padding-right: 0px; border-right-width: 1px; padding-left: 0px; border-left-width: 1px;"
-									value="${department.department_desc }" tabindex="3"></textarea><span id="depart_desc_span"></td>
+									value="${department.department_desc }" tabindex="3"></textarea></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -63,9 +64,9 @@
 
 				</form>
 
-
-				<button onclick="saveDepart()">测试
-				</button>
+				<!-- <button>
+					<a href="modDepart.action">获取所有</a>
+				</button> -->
 
 
 			</div>

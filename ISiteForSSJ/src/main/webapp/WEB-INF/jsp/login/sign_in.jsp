@@ -20,8 +20,6 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/sign_in.js"></script>
 </head>
-<style type="text/css">
-</style>
 
 <body class="bg">
 

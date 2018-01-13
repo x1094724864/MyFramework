@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lx.entity.Department;
-import com.lx.entity.Users;
 import com.lx.service.impl.DepartmentServiceImpl;
 import com.lx.utils.Pager;
 

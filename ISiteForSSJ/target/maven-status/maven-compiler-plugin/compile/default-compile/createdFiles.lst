@@ -5,6 +5,7 @@ com\lx\utils\Pager.class
 com\lx\utils\VerifyCodeUtils$Verify.class
 com\lx\service\IDepartmentService.class
 com\lx\repository\EmployeeRepository.class
+com\lx\controller\SecCodeController.class
 com\lx\entity\Department.class
 com\lx\utils\SpringContextHolder.class
 com\lx\entity\Employee.class
@@ -29,6 +30,7 @@ com\lx\utils\Base64EncodeDecode.class
 com\lx\utils\StringUtil.class
 com\lx\utils\NetUtil.class
 com\lx\vo\RequestObject.class
+com\lx\service\IManageService.class
 com\lx\utils\IOUtil.class
 com\lx\controller\DepartmentController.class
 com\lx\controller\ValidateCode.class

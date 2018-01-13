@@ -74,23 +74,11 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-					<br>
 				</form>
-<form action="modEmp">
-<table  align="center" border="0" cellspacing="0" width="680">
-	<tr>
-		<td align="center">
-			共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="modEmp?requestPage=${pager.firstPage}">首页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="modEmp?requestPage=${pager.priviousPage}">上一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="modEmp?requestPage=${pager.nextPage}">下一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="modEmp?requestPage=${pager.lastPage}">尾页</a>
-		   	 <input style="text-align:center;border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1" value="${param.requestPage}" size="2"/>
-		   	 <input type="submit" value="go" />
-		</td>
-	</tr>
-</table>
-</form>
+
+				<!-- <button> -->
+				<!-- <a href="listDepart.action">获取所有</a> -->
+				<!-- </button> -->
 
 
 

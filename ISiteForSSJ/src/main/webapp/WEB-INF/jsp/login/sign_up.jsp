@@ -116,7 +116,7 @@
 			</div>
 		</div>
 	<!-- </form> -->
-<!-- 	<button onclick="test()">测试</button>
+	<!-- <button onclick="test()">测试</button>
 	<button onclick="validateCode()">注册测试</button> -->
 </body>
 </html>

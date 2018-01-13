@@ -1,5 +1,6 @@
 package com.lx.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,27 +31,10 @@ public class Users {
 	private String permissionName;
 
 	private String email;
-	// public String getPermission() {
-	// return permission;
-	// }
-
-	// public void setPermissionName(int permission) {
-	// if (permission > 9) {
-	// this.permissionName = "超级至尊无敌大管理";
-	// } else if (permission == 3) {
-	// this.permissionName = "超级管理";
-	// } else if (permission == 2) {
-	// this.permissionName = "管理用户";
-	// } else if (permission == 1) {
-	// this.permissionName = "普通用户";
-	// } else {
-	// this.permissionName = "临时用户";
-	// }
-	// }
 
 	public String getPermissionName() {
 
-		if (permission > 9) {
+		if (permission >= 9) {
 			this.permissionName = "超级至尊无敌大管理";
 		} else if (permission == 3) {
 			this.permissionName = "超级管理";

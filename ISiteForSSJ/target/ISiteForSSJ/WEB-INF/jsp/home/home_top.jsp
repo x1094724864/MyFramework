@@ -6,22 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>后台管理系统</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/style2.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style2.css">
 </head>
 <%
 	String username = (String) session.getAttribute("username");
@@ -30,25 +23,20 @@
 	<!--    顶部   -->
 	<div id="head">
 		<div class="left">
-			<a class="button profile"><img
-				src="<%=request.getContextPath()%>/images/huser.png" alt=""
-				style="margin-top: 5px;"></a>
+			<a class="button profile"><img src="<%=request.getContextPath()%>/images/huser.png"
+				alt="" style="margin-top: 5px;"></a>
 			<!-- Hi, <a>MyMaster</a> -->
 			<c:choose>
 				<c:when test="${flag }">
-					<a href="<%=request.getContextPath()%>/tosign_in" target="_parent">登录</a>或是<a
-						href="<%=request.getContextPath()%>/tosign_up" target="_parent">注册</a>
+					<a href="<%=request.getContextPath() %>/tosign_in">登录</a>
 				</c:when>
 				<c:otherwise>
 					<c:choose>
 						<c:when test="<%=username == null%>">
-							您的身份是游客，您可以选择<a href="<%=request.getContextPath()%>/tosign_in"
-								target="_parent">登录</a>或是<a
-								href="<%=request.getContextPath()%>/tosign_up" target="_parent">注册</a>
+							您的身份是游客，您可以选择<a href="<%=request.getContextPath() %>/tosign_in" target="_parent">登录</a>
 						</c:when>
 						<c:otherwise>
-							你好！<%=username%>&nbsp;|&nbsp;<a
-								href="<%=request.getContextPath()%>/tologout" target="_parent">注销</a>
+							你好！<%=username%>&nbsp;|&nbsp;<a href="<%=request.getContextPath() %>/tologout" target="_parent">注销</a>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>
