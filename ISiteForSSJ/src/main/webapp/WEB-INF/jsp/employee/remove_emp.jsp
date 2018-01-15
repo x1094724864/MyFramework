@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
+<title>员工管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -53,11 +53,8 @@ a {
 								<th>性别</th>
 								<th>部门</th>
 								<th>学历</th>
-								<th>专业</th>
 								<th>入职时间</th>
-								<th>地址</th>
-								<th>电话号码</th>
-								<!-- <th>操作</th> -->
+								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -70,10 +67,7 @@ a {
 									<td>${emp.gender }</td>
 									<td>${emp.departmentName }</td>
 									<td>${emp.education }</td>
-									<td>${emp.profession }</td>
-									<%-- <td>${emp.entry_Time }</td> --%>
-									<td>${emp.address }</td>
-									<td>${emp.tel_number }</td>
+									<td>${emp.entry_Time }</td>
 									<td>
 										<button>
 											<a
@@ -87,30 +81,34 @@ a {
 						<tfoot>
 						</tfoot>
 					</table>
-					<br> 
-					<br> <input type="submit" value="确认删除" />&nbsp;&nbsp;<input
+					<br> <br> <input type="submit" value="确认删除" />&nbsp;&nbsp;<input
 						type="reset" value="取消删除"><br> <br>
 				</form>
-<form action="removeEmp">
-<table  align="center" border="0" cellspacing="0" width="680">
-	<tr>
-		<td align="center">
-			共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeEmp?requestPage=${pager.firstPage}">首页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeEmp?requestPage=${pager.priviousPage}">上一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeEmp?requestPage=${pager.nextPage}">下一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeEmp?requestPage=${pager.lastPage}">尾页</a>
-		   	 <input style="text-align:center;border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1" value="${param.requestPage}" size="2"/>
-		   	 <input type="submit" value="go" />
-		</td>
-	</tr>
-</table>
-</form>
+				<form action="removeEmp">
+					<table align="center" border="0" cellspacing="0" width="680">
+						<tr>
+							<td align="center">
+								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
+								<a style="cursor: pointer; text-decoration: underline;"
+								href="removeEmp?requestPage=${pager.firstPage}">首页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="removeEmp?requestPage=${pager.priviousPage}">上一页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="removeEmp?requestPage=${pager.nextPage}">下一页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="removeEmp?requestPage=${pager.lastPage}">尾页</a> <input
+								style="text-align: center; border: 1px solid #CCCCCC;"
+								type="text" name="requestPage"
+								onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${param.requestPage}" size="2" /> <input type="submit"
+								value="go" />
+							</td>
+						</tr>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>
-	<div id="ui-datepicker-div"
-		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 	<br>
 	<br>
 	<br>

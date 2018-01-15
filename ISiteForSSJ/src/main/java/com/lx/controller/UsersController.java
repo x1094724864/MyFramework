@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lx.entity.Employee;
 import com.lx.entity.Users;
 import com.lx.service.impl.UsersServiceImpl;
 import com.lx.utils.Pager;
@@ -110,6 +111,26 @@ public class UsersController {
 		return mView;
 	}
 
+	
+	// 根据用户权限查找用户
+		@RequestMapping("users/userListByPermission")
+		private ModelAndView listEmpByDepart(HttpSession session, 
+				@RequestParam(value = "requestPage", defaultValue = "0") String requestPage) {
+			ModelAndView mView = new ModelAndView();
+			Integer permission=(Integer) session.getAttribute("permission");
+			int recordCount = usersServiceImpl.getRecordCountByPermission(permission);
+			pager.init(recordCount, pager.getPageSize(), requestPage);
+			int firstRow = pager.getFirstRow();
+			int rowCount = pager.getRowCount();
+			List<Users> usersList = usersServiceImpl.getUsersByPermission(permission, firstRow, rowCount);
+			session.setAttribute("usersList", usersList);
+			session.getServletContext().setAttribute("pager", pager);
+			mView.setViewName("users/users_list");
+			return mView;
+		}
+	
+	
+	
 	// 返回用户编辑页面
 	@RequestMapping("users/editUser")
 	public ModelAndView editUser(@RequestParam("id") Long id) {

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
+<title>员工管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -100,7 +100,7 @@ span.info{
 								<td class=" item">性别</td>
 								<td class="showinfo"><span class="info">${emp.gender }</span></td>
 								<td colspan="2" rowspan="3" style="text-align: center;"><img
-									src="<%=request.getContextPath()%>/photo_picture/${emp.photoName}"
+									src="<%=request.getContextPath()%>/employee_photo_picture/${emp.photoName}"
 									alt="加载失败" class="image"></td>
 							</tr>
 							<tr>
@@ -131,11 +131,11 @@ span.info{
 								<td class="item">邮箱</td>
 								<td class="showinfo"><span class="info">${emp.mail }</span></td>
 								<td class="showinfo" style="text-align: center;"><button>
-										<a href="employee/editEmp?id=${emp.id }"
+										<a href="mod_editEmp?id=${emp.id }"
 											style="font-size: 18px;">修改信息</a>
 									</button> </td>
 								<td class="showinfo" style="text-align: left;"><button>
-										<a href="employee/deleteEmpById?id=${emp.id }"
+										<a href="deleteEmpById?id=${emp.id }"
 											style=" font-size: 18px;">删除员工</a>
 									</button></td>
 							</tr>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lx.entity.Department;
+import com.lx.entity.Employee;
 import com.lx.entity.Users;
 import com.lx.repository.UsersRepository;
 import com.lx.service.IUsersService;
@@ -63,6 +64,12 @@ public class UsersServiceImpl implements IUsersService {
 		List<Users> usersList = usersRepository.findByUsername(username);
 		return usersList;
 	}
+	
+	// 根据用户权限等级获取用户
+	public List<Users> getUsersByPermission(Integer permission) {
+		List<Users> usersList = usersRepository.findByPermission(permission);
+		return usersList;
+	}
 
 	// 获取总记录数
 	public int getRecordCount() {
@@ -70,12 +77,26 @@ public class UsersServiceImpl implements IUsersService {
 		int recordCount = (int) usersRepository.count();
 		return recordCount;
 	}
+	// 根据权限等级获取总记录数
+	public int getRecordCountByPermission(Integer permission) {
+		int recordCount;
+		List<Users> usersList = usersRepository.findByPermission(permission);
+		if (usersList.size() > 0) {
+			recordCount = usersList.size();
+			return recordCount;
+		}
+		return 0;
+	}
 
 	//分页
 	public List<Users> getUsersByPage( int firstRow, int rowCount){
 		return usersRepository.findUsersByPage(firstRow, rowCount);
 	}
 	
+	//根据权限等级分页
+	public List<Users> getUsersByPermission(Integer permission, int firstRow, int rowCount){
+		return usersRepository.findByPermission(permission, firstRow, rowCount);
+	}
 	@Override
 	public Page<Users> getUsersPage(Pageable pageable) {
 		Page<Users> userPageList = usersRepository.findAll(pageable);

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改部门信息</title>
+<title>用户管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -76,7 +76,7 @@
 							<td></td>
 							<td><br>
 							<div class="submit">
-									<input type="submit" value="提交" tabindex="11" /><input
+									<input style="position: relative; left: 20px;" type="submit" value="提交" tabindex="11" /><input
 										style="position: relative; left: 50px;" type="reset"
 										value="重置" />
 								</div></td>

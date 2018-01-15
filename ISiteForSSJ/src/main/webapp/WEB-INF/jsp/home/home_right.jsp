@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
+<title>后台管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -41,10 +41,10 @@
 				<div class="center" style="display: block; width: auto;">
 					<a class="shortcut"> <img
 						src="Your Admin Panel_files/picture.png" alt="" width="48"
-						height="48"> 品牌车型
+						height="48">
 					</a> <a class="shortcut"> <img
 						src="Your Admin Panel_files/contact.png" alt="" width="48"
-						height="48"> 客户管理
+						height="48">
 					</a>
 					<div class="cb"></div>
 				</div>
@@ -52,8 +52,7 @@
 		</div>
 		<div class="bloc right">
 			<div class="title">
-				登陆信息 <a href="http://www.grafikart.fr/demo/coreadmin/index.php?#"
-					class="toggle"></a>
+				登陆信息 
 			</div>
 			<div class="content">
 				<div>
@@ -69,21 +68,16 @@
 										用户角色：
 										<c:choose>
 											<c:when test="<%=user == null%>">
-												死游客
+												游客
 											</c:when>
 											<c:otherwise>
 												${user.permissionName}
 											</c:otherwise>
 										</c:choose>
-
-
-
-
-
 									</h6></td>
 							</tr>
 							<tr>
-								<td><h6>上次登录时间：2014-01-17 12:21:21</h6></td>
+								<!-- <td><h6>上次登录时间：2014-01-17 12:21:21</h6></td> -->
 							</tr>
 						</tbody>
 					</table>
@@ -94,11 +88,11 @@
 		<div class="cb"></div>
 		<div class="bloc">
 			<div class="title">
-				最新资讯<a href="http://www.grafikart.fr/demo/coreadmin/index.php?#"
-					class="toggle"></a>
+				管理须知
 			</div>
 			<div class="content">
-				<h5>10/10/2011</h5>
+			<span>还没来得及写，反正就是一些用户操作条例</span>
+				<!-- <h5>10/10/2011</h5>
 				<ul>
 					<li>关于财务公司资金管理平台TMS系统升级的通知</li>
 					<li>汽车金融业务2014年校园招聘</li>
@@ -115,7 +109,7 @@
 				<ul>
 					<li>关于兵装集团财务公司TMS 系统进行的升级的通知</li>
 					<li>关于启用兵器装备集团财资管理平台(TMS系统)电子回单功能的通知</li>
-				</ul>
+				</ul> -->
 			</div>
 		</div>
 	</div>

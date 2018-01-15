@@ -44,11 +44,17 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 
 	// 删除选定ID
 	@Modifying
-	@Query(value = "delete from users_info where id in (?1)", nativeQuery = true)
+	@Query(value = "delete from user_info where id in (?1)", nativeQuery = true)
 	public int deteleByIds(List<Long> ids);
 
+	// 根据权限等级查找
+	@Query(value = "select * from user_info where permission <= ?1", nativeQuery = true)
+	List<Users> findByPermission(Integer permission);
+	
+	// 根据权限等级分页查找
+	@Query(value = "select * from user_info where permission <= ?1  Limit ?2,?3", nativeQuery = true)
+	List<Users> findByPermission(Integer permission,int page, int size);
 	// 分页
-
 	@Query(value = "SELECT * FROM user_info Limit ?1,?2", nativeQuery = true)
 	List<Users> findUsersByPage(int page, int size);
 

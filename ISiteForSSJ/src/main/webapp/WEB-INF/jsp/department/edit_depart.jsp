@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改部门信息</title>
+<title>部门管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.wysiwyg.old-school.css"> --%>
@@ -25,7 +25,6 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/my_style.css">
 </head>
-
 <body>
 	<!--     内容      -->
 	<div id="content" class="white">
@@ -36,8 +35,7 @@
 		<div class="bloc">
 			<div class="title">部门信息</div>
 			<div class="content">
-				<!-- <form action="department/saveDepart" method="post"> -->
-				<form action="" method="post">
+				<form action="saveDepart" name="saveDepartForm" method="post">
 				<table align="center">
 					<thead>
 						<tr>
@@ -58,33 +56,26 @@
 						<td><div class="input">
 								<input type="text" name="departmentName" id="departmentName"
 									value="${department.departmentName }" tabindex="2"
-									onblur="checkDepartName()" />
+									onchange="checkDepartName()" />
 							</div></td><td><span id="depart_name_span"></span></td>
 					</tr>
-					<!-- <tr>
-						<td><span class="item">时间测试</span></td>
-						<td><div class="input">
-								<input type="text" class="datepicker" /><span
-									id="depart_name_span"></span>
-							</div></td>
-					</tr> -->
 
 					<tr>
 						<td><span class="item">部门描述</span></td>
 						<td><div class="input">
 								<textarea rows="5" cols="21" name="department_desc"
 									id="department_desc" onblur="checkDepartDesc()"
-									value="${department.department_desc }" tabindex="3"></textarea>
-								
-							</div></td><td><span id="depart_desc_span"></span></td>
+									 tabindex="3">${department.department_desc }</textarea>
+								<div><span id="depart_desc_span" >0</span>/400字</div> 
+							</div></td><td></td>
 					</tr>
 					<tr>
 						<td></td>
 						<td><br>
 							<div class="submit">
-								<input type="submit" value="提交" tabindex="11"
+								<input type="button" value="提交" tabindex="11" id="submitDepart"
 									onclick="saveDepart()" /><input
-									style="position: relative; left: 50px;" type="reset" value="重置" />
+									style="position: relative; left: 50px;" type="reset" value="复位" />
 							</div></td>
 					</tr>
 

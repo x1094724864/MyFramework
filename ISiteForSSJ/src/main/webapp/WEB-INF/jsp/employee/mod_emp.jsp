@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
+<title>员工管理</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
@@ -48,7 +48,7 @@ a {
 								<th>入职时间</th>
 								<th>地址</th>
 								<th>电话号码</th>
-								<!-- <th>操作</th> -->
+								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,10 +65,9 @@ a {
 									<td>${emp.tel_number }</td>
 									<td>
 										<button>
-											<a href="editEmp?id=${emp.id}">修改</a>
+											<a href="mod_editEmp?id=${emp.id}">修改</a>
 										</button>
 									</td>
-
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -97,8 +96,6 @@ a {
 			</div>
 		</div>
 	</div>
-	<div id="ui-datepicker-div"
-		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 		<br><br><br><br><br><br><br><br>
 </body>
 </html>

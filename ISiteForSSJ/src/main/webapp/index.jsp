@@ -5,9 +5,9 @@
 	<h2>Hello World!</h2>
 	<h1>index</h1>
 
-	<%-- <%
+	<%
 		response.sendRedirect("tosign_in");
-	%> --%>
+	%>
 	<a href="<%=request.getContextPath()%>/tosign_in">登陆</a>
 	<a href="tosign_up">注册</a>
 	<a href="users/userList">用户列表</a>

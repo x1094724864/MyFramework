@@ -21,8 +21,6 @@ public class Department implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5192658086866005588L;
-	@Column
-	private Byte flag=1;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +28,10 @@ public class Department implements Serializable {
 	@Column(name="department_num")
 	private Integer departmentNum;// 部门编号
 
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	@Column(name="department_name",unique = true,nullable = false)
+//	@GeneratedValue(strategy = GenerationType.TABLE)
+//	@Column(name="department_name",unique = true,nullable = false)
 	private String departmentName;// 部门名称
-	@Column(name = "department_desc", length = 400)
+	@Column(name = "department_desc", length = 450)
 	private String department_desc;// 部门描述
 
 	public Department(Long id) {

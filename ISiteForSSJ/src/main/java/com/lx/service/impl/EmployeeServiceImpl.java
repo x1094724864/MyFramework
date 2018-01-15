@@ -9,7 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.lx.entity.Department;
 import com.lx.entity.Employee;
 import com.lx.repository.DepartmentRepository;
 import com.lx.repository.EmployeeRepository;
@@ -51,10 +50,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		return employee;
 	}
 
-	// 根据部门查找员工
-	public List<Employee> getEmpByDepart(Long id) {
-//		Department department = departmentRepository.getOne(id);
-		List<Employee> employeeList = employeeRepository.findByDepartment(id);
+	// 使用编号查找员工
+	public List<Employee> getByEmployee_id(Long employee_id) {
+		List<Employee> employeeList = employeeRepository.findByEmployee_id(employee_id);
+		return employeeList;
+	}
+
+	// 根据部门分页查找员工
+	public List<Employee> getEmpByDepart(Long department_id, int firstRow, int rowCount) {
+		// Department department = departmentRepository.getOne(id);
+		List<Employee> employeeList = employeeRepository.findByDepartment(department_id, firstRow, rowCount);
 		return employeeList;
 	}
 
@@ -94,18 +99,25 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		}
 		return 0;
 	}
+	// 根据外键查询总记录数
+	public int getRecordCountByDepartment(Long department_id) {
+		int recordCount;
+		List<Employee> empList = employeeRepository.findByDepartment(department_id);
+		if (empList.size() > 0) {
+			recordCount = empList.size();
+			return recordCount;
+		}
+		return 0;
+	}
 
-	// 分页
+	// 无条件分页查询
 	public List<Employee> getEmpByPage(int firstRow, int rowCount) {
-
 		return employeeRepository.findEmployeeByPage(firstRow, rowCount);
 	}
 
 	@Override
 	public Page<Employee> getEmpPage(Pageable pageable) {
-		System.out.println("分页开始");
 		Page<Employee> empPage = employeeRepository.findAll(pageable);
-		System.out.println("分页完成");
 		return empPage;
 	}
 

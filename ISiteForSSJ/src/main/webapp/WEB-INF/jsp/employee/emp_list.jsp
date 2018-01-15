@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
+<title>员工管理</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
@@ -84,10 +84,10 @@ a {
 						<tr align="center">
 							<td align="center">
 								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.firstPage}">«</a>
-								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.priviousPage}">Privious</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.nextPage}">Next</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.lastPage}">»</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.firstPage}">首页</a>
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.priviousPage}">上一页</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.nextPage}">下一页</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listEmp?requestPage=${pager.lastPage}">尾页</a> 
 								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
 								value="${param.requestPage}" size="2" /> 
 								<input type="submit" value="go" />
@@ -99,8 +99,6 @@ a {
 			</div>
 		</div>
 	</div>
-	<div id="ui-datepicker-div"
-		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 		<br><br><br><br><br><br><br><br>
 </body>
 </html>

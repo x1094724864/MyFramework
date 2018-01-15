@@ -49,14 +49,14 @@
 					<li><a href="employee/removeEmp" target="right">删除员工</a></li>
 				</ul></li>
 			<c:choose>
-				<c:when test="<%=permission != null && permission >= 3%>">
+				<c:when test="<%=permission != null && permission >= 2%>">
 					<li><a><img
 							src="<%=request.getContextPath()%>/images/husers.png" alt="">用户管理</a>
 						<ul>
 							<li><a href="users/userList" target="right">用户列表</a></li>
 							<li><a href="users/addUser" target="right">添加用户</a></li>
-							<!-- <li><a href="employee/modEmp" target="right">修改员工</a></li>
-							<li><a href="employee/removeEmp" target="right">删除员工</a></li> -->
+							<li><a href="users/userListByPermission" target="right">高于自己的权限用户不显示</a></li>
+							<li><a href="employee/removeEmp" target="right">删除员工</a></li>
 						</ul></li>
 				</c:when>
 				<c:otherwise>

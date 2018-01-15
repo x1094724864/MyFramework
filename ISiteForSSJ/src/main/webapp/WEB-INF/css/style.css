@@ -1201,7 +1201,7 @@ body{
 	background: none;
 	position: absolute;
 	line-height: 29px;
-	background: url(../images/select.png) no-repeat 98% center;
+	background: url(../images/edit.png) no-repeat 98% center;
 	text-indent: 10px;
 }
 #content .selector.focus{

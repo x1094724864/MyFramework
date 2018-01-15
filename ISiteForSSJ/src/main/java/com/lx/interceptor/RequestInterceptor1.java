@@ -23,7 +23,7 @@ public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 		Integer permission = (Integer) request.getSession().getAttribute("permission");
 		//加入请求的是增删改等方法，则进行权限判定
 		if (permissionRequest(request)) {
-			if (permission <=1||permission==null) {
+			if (permission <=1||permission.equals(null)) {
 				System.out.println("permission=" + permission + "------return false");
 				response.sendRedirect(request.getContextPath() + "/error"); // 返回提示页面
 				return false;

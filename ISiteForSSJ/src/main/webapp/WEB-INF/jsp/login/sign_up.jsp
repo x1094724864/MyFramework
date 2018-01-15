@@ -46,7 +46,7 @@
 					<div class="media media-y margin-big-bottom"></div>
 					<div class="panel loginbox">
 						<div class="text-center margin-big padding-big-top">
-							<h1>临时用户注册</h1>
+							<h1>用户注册</h1>
 						</div>
 						<div class="panel-body"
 							style="padding: 30px; padding-bottom: 10px; padding-top: 10px;">
@@ -94,17 +94,12 @@
 								</div>
 							</div>
 						</div>
-						<input type="hidden" name="permission" value="0" />
+						<!-- <input type="hidden" name="permission" value="0" /> -->
 						<div style="padding: 30px;">
-							<input type="submit" id="button" onclick="validateCode()"
+							<input type="button" id="button" onclick="validateCode()"
 								class="button button-block bg-main text-big input-big"
 								value="注册">
 						</div>
-						<!-- <div style="padding: 30px;">
-							<input type="button" id="button_submit" onclick="validateCode()"
-								class="button button-block bg-main text-big input-big"
-								value="注册">
-						</div> -->
 						<div style="padding: 30px;">
 							<a href="tosign_in"><span
 								class="icon icon-mail-reply margin-small-right"

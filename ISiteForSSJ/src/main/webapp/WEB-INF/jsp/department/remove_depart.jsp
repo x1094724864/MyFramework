@@ -5,22 +5,47 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
+<title>部门管理</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.wysiwyg.old-school.css">
 
 <!-- jQuery AND jQueryUI -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/main.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/my_style.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/main.js"></script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/my_style.css">
 
 <style>
 a {
 	text-decoration: none
 }
 </style>
+
+<script type="text/javascript">
+	jQuery.fn.limit = function() {
+		var self = $("span[limit]");
+		self.each(function() {
+			var objString = jQuery.trim($(this).text());
+			var objLength = objString.length;
+			var num = $(this).attr("limit");
+			if (objLength > num) {
+				$(this).attr("title", objString);
+				objString = $(this).text(objString.substring(0, num) + "……");
+			}
+		})
+	}
+	$(function() {
+		$(document.body).limit();
+	})
+</script>
 </head>
 <body>
 
@@ -34,7 +59,9 @@ a {
 		<div class="bloc">
 			<div class="title">部门列表</div>
 			<div class="content">
-				<form action="<%=request.getContextPath()%>/department/deleteDepartByIds" method="post">
+				<form
+					action="<%=request.getContextPath()%>/department/deleteDepartByIds"
+					method="post">
 					<table align="center" border="1">
 						<thead align="right">
 							<tr align="right">
@@ -52,10 +79,11 @@ a {
 										value="${depart.id}" /></td>
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
-									<td>${depart.department_desc}</td>
+									<td><span limit="10">${depart.department_desc}</span></td>
 									<td>
 										<button>
-											<a href="<%=request.getContextPath()%>/department/deleteDepartById?id=${depart.id}">删除</a>
+											<a
+												href="<%=request.getContextPath()%>/department/deleteDepartById?id=${depart.id}">删除</a>
 										</button>
 									</td>
 
@@ -64,35 +92,43 @@ a {
 						</tbody>
 						<tfoot></tfoot>
 					</table>
-					<br><br>
-					<input type="submit" value="确认删除" /><input type="reset"
+					<br>
+					<br> <input type="submit" value="确认删除" /><input type="reset"
 						value="取消删除">
 				</form>
 
 
-<form action="removeDepart">
-<table  align="center" border="0" cellspacing="0" width="680">
-	<tr>
-		<td align="center">
-			共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeDepart?requestPage=${pager.firstPage}">首页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeDepart?requestPage=${pager.priviousPage}">上一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeDepart?requestPage=${pager.nextPage}">下一页</a>
-		   	 <a style="cursor:pointer;text-decoration: underline;" href="removeDepart?requestPage=${pager.lastPage}">尾页</a>
-		   	 <input style="text-align:center;border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1" value="${param.requestPage}" size="2"/>
-		   	 <input type="submit" value="go" />
-		</td>
-	</tr>
-</table>
-</form>
-
-
-
-
+				<form action="removeDepart">
+					<table align="center" border="0" cellspacing="0" width="680">
+						<tr>
+							<td align="center">
+								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
+								<a style="cursor: pointer; text-decoration: underline;"
+								href="removeDepart?requestPage=${pager.firstPage}">首页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="removeDepart?requestPage=${pager.priviousPage}">上一页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="removeDepart?requestPage=${pager.nextPage}">下一页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="removeDepart?requestPage=${pager.lastPage}">尾页</a> <input
+								style="text-align: center; border: 1px solid #CCCCCC;"
+								type="text" name="requestPage"
+								onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${param.requestPage}" size="2" /> <input type="submit"
+								value="go" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
 		</div>
-	</div>
-	<div id="ui-datepicker-div"
-		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
-		<br><br><br><br><br><br><br><br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 </body>
 </html>

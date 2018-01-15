@@ -28,7 +28,7 @@
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/main.js"></script>
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/add_employee.js"></script>
+	src="<%=request.getContextPath()%>/js/mod_employee.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/js/previewImage.js"></script>
 
@@ -74,7 +74,7 @@
 							<td><span class="item">员工编号</span></td>
 							<td><div class="input">
 									<input type="text" name="employee_id" id="employee_id"
-										onblur="checkEmployee_id()" value="${employee.employee_id }"
+										onchange="checkEmployee_id()" value="${employee.employee_id }"
 										tabindex="1" />
 								</div></td>
 							<td><span id="employee_id_span"></span></td>
@@ -103,7 +103,7 @@
 							<td><span class="item">部门</span></td>
 							<td><div class="select">
 									<select name="departmentName" tabindex="5"
-										id="empDepartmentName" onblur="checkEmpDepartName()">
+										id="empDepartmentName" onchange="checkEmpDepartName()">
 										<option selected="selected" value="未选择">-----请选择部门-----</option>
 										<c:forEach var="depart" items="${List}" varStatus="vs">
 											<option>${depart.departmentName}</option>
@@ -126,7 +126,7 @@
 							<td><span class="item">学历</span></td>
 							<td><div class="select">
 									<select name="education" id="education" tabindex="7"
-										onblur="checkEducation()">
+										onchange="checkEducation()">
 										<option selected="selected" value="未选择">-----请选择学历-----</option>
 										<option>硕士及以上</option>
 										<option>本科</option>
@@ -142,7 +142,7 @@
 							<td><span class="item">专业</span></td>
 							<td><div class="input">
 									<input type="text" name="profession" id="profession"
-										onblur="checkProfession()" value="${employee.profession}"
+										onchange="checkProfession()" value="${employee.profession}"
 										tabindex="8" />
 								</div></td>
 							<td><span id="employee_profession_span"></span></td>
@@ -152,7 +152,7 @@
 							<td><span class="item">地址</span></td>
 							<td><div class="input">
 									<input type="text" name="address" id="address"
-										onblur="checkAddress()" value="${employee.address }"
+										onchange="checkAddress()" value="${employee.address }"
 										tabindex="9" />
 								</div></td>
 							<td><span id="employee_address_span"></span></td>
@@ -161,7 +161,7 @@
 							<td><span class="item">电话号码</span></td>
 							<td><div class="input">
 									<input type="text" name="tel_number" id="tel_number"
-										onblur="checkTell()" value="${employee.tel_number }"
+										onchange="checkTell()" value="${employee.tel_number }"
 										tabindex="10" />
 								</div></td>
 							<td><span id="employee_tel_span"></span></td>
@@ -170,7 +170,7 @@
 							<td><span class="item">邮箱</span></td>
 							<td><div class="input">
 									<input type="text" name="mail" id="mail"
-										value="${employee.mail }" onblur="checkMail()" tabindex="11" />
+										value="${employee.mail }" onchange="checkMail()" tabindex="11" />
 								</div></td>
 							<td><span id="employee_mail_span"></span></td>
 						</tr>
@@ -198,7 +198,7 @@
 							<td></td>
 							<td><br>
 								<div class="submit">
-									<input style="position: relative; left: 10px;" type="button" value="提交" tabindex="13"
+									<input type="button" value="提交" tabindex="13"
 										onclick="saveEmployee()" /><input
 										style="position: relative; left: 50px;" type="reset"
 										value="重置" tabindex="14" onclick="resetValue()"/>

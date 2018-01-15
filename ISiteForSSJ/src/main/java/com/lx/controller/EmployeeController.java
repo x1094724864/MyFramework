@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,20 +60,22 @@ public class EmployeeController {
 		return mView;
 	}
 
-	//根据部门查找员工
+	// 根据部门查找员工
 	@RequestMapping("listEmpByDepart")
-	private ModelAndView listEmpByDepart(HttpSession session,Long id,
+	private ModelAndView listEmpByDepart(HttpSession session, Long id,
 			@RequestParam(value = "requestPage", defaultValue = "0") String requestPage) {
-//		List<Employee> employeeList = getEmpWithPage(requestPage);
-		List<Employee> employeeList =employeeServiceImpl.getEmpByDepart(id);
+		// List<Employee> employeeList = getEmpWithPage(requestPage);
+		int recordCount = employeeServiceImpl.getRecordCountByDepartment(id);
+		pager.init(recordCount, pager.getPageSize(), requestPage);
+		int firstRow = pager.getFirstRow();
+		int rowCount = pager.getRowCount();
+		List<Employee> employeeList = employeeServiceImpl.getEmpByDepart(id, firstRow, rowCount);
 		session.setAttribute("employeeList", employeeList);
 		session.getServletContext().setAttribute("pager", pager);
 		mView.setViewName("employee/emp_list");
 		return mView;
 	}
-	
-	
-	
+
 	// 进入员工详细信息页面
 	@RequestMapping("detailsEmp")
 	private ModelAndView detailsEmp(HttpSession session, Employee employee) {
@@ -104,6 +107,42 @@ public class EmployeeController {
 		request.setAttribute("List", departmentList);
 		mView.setViewName("employee/edit_emp");
 		return mView;
+	}
+	
+	// 进入员工修改页面
+	@RequestMapping("mod_editEmp")
+	private ModelAndView mod_editEmp(HttpSession session, HttpServletRequest request, Employee employee) {
+		List<Department> departmentList = departmentServiceImpl.getAllDepart();
+		Long id = employee.getId();
+		if (id != null) {
+			Employee emp = employeeServiceImpl.getEmpById(id);
+			employee.setName(emp.getName());
+			employee.setGender(emp.getGender());
+			employee.setDepartmentName(emp.getDepartmentName());
+			employee.setDepartment(emp.getDepartment());
+			employee.setAddress(emp.getAddress());
+			employee.setEducation(emp.getEducation());
+			employee.setEmployee_id(emp.getEmployee_id());
+			employee.setProfession(emp.getProfession());
+			employee.setTel_number(emp.getTel_number());
+			employee.setMail(emp.getMail());
+			employee.setEntry_Time(emp.getEntry_Time());
+			employee.setPhotoName(emp.getPhotoName());
+		}
+		request.setAttribute("List", departmentList);
+		mView.setViewName("employee/mod_edit_emp");
+		return mView;
+	}
+
+	// 部门名验证部门是否存在
+	@RequestMapping("empIsExistByEmpId")
+	@ResponseBody
+	public boolean empIsExistByEmpId(HttpServletRequest request, @RequestParam("employee_id") Long employee_id) {
+		List<Employee> list = employeeServiceImpl.getByEmployee_id(employee_id);
+		if (list.size() > 0) {
+			return true; // 表示存在
+		}
+		return false; // 表示不存在
 	}
 
 	// 进入员工修改页面
@@ -206,25 +245,25 @@ public class EmployeeController {
 		String extensionName = photoFileName.substring(photoFileName.lastIndexOf(".") + 1);
 		// 新的图片文件名 = 获取时间戳+"."图片扩展名
 		String newphotoFileName = String.valueOf(System.currentTimeMillis()) + "." + extensionName;
-		// if (!employee.getPhoto().isEmpty()) {
-		if (!photo.equals(null)) {
-			// String savePath = request.getContextPath() + "/photo_picture";
-			// String savePath = "/photo_picture";
-			// String savePath =
-			// "K:\\JavaDoc\\Git\\MyFramework\\ISiteForSSJ\\src\\main\\webapp\\WEB-INF\\photo_picture";
-			// String savePath = "/ISiteForSSJ/src/main/webapp/WEB-INF/picture";
-			// String savePath = "photo_picture";
-//			String savePath = "/ISiteForSSJ/src/main/webapp/picture";
-			 String savePath =request.getServletContext().getRealPath("/photo_picture/");
-			File targetFile = new File(savePath, photoFileName);
-			if (!targetFile.getParentFile().exists()) { // 判断路径是否存在
-				targetFile.getParentFile().mkdirs(); // 不存在则创建
+		if (!photo.isEmpty()) {
+			// 尺寸大于2m
+			// long photoSize = photo.getSize();
+			if (photo.getSize() <= 2097152) {
+				// if (!photo.equals(null)) {
+				// String savePath = request.getContextPath() + "/photo_picture";
+				// String savePath = "/ISiteForSSJ/src/main/webapp/picture";
+				String savePath = request.getServletContext().getRealPath("/employee_photo_picture/");
+				File targetFile = new File(savePath, photoFileName);
+				if (!targetFile.getParentFile().exists()) { // 判断路径是否存在
+					targetFile.getParentFile().mkdirs(); // 不存在则创建
+				}
+				File saveFilePath = new File(savePath + File.separator + newphotoFileName);
+				photo.transferTo(saveFilePath);
+				photoName = newphotoFileName;
+				return photoName;
 			}
-			File saveFilePath = new File(savePath + File.separator + newphotoFileName);
-			photo.transferTo(saveFilePath);
-			photoName = newphotoFileName;
+			return photoName="头像尺寸超出2M";
 		}
-		return photoName;
+		return photoName="未选择头像";
 	}
-
 }

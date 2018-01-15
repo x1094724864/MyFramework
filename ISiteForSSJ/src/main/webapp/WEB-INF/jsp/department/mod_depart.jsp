@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>部门管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -28,9 +29,31 @@ a {
 	text-decoration: none
 }
 </style>
+<style type="text/css">
+.display {display：none;
+	
+}
+</style>
+
+<script type="text/javascript">
+	jQuery.fn.limit = function() {
+		var self = $("span[limit]");
+		self.each(function() {
+			var objString = jQuery.trim($(this).text());
+			var objLength = objString.length;
+			var num = $(this).attr("limit");
+			if (objLength > num) {
+				$(this).attr("title", objString);
+				objString = $(this).text(objString.substring(0, num) + "……");
+			}
+		})
+	}
+	$(function() {
+		$(document.body).limit();
+	})
+</script>
 </head>
 <body>
-
 
 	<!--     内容      -->
 	<div id="content" class="white">
@@ -58,11 +81,10 @@ a {
 									<td><input type="checkbox" name="ids" value="${depart.id}" /></td>
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
-									<%-- <td>${depart.department_desc}</td> --%>
-									<td><textarea rows="2" cols="40" readonly="readonly">${depart.department_desc}</textarea>
-									</td>
+									<td><span limit="10">${depart.department_desc}</span></td>
 									<td><button>
-											<a href="<%=request.getContextPath()%>/department/editDepart?id=${depart.id}">修改</a>
+											<a
+												href="<%=request.getContextPath()%>/department/editDepart?id=${depart.id}">修改</a>
 										</button></td>
 
 								</tr>
@@ -78,13 +100,19 @@ a {
 						<tr align="center">
 							<td align="center">
 								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.firstPage}">«</a>
-								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.priviousPage}">Privious</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.nextPage}">Next</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="modDepart?requestPage=${pager.lastPage}">»</a> 
-								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
-								value="${param.requestPage}"  size="2" /> 
-								<input type="submit" value="go" />
+								<a style="cursor: pointer; text-decoration: underline;"
+								href="modDepart?requestPage=${pager.firstPage}">首页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="modDepart?requestPage=${pager.priviousPage}">上一页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="modDepart?requestPage=${pager.nextPage}">下一页</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="modDepart?requestPage=${pager.lastPage}">尾页</a> <input
+								style="text-align: center; border: 1px solid #CCCCCC;"
+								type="text" name="requestPage"
+								onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${param.requestPage}" size="2" /> <input type="submit"
+								value="go" />
 							</td>
 						</tr>
 					</table>
@@ -92,8 +120,6 @@ a {
 			</div>
 		</div>
 	</div>
-	<div id="ui-datepicker-div"
-		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 	<br>
 	<br>
 	<br>

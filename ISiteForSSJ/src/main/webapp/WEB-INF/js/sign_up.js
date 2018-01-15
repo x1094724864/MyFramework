@@ -221,20 +221,19 @@ function validateCode() {
 	}
 }
 
-function test() {
-	alert("username=" + username)
-	alert("init_password=" + init_password)
-	alert("initPassword=" + initPassword)
-	alert("repeat_password=" + repeat_password)
-	alert("email=" + email)
-	alert("validateCode=" + validateResult)
-
-}
-
 function register() {
 	if (checkedName && checkedInitPwd && checkedRepeatPwd && checkedEmail) {
-		window.location.href = "temporary?username=" + username + "&password="
-				+ initPassword + "&email=" + email + "&permission=0";
+//		window.location.href = "temporary?username=" + username + "&password="
+//				+ initPassword + "&email=" + email + "&permission=0";
+
+		document.write("<form action='temporary' method=post name=sign_up style='display:none'>");
+		document.write("<input type='hidden' name='username' value='" + username + "'/>");
+		document.write("<input type='hidden' name='password' value='" + initPassword + "'/>");
+		document.write("<input type='hidden' name='email' value='" + email + "'/>");
+		document.write("<input type='hidden' name='permission' value= '0' />");
+		document.write("</form>");
+		document.sign_up.submit();
+
 	} else if (!checkedName) {
 		alert("用户名有问题！")
 	} else if (!checkedInitPwd) {

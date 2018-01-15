@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>后台管理系统</title>
+<title>部门管理</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -28,6 +28,24 @@ a {
 	text-decoration: none
 }
 </style>
+
+<script type="text/javascript">
+	jQuery.fn.limit = function() {
+		var self = $("span[limit]");
+		self.each(function() {
+			var objString = jQuery.trim($(this).text());
+			var objLength = objString.length;
+			var num = $(this).attr("limit");
+			if (objLength > num) {
+				$(this).attr("title", objString);
+				objString = $(this).text(objString.substring(0, num) + "……");
+			}
+		})
+	}
+	$(function() {
+		$(document.body).limit();
+	})
+</script>
 </head>
 <body>
 
@@ -57,7 +75,7 @@ a {
 								<tr>
 									<td>${depart.departmentNum}</td>
 									<td>${depart.departmentName}</td>
-									<td style="size: 5">${depart.department_desc}</td>
+									<td><span limit="10">${depart.department_desc}</span></td>
 									<td><a href="<%=request.getContextPath()%>/employee/listEmpByDepart?id=${depart.id}">查看部门员工</a></td>
 								</tr>
 							</c:forEach>
@@ -72,10 +90,10 @@ a {
 						<tr align="center">
 							<td align="center">
 								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.firstPage}">«</a>
-								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.priviousPage}">Privious</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.nextPage}">Next</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.lastPage}">»</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.firstPage}">首页</a>
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.priviousPage}">上一页</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.nextPage}">下一页</a> 
+								<a style="cursor: pointer; text-decoration: underline;" href="listDepart?requestPage=${pager.lastPage}">尾页</a> 
 								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
 								value="${param.requestPage}"  size="2" /> 
 								<input type="submit" value="go" />
@@ -84,38 +102,13 @@ a {
 					</table>
 
 
-					<div class="pagination">
-						<a href="department/listDepart?requestPage=${pager.firstPage}" class="prev">«</a>
-						<a href="department/listDepart?requestPage=${pager.firstPage}">1</a> <a
-							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-							class="current">2</a> ... <a
-							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
-						<a
-							href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a>
-						<a href="department/listDepart?requestPage=${pager.lastPage}"
-							class="next">»</a>
-					</div>
 				</form>
 
 
 
-
-				<!-- <div class="pagination">
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-						class="prev">«</a> <a
-						href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">1</a>
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-						class="current">2</a> ... <a
-						href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">21</a>
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#">22</a>
-					<a href="http://www.grafikart.fr/demo/coreadmin/index.php?p=table#"
-						class="next">»</a>
-				</div> -->
 			</div>
 		</div>
 	</div>
-	<div id="ui-datepicker-div"
-		class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 	<br>
 	<br>
 	<br>

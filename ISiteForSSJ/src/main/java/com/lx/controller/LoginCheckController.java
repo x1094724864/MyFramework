@@ -104,6 +104,12 @@ public class LoginCheckController {
 		return "redirect:home";
 	}
 
+	// 点击重新登录
+	@RequestMapping("toRelogin")
+	private String toRelogin(HttpSession session) {
+		session.invalidate();
+		return "redirect:tosign_in";
+	}
 
 	
 	// 进入主页
