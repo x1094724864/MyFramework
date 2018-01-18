@@ -29,6 +29,27 @@ a {
 }
 </style>
 </head>
+<script type="text/javascript">
+	 var id = "${user.id}"
+	function permissionsCompare() {
+		$.ajax({
+			type : "Post",
+			contentType : "application/json",
+			url : "permissionsCompare?id="+id,
+			processData : false,
+			dataType : "json",
+			data : "{}",
+			success : function(data) {
+				if (data) {
+					alert("权限通过!");
+				} else {
+					alert("操作者权限不高于被操作者，无法操作此选项!");
+					return checkedDepartNum = true;
+				}
+			}
+		});
+	}
+</script>
 <body>
 
 
@@ -47,7 +68,7 @@ a {
 					<table align="center">
 						<thead>
 							<tr>
-								<!-- <th>选择</th> -->
+								<th>id</th>
 								<th style="width: 90px;">用户名</th>
 								<th style="width: 200px;">密码</th>
 								<th style="width: 200px;">权限等级</th>
@@ -57,15 +78,22 @@ a {
 						<tbody>
 							<c:forEach var="user" items="${usersList}" varStatus="vs">
 								<tr>
+									<td>${user.id}</td>
 									<td>${user.username}</td>
 									<td>${user.password}</td>
 									<td>${user.permissionName}</td>
 									<td>
-										<button>
+										<%-- <button onclick="permissionsCompare()">
 											<a href="editUser?id=${user.id}">修改</a>
 										</button>
 										<button>
 											<a href="deleteUser?id=${user.id}">删除</a>
+										</button> --%>
+										<button>
+											<a href="permissionsCompare?id=${user.id}&&action=mod" >修改</a>
+										</button>
+										<button>
+											<a href="permissionsCompare?id=${user.id}&&action=del">删除</a>
 										</button>
 									</td>
 								</tr>
@@ -76,28 +104,28 @@ a {
 
 				</form>
 
-<form action="userList">
-<table align="center" border="0" cellspacing="0" width="680">
+				<form action="userList">
+					<table align="center" border="0" cellspacing="0" width="680">
 						<tr align="center">
 							<td align="center">
 								共${pager.recordCount}条记录&nbsp;&nbsp;每页显示${pager.pageSize}条&nbsp;&nbsp;第${pager.currentPage}页/共${pager.pageCount}页
-								<a style="cursor: pointer; text-decoration: underline;" href="userList?requestPage=${pager.firstPage}">«</a>
-								<a style="cursor: pointer; text-decoration: underline;" href="userList?requestPage=${pager.priviousPage}">Privious</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="userList?requestPage=${pager.nextPage}">Next</a> 
-								<a style="cursor: pointer; text-decoration: underline;" href="userList?requestPage=${pager.lastPage}">»</a> 
-								<input style="text-align: center; border: 1px solid #CCCCCC;" type="text" name="requestPage" onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
-								value="${param.requestPage}"  size="2" /> 
-								<input type="submit" value="go" />
+								<a style="cursor: pointer; text-decoration: underline;"
+								href="userList?requestPage=${pager.firstPage}">«</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="userList?requestPage=${pager.priviousPage}">Privious</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="userList?requestPage=${pager.nextPage}">Next</a> <a
+								style="cursor: pointer; text-decoration: underline;"
+								href="userList?requestPage=${pager.lastPage}">»</a> <input
+								style="text-align: center; border: 1px solid #CCCCCC;"
+								type="text" name="requestPage"
+								onchange="this.value=(new RegExp('^[0-9]*$').test(this.value)) ? this.value : 1"
+								value="${param.requestPage}" size="2" /> <input type="submit"
+								value="go" />
 							</td>
 						</tr>
 					</table>
-</form>
-				
-
-				<button>
-					<a href="listDepart.action">获取所有</a>
-				</button>
-
+				</form>
 
 			</div>
 		</div>
@@ -112,6 +140,8 @@ a {
 	<br>
 	<br>
 	<br>
-	
+
 </body>
+
+
 </html>

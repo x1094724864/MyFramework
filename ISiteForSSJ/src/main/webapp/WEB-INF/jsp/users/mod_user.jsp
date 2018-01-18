@@ -41,8 +41,9 @@
 					<table align="center">
 						<thead>
 							<tr>
-								<td colspan="2"><input type="hidden" name="id"
-									value="${user.id }" /></td>
+								<td><input type="hidden" name="id" value="${user.id }" /></td>
+								<td><input type="hidden" name="permission"
+									value="${user.permission }"></td>
 							</tr>
 						</thead>
 						<tr>
@@ -55,36 +56,11 @@
 						<tr>
 							<td><span class="item">密码</span></td>
 							<td><div class="input">
-									<input type="text" name="password" readonly="readonly"
-										value="123456" tabindex="2" />
+									<input type="text" name="password" value="${user.password}"
+										tabindex="2" />
 								</div></td>
 						</tr>
-						<tr>
-							<td><span class="item">权限等级</span></td>
-							<td><div class="select">
-									<select name="permission" tabindex="3">
-										<option value="0">临时用户</option>
-										<option value="1">普通用户</option>
-										<c:choose>
-											<c:when test="<%=permission != null && permission > 2%>">
-												<option value="2">管理用户</option>
-											</c:when>
-											<c:otherwise>
 
-											</c:otherwise>
-										</c:choose>
-										<c:choose>
-											<c:when test="<%=permission != null && permission > 3%>">
-												<option value="3">超级管理</option>
-											</c:when>
-											<c:otherwise>
-
-											</c:otherwise>
-										</c:choose>
-
-									</select>
-								</div></td>
-						</tr>
 						<tr>
 							<td></td>
 							<td><br>

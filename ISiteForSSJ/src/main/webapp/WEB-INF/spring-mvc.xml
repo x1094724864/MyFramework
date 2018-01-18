@@ -37,7 +37,7 @@
 	<mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />
 	<mvc:resources mapping="/plugins/**" location="/WEB-INF/plugins/" />
 	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" />
-	<mvc:resources mapping="/errors/**" location="/WEB-INF/errors/" />
+	<!-- <mvc:resources mapping="/errors/**" location="/WEB-INF/jsp/errors/" /> -->
 	<mvc:resources mapping="/photo_picture/**" location="/WEB-INF/photo_picture/" />
 	<mvc:resources mapping="/employee_photo_picture/**" location="/WEB-INF/employee_photo_picture/" />
 
@@ -59,6 +59,10 @@
 	<mvc:view-controller path="/" view-name="redirect:/index" />
 	<mvc:view-controller path="/error"
 		view-name="redirect:/errors/error.jsp" />
+	<mvc:view-controller path="/no_permission_error"
+		view-name="redirect:/errors/no_permission_error.jsp" />
+	<mvc:view-controller path="/500"
+		view-name="redirect:/errors/500.jsp" />
 	<!-- <mvc:view-controller path="tosign_in" view-name="redirect:login/sign_in"/> -->
 
 	<!-- 配置 拦截器，好像不能使用通配符,可能是因为要分配拦截顺序 -->

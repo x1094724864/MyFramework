@@ -39,7 +39,7 @@
 			<div class="title">快捷入口</div>
 			<div class="content dashboard">
 				<div class="center" style="display: block; width: auto;">
-					<a class="shortcut"> <img
+					<a class="shortcut" href="users/modUser?id=${user.id}" >用户修改<img
 						src="Your Admin Panel_files/picture.png" alt="" width="48"
 						height="48">
 					</a> <a class="shortcut"> <img
