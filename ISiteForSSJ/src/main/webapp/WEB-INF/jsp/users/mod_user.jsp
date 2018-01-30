@@ -60,6 +60,13 @@
 										tabindex="2" />
 								</div></td>
 						</tr>
+						<tr>
+							<td><span class="item">邮箱</span></td>
+							<td><div class="input">
+									<input type="text" name="email" value="${user.email}"
+										tabindex="3" />
+								</div></td>
+						</tr>
 
 						<tr>
 							<td></td>

@@ -30,7 +30,7 @@ public class RequestInterceptor1 extends HandlerInterceptorAdapter {
 			}
 			return true;
 		}else if (usersManagePermissionRequest(request)) {
-			if (permission <3||permission==null) {
+			if (permission <2||permission==null) {
 				System.out.println("permission=" + permission + "------return false");
 				response.sendRedirect(request.getContextPath() + "/error"); // 返回提示页面
 				return false;

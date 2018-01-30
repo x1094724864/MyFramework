@@ -29,7 +29,7 @@ a {
 }
 </style>
 </head>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	 var id = "${user.id}"
 	function permissionsCompare() {
 		$.ajax({
@@ -49,7 +49,7 @@ a {
 			}
 		});
 	}
-</script>
+</script> -->
 <body>
 
 

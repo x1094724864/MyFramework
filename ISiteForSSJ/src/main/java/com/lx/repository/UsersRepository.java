@@ -18,12 +18,12 @@ public interface UsersRepository extends JpaRepository<Users, Long> {
 	<S extends Users> S save(S users);
 
 	// 根据ID查找制定部门
-	// @Query(value = "SELECT * FROM employee_info WHERE id = ?1", nativeQuery =
+	// @Query(value = "SELECT * FROM user_info WHERE id = ?1", nativeQuery =
 	// true)
 	Users findOne(Long id);
 
 	// 查找所有部门
-	// @Query(value = "select * from employee_info", nativeQuery = true)
+	// @Query(value = "select * from user_info", nativeQuery = true)
 	List<Users> findAll();
 
 	// 删除部门

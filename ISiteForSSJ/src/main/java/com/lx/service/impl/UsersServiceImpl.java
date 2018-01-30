@@ -28,7 +28,7 @@ public class UsersServiceImpl implements IUsersService {
 
 	@Override
 	public Long modifyUsers(Users user) {
-		usersRepository.saveAndFlush(user);
+		usersRepository.save(user);
 		return 1L;
 	}
 

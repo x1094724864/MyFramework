@@ -252,7 +252,7 @@ public class EmployeeController {
 				// if (!photo.equals(null)) {
 				// String savePath = request.getContextPath() + "/photo_picture";
 				// String savePath = "/ISiteForSSJ/src/main/webapp/picture";
-				String savePath = request.getServletContext().getRealPath("/employee_photo_picture/");
+				String savePath = request.getServletContext().getRealPath("/WEB-INF/employee_photo_picture/");
 				File targetFile = new File(savePath, photoFileName);
 				if (!targetFile.getParentFile().exists()) { // 判断路径是否存在
 					targetFile.getParentFile().mkdirs(); // 不存在则创建

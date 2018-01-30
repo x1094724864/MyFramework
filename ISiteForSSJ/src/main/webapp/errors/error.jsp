@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>抱歉！您的权限不足，您可以尝试<a href="<%=request.getContextPath() %>/toRelogin" target="_parent">更换高级管理账户</a>！</h2>
+	<h2>抱歉！出了点小问题，您可以尝试<a href="<%=request.getContextPath() %>/toRelogin" target="_parent">更换管理账户</a>！</h2>
 </body>
 </html>

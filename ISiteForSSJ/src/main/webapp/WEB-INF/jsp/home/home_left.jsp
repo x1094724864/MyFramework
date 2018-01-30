@@ -56,7 +56,6 @@
 							<li><a href="users/userList" target="right">用户列表</a></li>
 							<li><a href="users/addUser" target="right">添加用户</a></li>
 							<li><a href="users/userListByPermission" target="right">高于自己的权限用户不显示</a></li>
-							<li><a href="employee/removeEmp" target="right">删除员工</a></li>
 						</ul></li>
 				</c:when>
 				<c:otherwise>
